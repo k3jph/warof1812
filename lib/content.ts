@@ -35,6 +35,9 @@ export type Chapter = {
 };
 
 export const sources: Source[] = [
+  { id: "founders-jefferson-duane", title: "Thomas Jefferson to William Duane, 4 August 1812", institution: "Founders Online, National Archives", url: "https://founders.archives.gov/documents/Jefferson/03-05-02-0231", type: "primary correspondence", note: "The dated letter containing Jefferson’s “mere matter of marching” prediction about Canada." },
+  { id: "whha-portrait", title: "Who saved the Gilbert Stuart painting of George Washington from the White House?", institution: "White House Historical Association", url: "https://www.whitehousehistory.org/questions/how-did-dolley-madison-save-george-washingtons-portrait", type: "evidence synthesis", note: "Compares the accounts and roles associated with the portrait’s removal before the burning of Washington." },
+  { id: "whha-jennings", title: "Paul Jennings", institution: "White House Historical Association", url: "https://www.whitehousehistory.org/paul-jennings", type: "biographical and memory study", note: "Jennings’s eyewitness correction and the later growth of the portrait-rescue story in popular memory." },
   { id: "nps-war", title: "War of 1812", institution: "National Park Service", url: "https://www.nps.gov/subjects/warof1812/index.htm", type: "public-history gateway", note: "Campaigns, people, places, civilian experience, and legacies." },
   { id: "loc-guide", title: "War of 1812: A Resource Guide", institution: "Library of Congress", url: "https://guides.loc.gov/war-of-1812", type: "research guide", note: "Primary documents, maps, newspapers, prints, and manuscript collections." },
   { id: "nara-war", title: "War of 1812", institution: "National Archives", url: "https://www.archives.gov/research/military/war-of-1812", type: "archival gateway", note: "Federal military and maritime records, including impressed seamen." },

@@ -5,6 +5,7 @@ const links = [
   ["Map", "/map"],
   ["Timeline", "/timeline"],
   ["Explore", "/explore"],
+  ["Evidence", "/evidence"],
   ["Paths", "/perspectives"],
   ["Edition", "/edition"],
   ["Baltimore", "/baltimore"],
@@ -45,6 +46,7 @@ export function SiteFooter() {
         <Link href="/sources">Sources &amp; research guide</Link>
         <Link href="/data">Open data</Link>
         <Link href="/edition">Documentary edition</Link>
+        <Link href="/evidence">Evidence laboratory</Link>
         <Link href="/perspectives">Perspective pathways</Link>
         <Link href="/five-minutes">The war in five minutes</Link>
         <Link href="/twenty-minutes">The war in twenty minutes</Link>
