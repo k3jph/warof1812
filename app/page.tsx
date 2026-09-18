@@ -51,7 +51,7 @@ export default function Home() {
         <div className="door-list">{doors.map(([number, title, copy, href]) => <Link href={href} key={href}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><b>→</b></Link>)}</div>
       </section>
 
-      <section className="perspective-band"><p>The war was never owned by one national memory.</p><div><span>American</span><span>British</span><span>Upper &amp; Lower Canadian</span><span>Indigenous</span></div><Link href="/about">How this project tells the story →</Link></section>
+      <section className="perspective-band"><p>The war was never owned by one national memory.</p><div><span>Sovereignty</span><span>Freedom seeking</span><span>Household labor</span><span>Citizenship</span><span>Occupation</span><span>Memory</span></div><Link href="/perspectives">Choose a perspective pathway →</Link></section>
     </main>
   );
 }

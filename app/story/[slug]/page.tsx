@@ -7,6 +7,7 @@ import { SourceList } from "@/components/SourceList";
 import { DocumentaryReader } from "@/components/DocumentaryReader";
 import { chapterBySlug, chapters, events } from "@/lib/content";
 import { documentaryByChapter } from "@/lib/documentary";
+import { PerspectiveThreads } from "@/components/PerspectiveThreads";
 
 export function generateStaticParams() { return chapters.map((chapter) => ({ slug: chapter.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const chapter = chapterBySlug[slug]; return chapter ? { title: chapter.title, description: chapter.lede } : {}; }
@@ -22,6 +23,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
       <header className="chapter-hero"><div className="chapter-progress"><span style={{ width: `${((chapter.order + 1) / chapters.length) * 100}%` }} /></div><div className="chapter-title-wrap"><p className="section-kicker">{chapter.eyebrow}</p><h1>{chapter.title}</h1><p className="chapter-subtitle">{chapter.subtitle}</p><div className="chapter-tags"><span>{chapter.date}</span>{chapter.theaters.map((item) => <span key={item}>{item}</span>)}</div></div></header>
       <article className="chapter-body">
         <p className="chapter-lede"><LinkedText text={chapter.lede} /></p>
+        <PerspectiveThreads chapter={chapter.slug} />
         {chapter.sections.map((section, sectionIndex) => <section key={section.heading}><div className="section-number">{String(sectionIndex + 1).padStart(2, "0")}</div><div><h2>{section.heading}</h2>{section.paragraphs.map((paragraph, index) => <p key={index}><LinkedText text={paragraph} />{index === section.paragraphs.length - 1 && sectionIndex === chapter.sections.length - 1 ? <sup><a href={`#source-${chapter.sourceRefs[0]}`}>1</a></sup> : null}</p>)}{section.evidence && <aside className="evidence-box"><p className="section-kicker">History / Memory / Evidence</p><h3>The familiar story</h3><p><LinkedText text={section.evidence.familiar} /></p><h3>What the evidence shows</h3><p><LinkedText text={section.evidence.documented} /></p>{section.evidence.uncertain && <><h3>What remains uncertain</h3><p><LinkedText text={section.evidence.uncertain} /></p></>}</aside>}</div></section>)}
         {chapter.voice && <aside className="primary-voice"><p className="section-kicker">Primary-source window</p><h2>{chapter.voice.label}</h2><blockquote>{chapter.voice.excerpt}</blockquote><p>{chapter.voice.attribution} · <a href={`#source-${chapter.voice.sourceRef}`}>source note</a></p></aside>}
         {documentaryPacket && <DocumentaryReader packet={documentaryPacket} />}

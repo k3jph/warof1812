@@ -716,6 +716,122 @@ img { max-width: 100%; }
 .gis-source-register article small { color: #6d665d; }
 .gis-source-register article > a { color: var(--blue); font-size: .7rem; font-weight: 800; white-space: nowrap; }
 
+/* Perspective pathways */
+.perspectives-page, .perspective-page { background: #f2ecdf; }
+.perspectives-hero { min-height: calc(88vh - 68px); display: grid; grid-template-columns: 1.25fr .75fr; gap: 5rem; align-items: end; padding: clamp(6rem,12vw,11rem) clamp(1.2rem,8vw,8rem) 6rem; background: #10191f; color: white; }
+.perspectives-hero h1 { margin: .7rem 0 0; font: 700 clamp(4.6rem,9.5vw,10rem)/.82 var(--serif); letter-spacing: -.07em; }
+.perspectives-hero h1 em { color: #d1786e; font-weight: 400; }
+.perspectives-hero > div:last-child > p { max-width: 620px; color: rgba(255,255,255,.72); font: 400 clamp(1.1rem,1.8vw,1.45rem)/1.55 var(--serif); }
+.perspectives-hero dl { display: grid; grid-template-columns: repeat(3,1fr); margin: 3rem 0 0; border-top: 1px solid rgba(255,255,255,.2); }
+.perspectives-hero dl div { padding: 1.2rem 1rem 0 0; }
+.perspectives-hero dt { color: #d98278; font: 700 2.4rem/1 var(--serif); }
+.perspectives-hero dd { margin: .5rem 0 0; color: rgba(255,255,255,.5); font-size: .69rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.perspective-principle { display: grid; grid-template-columns: .35fr 1.65fr; gap: 4rem; padding: 5rem clamp(1.2rem,8vw,8rem); background: #e7dcc8; }
+.perspective-principle blockquote { max-width: 1050px; margin: 0; font: 700 clamp(2rem,4vw,4rem)/1.08 var(--serif); }
+.perspective-index { padding: clamp(5rem,8vw,8rem) clamp(1.2rem,8vw,8rem); }
+.perspective-index > a { position: relative; min-height: 220px; display: grid; grid-template-columns: 90px minmax(260px,.75fr) 1.25fr auto; gap: 2rem; align-items: center; padding: 2rem 1rem; border-top: 1px solid var(--line); text-decoration: none; }
+.perspective-index > a:last-child { border-bottom: 1px solid var(--line); }
+.perspective-index > a:before { content: ""; position: absolute; inset: 0 auto 0 0; width: 0; background: var(--path-accent); transition: width .18s ease; }
+.perspective-index > a:hover:before { width: 9px; }
+.perspective-index > a:hover { background: rgba(255,255,255,.42); }
+.perspective-number { color: var(--path-accent); font: 700 3.5rem/1 var(--serif); }
+.perspective-index p { margin: 0 0 .5rem; color: var(--path-accent); font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.perspective-index h2 { margin: 0 0 .6rem; font: 700 clamp(2rem,3.5vw,3.4rem)/.95 var(--serif); }
+.perspective-index > a > div:nth-child(2) > strong { display: block; max-width: 480px; color: #59544d; font: 400 .95rem/1.45 var(--serif); }
+.perspective-route-preview { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; }
+.perspective-route-preview i { min-height: 58px; display: grid; grid-template-columns: 28px 1fr; gap: .5rem; align-items: center; padding: .5rem; border: 1px solid var(--line); font-style: normal; }
+.perspective-route-preview b { color: var(--path-accent); font: 700 1rem var(--serif); }
+.perspective-route-preview span { color: #5f5a52; font-size: .65rem; line-height: 1.25; }
+.perspective-index > a > em { color: var(--path-accent); font-size: .72rem; font-style: normal; font-weight: 800; white-space: nowrap; }
+.perspective-crossings { padding: clamp(6rem,9vw,9rem) clamp(1.2rem,8vw,8rem); background: var(--blue); color: white; }
+.perspective-crossings > header { display: grid; grid-template-columns: .4fr 1fr 1fr; gap: 3rem; align-items: end; max-width: 1400px; margin: 0 auto 4rem; }
+.perspective-crossings h2 { margin: 0; font: 700 clamp(2.8rem,5vw,5rem)/.95 var(--serif); }
+.perspective-crossings header > p:last-child { color: rgba(255,255,255,.6); }
+.perspective-crossings > div { max-width: 1400px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,.18); border-left: 1px solid rgba(255,255,255,.18); }
+.perspective-crossings article { min-height: 280px; padding: 2rem; border-right: 1px solid rgba(255,255,255,.18); border-bottom: 1px solid rgba(255,255,255,.18); }
+.perspective-crossings article > span { color: #df7d72; font: 700 2rem var(--serif); }
+.perspective-crossings h3 { margin: 2rem 0 .7rem; font: 700 2rem var(--serif); }
+.perspective-crossings article p { color: rgba(255,255,255,.65); }
+.perspective-crossings article div { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.4rem; }
+.perspective-crossings article b { padding: .4rem .55rem; border: 1px solid rgba(255,255,255,.2); font-size: .65rem; text-transform: uppercase; letter-spacing: .05em; }
+.perspective-path-hero { min-height: 82vh; display: grid; grid-template-columns: 130px 1.2fr .8fr; gap: 4rem; align-items: end; padding: clamp(7rem,12vw,12rem) clamp(1.2rem,8vw,8rem) 6rem; background: #11191e; color: white; border-bottom: 14px solid var(--path-accent); }
+.path-ordinal { align-self: start; color: var(--path-accent); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; writing-mode: vertical-rl; }
+.perspective-path-hero .section-kicker { color: var(--path-accent); }
+.perspective-path-hero h1 { max-width: 920px; margin: .6rem 0 1.5rem; font: 700 clamp(4.5rem,9vw,9rem)/.82 var(--serif); letter-spacing: -.07em; }
+.perspective-path-hero > div:nth-child(2) > p:last-child { max-width: 780px; color: rgba(255,255,255,.68); font: 400 clamp(1.1rem,1.8vw,1.5rem)/1.5 var(--serif); }
+.perspective-path-hero blockquote { margin: 0; padding: 2rem; border: 1px solid rgba(255,255,255,.22); font: 700 clamp(1.45rem,2.6vw,2.5rem)/1.12 var(--serif); }
+.perspective-path-hero blockquote span { display: block; margin-bottom: 1.2rem; color: var(--path-accent); font: 800 .68rem var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+.perspective-thesis { display: grid; grid-template-columns: .3fr 1fr 1fr; gap: 3.5rem; padding: clamp(5rem,9vw,9rem) clamp(1.2rem,8vw,8rem); background: #e9decc; }
+.perspective-thesis h2 { margin: 0; font: 700 clamp(2.5rem,4.5vw,4.8rem)/1 var(--serif); }
+.perspective-thesis > div p { margin-top: 0; font: 400 1.08rem/1.75 var(--serif); }
+.path-route { position: sticky; top: 68px; z-index: 20; display: grid; grid-template-columns: 130px repeat(6,1fr); padding: 0 clamp(1.2rem,5vw,5rem); background: #11191e; color: white; box-shadow: 0 8px 25px rgba(0,0,0,.15); }
+.path-route > p { align-self: center; margin: 0; color: var(--path-accent); font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.path-route a { min-height: 76px; display: grid; grid-template-columns: 25px 1fr; gap: .5rem; align-items: center; padding: .7rem; border-left: 1px solid rgba(255,255,255,.13); text-decoration: none; }
+.path-route a:hover { background: rgba(255,255,255,.08); }
+.path-route a span { color: var(--path-accent); font: 700 .95rem var(--serif); }
+.path-route a strong { font-size: .62rem; line-height: 1.25; }
+.path-movements { max-width: 1480px; margin: auto; padding: clamp(5rem,8vw,8rem) clamp(1.2rem,8vw,8rem); }
+.path-movements > section { scroll-margin-top: 165px; display: grid; grid-template-columns: 100px 1fr; gap: 3rem; }
+.movement-rail { display: grid; grid-template-rows: auto 1fr; justify-items: center; }
+.movement-rail span { width: 70px; height: 70px; display: grid; place-items: center; border-radius: 50%; background: var(--path-accent); color: white; font: 700 1.7rem var(--serif); }
+.movement-rail i { width: 1px; min-height: 130px; background: color-mix(in srgb,var(--path-accent) 55%,transparent); }
+.movement-copy { padding-bottom: 7rem; }
+.movement-copy .section-kicker { color: var(--path-accent); }
+.movement-copy > h2 { margin: 0; font: 700 clamp(3rem,6vw,6rem)/.9 var(--serif); letter-spacing: -.05em; }
+.movement-summary { max-width: 930px; font: 400 1.18rem/1.7 var(--serif); }
+.movement-copy > blockquote { max-width: 900px; margin: 2.5rem 0; padding: 1.6rem 2rem; border-left: 8px solid var(--path-accent); background: #e7dcc8; font: 700 clamp(1.35rem,2.5vw,2.2rem)/1.25 var(--serif); }
+.movement-evidence { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.movement-evidence > p { grid-column: 1 / -1; margin: 0; padding: .7rem 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--path-accent); font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.movement-evidence a { min-height: 240px; display: flex; flex-direction: column; padding: 1.2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.movement-evidence a:hover { background: color-mix(in srgb,var(--path-accent) 9%,transparent); }
+.movement-evidence a > span { color: var(--path-accent); font-size: .62rem; font-weight: 800; text-transform: uppercase; }
+.movement-evidence h3 { margin: 1.7rem 0 .6rem; font: 700 1.45rem/1.05 var(--serif); }
+.movement-evidence a p { margin: 0; color: #625d55; font-size: .78rem; line-height: 1.5; }
+.movement-evidence a b { margin-top: auto; padding-top: 1rem; color: var(--path-accent); font-size: .68rem; }
+.path-reckoning { display: grid; grid-template-columns: 1.2fr .8fr; gap: 5rem; padding: clamp(5rem,9vw,9rem) clamp(1.2rem,8vw,8rem); background: #10191f; color: white; border-top: 12px solid var(--path-accent); }
+.path-reckoning h2 { max-width: 900px; margin: 0; font: 700 clamp(2.8rem,5.5vw,5.8rem)/.95 var(--serif); }
+.path-reckoning > div:last-child > p { color: var(--path-accent); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.path-reckoning > div:last-child span { display: grid; grid-template-columns: 45px 1fr; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid rgba(255,255,255,.17); font: 700 1.2rem var(--serif); }
+.path-reckoning span b { color: var(--path-accent); }
+.path-sources { padding: clamp(5rem,8vw,8rem) clamp(1.2rem,8vw,8rem); }
+.path-sources > header { display: grid; grid-template-columns: .35fr 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3rem; }
+.path-sources h2 { margin: 0; font: 700 clamp(2.5rem,4.5vw,4.5rem)/1 var(--serif); }
+.path-sources header > p:last-child { color: #615b52; }
+.path-sources > div { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.path-sources article { min-height: 260px; display: flex; flex-direction: column; padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.path-sources article > span { color: var(--path-accent); font-size: .62rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.path-sources h3 { margin: 1.5rem 0 .3rem; font: 700 1.45rem/1.08 var(--serif); }
+.path-sources article p { margin: 0; color: var(--red); font-size: .7rem; font-weight: 800; }
+.path-sources article small { margin-top: .8rem; color: #696259; line-height: 1.5; }
+.path-sources article a { margin-top: auto; padding-top: 1rem; color: var(--path-accent); font-size: .7rem; font-weight: 800; }
+.perspective-path-nav { display: grid; grid-template-columns: 1fr .65fr 1fr; background: var(--blue); color: white; }
+.perspective-path-nav a { min-height: 165px; display: grid; align-content: center; gap: .4rem; padding: 2rem; border-right: 1px solid rgba(255,255,255,.17); text-decoration: none; }
+.perspective-path-nav a:nth-child(2) { text-align: center; }
+.perspective-path-nav a:last-child { text-align: right; border-right: 0; }
+.perspective-path-nav span { color: var(--path-accent); font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.perspective-path-nav strong { font: 700 1.5rem var(--serif); }
+.perspective-threads { display: grid; grid-template-columns: .65fr 1.35fr; gap: 3rem; margin: 0 0 5rem; padding: 2.5rem; border-top: 8px solid var(--red); background: #eef0ed; }
+.perspective-threads h2 { margin: .5rem 0; font: 700 2rem/1 var(--serif); }
+.perspective-threads > div:first-child > p:last-child { color: #655f56; }
+.perspective-threads > div:last-child { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.perspective-threads a { position: relative; min-height: 130px; display: grid; grid-template-columns: 35px 1fr; align-content: center; gap: .2rem .7rem; padding: 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.perspective-threads a:before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--path-accent); }
+.perspective-threads a:hover { background: white; }
+.perspective-threads a span { grid-row: 1 / 3; color: var(--path-accent); font: 700 1.2rem var(--serif); }
+.perspective-threads a strong { font: 700 1.05rem var(--serif); }
+.perspective-threads a small { color: #6b655d; line-height: 1.3; }
+
+@media (max-width: 1100px) {
+  .header-inner > nav { display: none; }
+  .mobile-nav { display: block; }
+  .perspective-index > a { grid-template-columns: 70px 1fr; }
+  .perspective-route-preview { grid-column: 2; }
+  .perspective-index > a > em { grid-column: 2; }
+  .movement-evidence { grid-template-columns: 1fr 1fr; }
+  .path-route { grid-template-columns: repeat(6,1fr); padding-inline: 1rem; }
+  .path-route > p { display: none; }
+}
+
 .site-footer { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; padding: 4rem clamp(1.2rem, 7vw, 7rem); background: #090b0d; color: white; }
 .footer-mark { text-decoration: none; font: 700 2.2rem var(--serif); }
 .footer-mark span { margin-left: .6rem; color: #df7d72; font: 700 .66rem var(--sans); text-transform: uppercase; letter-spacing: .16em; }
@@ -766,6 +882,18 @@ img { max-width: 100%; }
   .gis-inspection header { padding-right: 0; }
   .gis-source-register > header { grid-template-columns: 1fr 1fr; }
   .gis-source-register header > p:last-child { grid-column: 1 / -1; }
+  .perspectives-hero, .perspective-path-hero { grid-template-columns: 1fr; min-height: 0; }
+  .perspectives-hero { gap: 2rem; }
+  .perspective-principle, .perspective-thesis, .path-reckoning, .path-sources > header { grid-template-columns: 1fr; gap: 2rem; }
+  .perspective-crossings > header { grid-template-columns: 1fr 1fr; }
+  .perspective-crossings header > p:last-child { grid-column: 1 / -1; }
+  .path-ordinal { writing-mode: initial; }
+  .perspective-path-hero { gap: 2rem; }
+  .path-route { position: static; overflow-x: auto; grid-template-columns: repeat(6,minmax(150px,1fr)); }
+  .path-movements > section { grid-template-columns: 70px 1fr; gap: 1.5rem; }
+  .movement-rail span { width: 58px; height: 58px; }
+  .path-sources > div { grid-template-columns: 1fr 1fr; }
+  .perspective-threads { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 620px) {
@@ -859,6 +987,31 @@ img { max-width: 100%; }
   .gis-source-register header > p:last-child { grid-column: 1; }
   .gis-source-register article { grid-template-columns: 36px 1fr; }
   .gis-source-register article > a { grid-column: 2; }
+  .perspectives-hero { padding-top: 7rem; }
+  .perspectives-hero h1 { font-size: clamp(4rem,20vw,6rem); }
+  .perspectives-hero dl { grid-template-columns: 1fr; }
+  .perspective-principle { padding-block: 4rem; }
+  .perspective-index { padding-inline: 1.2rem; }
+  .perspective-index > a { grid-template-columns: 48px 1fr; gap: 1rem; }
+  .perspective-number { font-size: 2.3rem; }
+  .perspective-route-preview { grid-template-columns: 1fr 1fr; }
+  .perspective-crossings > header, .perspective-crossings > div { grid-template-columns: 1fr; }
+  .perspective-crossings header > p:last-child { grid-column: 1; }
+  .perspective-path-hero h1 { font-size: clamp(4rem,20vw,6.2rem); }
+  .perspective-path-hero blockquote { padding: 1.4rem; }
+  .path-movements { padding-inline: 1.2rem; }
+  .path-movements > section { grid-template-columns: 1fr; }
+  .movement-rail { display: block; }
+  .movement-rail i { display: none; }
+  .movement-copy { padding-bottom: 5rem; }
+  .movement-evidence { grid-template-columns: 1fr; }
+  .movement-evidence a { min-height: 200px; }
+  .path-reckoning { padding-block: 5rem; }
+  .path-sources > div { grid-template-columns: 1fr; }
+  .perspective-path-nav { grid-template-columns: 1fr; }
+  .perspective-path-nav a, .perspective-path-nav a:nth-child(2), .perspective-path-nav a:last-child { min-height: 120px; text-align: left; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.17); }
+  .perspective-threads { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
+  .perspective-threads > div:last-child { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
