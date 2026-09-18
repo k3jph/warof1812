@@ -93,6 +93,96 @@ img { max-width: 100%; }
 .perspective-band span { padding: .6rem .8rem; border: 1px solid rgba(255,255,255,.25); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
 .perspective-band a { color: #df8a7d; font-weight: 700; font-size: .8rem; }
 
+.baltimore-exhibition { background: var(--cream); }
+.baltimore-exhibition-hero { min-height: calc(100vh - 68px); display: flex; align-items: end; position: relative; overflow: hidden; padding: clamp(6rem, 13vw, 12rem) clamp(1.2rem, 8vw, 8rem) 5rem; color: white; background: linear-gradient(108deg, rgba(7,25,39,.97) 0 48%, rgba(7,25,39,.68) 70%, rgba(7,25,39,.38)), url('/images/fort-mchenry-bombardment.jpg') center / cover; }
+.baltimore-exhibition-hero:after { content: "BALTIMORE"; position: absolute; right: -1vw; top: 5%; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.13); font: 700 clamp(5rem, 16vw, 15rem)/1 var(--serif); letter-spacing: -.07em; writing-mode: vertical-rl; }
+.baltimore-exhibition-hero > div { position: relative; z-index: 2; max-width: 1050px; }
+.baltimore-exhibition-hero .section-kicker { color: #e58c80; }
+.baltimore-exhibition-hero h1 { margin: 0; font: 700 clamp(4.4rem, 11vw, 11rem)/.78 var(--serif); letter-spacing: -.07em; }
+.baltimore-exhibition-hero h1 span, .baltimore-exhibition-hero h1 b { display: block; }
+.baltimore-exhibition-hero h1 b { margin-top: .18em; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.72); font-size: .62em; letter-spacing: -.035em; }
+.baltimore-exhibition-hero > div > p:not(.section-kicker) { max-width: 790px; margin: 2.5rem 0 0; color: rgba(255,255,255,.82); font: 400 clamp(1.3rem, 2.4vw, 2rem)/1.3 var(--serif); }
+.baltimore-exhibition-hero > div > div { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.4rem; }
+.baltimore-exhibition-hero > div > div > a:not(.primary-action) { color: white; font-weight: 800; }
+.baltimore-thesis { padding: clamp(6rem, 11vw, 10rem) clamp(1.2rem, 8vw, 8rem); background: var(--ink); color: white; }
+.baltimore-thesis > * { max-width: 1320px; margin-inline: auto; }
+.baltimore-thesis .section-kicker { color: #e58c80; }
+.baltimore-thesis h2 { margin-top: 0; font: 700 clamp(2.8rem, 6.5vw, 6.7rem)/.94 var(--serif); letter-spacing: -.055em; }
+.baltimore-thesis > div { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; margin-top: 4rem; }
+.baltimore-thesis > div p { margin: 0; color: rgba(255,255,255,.7); font: 400 1.08rem/1.75 var(--serif); }
+.baltimore-city-layer { padding: clamp(5rem, 9vw, 8rem) clamp(1.2rem, 7vw, 7rem); transition: background .25s; }
+.baltimore-city-layer.year-1812 { background: #efe3d2; }
+.baltimore-city-layer.year-1814 { background: #e3ebed; }
+.baltimore-city-layer > header { max-width: 1400px; margin: auto; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+.baltimore-city-layer h2, .baltimore-chronology h2, .baltimore-people h2, .baltimore-memory h2, .baltimore-reading h2 { margin: 0; font: 700 clamp(2.7rem, 6vw, 6rem)/.95 var(--serif); letter-spacing: -.05em; }
+.baltimore-year-switch { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); }
+.baltimore-year-switch button { min-width: 145px; padding: 1rem; border: 0; border-right: 1px solid var(--line); background: transparent; color: inherit; cursor: pointer; text-align: left; }
+.baltimore-year-switch button:last-child { border-right: 0; }
+.baltimore-year-switch button.active { background: var(--blue); color: white; }
+.baltimore-year-switch strong, .baltimore-year-switch span { display: block; }
+.baltimore-year-switch strong { font: 700 1.65rem var(--serif); }
+.baltimore-year-switch span { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
+.baltimore-map-layout { max-width: 1400px; margin: 3rem auto 0; display: grid; grid-template-columns: minmax(0,1.55fr) minmax(300px,.45fr); }
+.baltimore-map { min-height: 610px; position: relative; overflow: hidden; border: 10px solid #cbbda6; background: #d5c7ad; }
+.street-grid { position: absolute; inset: 0; opacity: .4; background-image: linear-gradient(83deg, transparent 0 44%, rgba(67,54,42,.38) 44.2% 44.5%, transparent 44.7%), linear-gradient(7deg, transparent 0 56%, rgba(67,54,42,.32) 56.2% 56.5%, transparent 56.7%), repeating-linear-gradient(90deg, transparent 0 8%, rgba(67,54,42,.18) 8.2% 8.5%, transparent 8.7% 16%), repeating-linear-gradient(0deg, transparent 0 10%, rgba(67,54,42,.17) 10.2% 10.5%, transparent 10.7% 20%); transform: rotate(-3deg) scale(1.08); }
+.harbor-shape { position: absolute; left: -8%; right: -8%; bottom: -29%; height: 55%; background: var(--blue-light); transform: rotate(-7deg); border-top: 6px solid rgba(255,255,255,.42); }
+.map-word { position: absolute; z-index: 1; color: rgba(21,23,23,.24); font: 800 .7rem var(--sans); letter-spacing: .24em; }
+.city-word { left: 7%; top: 8%; }
+.harbor-word { right: 12%; bottom: 10%; color: rgba(255,255,255,.45); }
+.baltimore-site-dot { position: absolute; z-index: 3; width: 22px; height: 22px; padding: 0; transform: translate(-50%,-50%); border: 3px solid white; border-radius: 50%; background: var(--red); color: white; box-shadow: 0 0 0 5px rgba(168,58,50,.22); cursor: pointer; }
+.baltimore-site-dot:hover, .baltimore-site-dot:focus-visible, .baltimore-site-dot.selected { width: 31px; height: 31px; outline: 2px solid var(--ink); outline-offset: 4px; }
+.year-1814 .baltimore-site-dot { background: var(--blue); box-shadow: 0 0 0 5px rgba(12,45,71,.2); }
+.baltimore-site-dot span { font-size: .56rem; font-weight: 800; }
+.baltimore-site-card { min-height: 610px; display: flex; flex-direction: column; padding: 2.2rem; background: var(--blue); color: white; }
+.baltimore-site-card > p:first-child, .baltimore-site-card > span { color: #e58c80; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.baltimore-site-card h3 { margin: auto 0 1rem; font: 700 clamp(2rem,4vw,3.5rem)/1 var(--serif); }
+.baltimore-site-card > p:nth-of-type(2) { color: rgba(255,255,255,.72); font: 400 1rem/1.65 var(--serif); }
+.baltimore-site-card > span { margin-top: 1rem; }
+.baltimore-site-card a { margin-top: 1.5rem; color: #e58c80; font-weight: 800; }
+.baltimore-map-note { max-width: 1400px; margin: .8rem auto 0; color: #686158; font-size: .76rem; }
+.baltimore-chronology { padding: clamp(6rem,10vw,9rem) clamp(1.2rem,8vw,8rem); background: var(--cream); }
+.baltimore-chronology > header { max-width: 900px; margin-bottom: 4rem; }
+.baltimore-chronology > header > p:last-child { max-width: 750px; color: #5d5850; font: 400 1.2rem/1.55 var(--serif); }
+.baltimore-chronology ol { max-width: 1150px; margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
+.baltimore-chronology li { display: grid; grid-template-columns: 190px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--line); }
+.baltimore-chronology time { color: var(--red); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.baltimore-chronology h3 { margin: 0; font: 700 clamp(1.5rem,3vw,2.6rem)/1 var(--serif); }
+.baltimore-chronology li p { max-width: 760px; color: #5c5851; }
+.baltimore-chronology li a { color: var(--red); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+.baltimore-comparison { display: grid; grid-template-columns: 1fr 130px 1fr; background: var(--ink); color: white; }
+.comparison-year { padding: clamp(4rem,8vw,7rem); }
+.comparison-year > span { color: #e58c80; font: 700 clamp(4rem,8vw,8rem)/1 var(--serif); }
+.comparison-year h2 { margin: -1rem 0 3rem; font: 700 clamp(2.5rem,5vw,5rem)/1 var(--serif); }
+.comparison-year dl { margin: 0; }
+.comparison-year dl div { padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.18); }
+.comparison-year dt { color: #e58c80; font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
+.comparison-year dd { margin: .25rem 0 0; color: rgba(255,255,255,.75); }
+.comparison-axis { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; border-inline: 1px solid rgba(255,255,255,.18); text-align: center; }
+.comparison-axis span { writing-mode: vertical-rl; color: rgba(255,255,255,.48); font: italic .8rem var(--serif); }
+.comparison-axis b { color: #e58c80; font: 700 2rem var(--serif); }
+.baltimore-people { padding: clamp(6rem,10vw,9rem) clamp(1.2rem,7vw,7rem); }
+.baltimore-people > header { max-width: 1200px; margin: 0 auto 4rem; }
+.baltimore-people > div { max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.baltimore-people a { min-height: 330px; display: flex; flex-direction: column; padding: 1.7rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.baltimore-people a:hover { background: var(--blue); color: white; }
+.baltimore-people a > span { color: var(--red); font: 700 1.4rem var(--serif); }
+.baltimore-people h3 { margin: auto 0 .7rem; font: 700 1.8rem/1.05 var(--serif); }
+.baltimore-people p { color: color-mix(in srgb,currentColor 68%,transparent); }
+.baltimore-people b { margin-top: 1rem; font-size: .76rem; }
+.baltimore-memory { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(3rem,7vw,8rem); padding: clamp(6rem,10vw,10rem) clamp(1.2rem,8vw,8rem); background: #e7dcc8; }
+.baltimore-memory > div:last-child > p { max-width: 780px; font: 400 1.1rem/1.8 var(--serif); }
+.baltimore-memory blockquote { margin: 3rem 0; padding-block: 2rem; border-block: 1px solid var(--line); color: var(--red); font: 700 clamp(2rem,4vw,4rem)/1.06 var(--serif); }
+.baltimore-reading { padding: clamp(6rem,9vw,8rem) clamp(1.2rem,7vw,7rem); background: var(--blue); color: white; }
+.baltimore-reading > div { max-width: 1400px; margin-inline: auto; }
+.baltimore-reading .section-kicker { color: #e58c80; }
+.baltimore-reading > div:last-child { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 4rem; border-top: 1px solid rgba(255,255,255,.2); border-left: 1px solid rgba(255,255,255,.2); }
+.baltimore-reading a { min-height: 250px; display: flex; flex-direction: column; padding: 1.7rem; border-right: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); text-decoration: none; }
+.baltimore-reading a:hover { background: rgba(255,255,255,.07); }
+.baltimore-reading a span { color: #e58c80; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.baltimore-reading a strong { margin: auto 0 1rem; font: 700 1.9rem/1.05 var(--serif); }
+.baltimore-reading a b { font-size: .76rem; }
+.baltimore-sources { max-width: 1080px; margin: auto; padding: 2rem 1.2rem 8rem; }
+
 .page-shell { max-width: 1480px; min-height: 70vh; margin: auto; padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 6vw, 6rem); }
 .page-title { max-width: 1050px; margin-bottom: clamp(4rem, 8vw, 7rem); }
 .page-title > p:not(.section-kicker) { max-width: 850px; margin: 1.6rem 0 2rem; font: 400 clamp(1.15rem, 2vw, 1.65rem)/1.42 var(--serif); color: #4e4b46; }
@@ -324,6 +414,7 @@ img { max-width: 100%; }
 .maryland-bookend span { color: #df7d72; font: 700 4rem var(--serif); }
 .maryland-bookend h2 { margin: 2rem 0 .5rem; font: 700 2.4rem var(--serif); }
 .maryland-bookend p { max-width: 480px; color: rgba(255,255,255,.65); }
+.maryland-bookend > .primary-action { grid-column: 1 / -1; justify-self: center; margin: 0 0 3rem; }
 .backyard-callout { padding: 6rem clamp(1.5rem, 6vw, 6rem); background: var(--paper-deep); }
 .backyard-callout > p:not(.section-kicker) { max-width: 700px; font: 400 1.15rem/1.5 var(--serif); }
 .backyard-callout > div { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
@@ -444,6 +535,14 @@ img { max-width: 100%; }
   .map-event-list { grid-template-columns: 1fr 1fr; }
   .maryland-intro { gap: 2rem; }
   .source-controls { grid-template-columns: 1fr 240px; }
+  .baltimore-thesis > div { grid-template-columns: 1fr; }
+  .baltimore-map-layout { grid-template-columns: 1fr; }
+  .baltimore-site-card { min-height: 360px; }
+  .baltimore-comparison { grid-template-columns: 1fr; }
+  .comparison-axis { min-height: 100px; flex-direction: row; border-inline: 0; border-block: 1px solid rgba(255,255,255,.18); }
+  .comparison-axis span { writing-mode: initial; }
+  .baltimore-people > div { grid-template-columns: 1fr 1fr; }
+  .baltimore-memory { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 620px) {
@@ -483,6 +582,17 @@ img { max-width: 100%; }
   .about-copy blockquote { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
   .corrections-note { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
   .footer-links { justify-content: start; }
+  .baltimore-exhibition-hero { min-height: 790px; padding-bottom: 3rem; }
+  .baltimore-exhibition-hero:after { display: none; }
+  .baltimore-city-layer > header { grid-template-columns: 1fr; }
+  .baltimore-year-switch button { min-width: 0; }
+  .baltimore-map { min-height: 450px; }
+  .baltimore-site-card { min-height: 330px; }
+  .baltimore-chronology li { grid-template-columns: 1fr; gap: .7rem; }
+  .comparison-year { padding: 4rem 1.2rem; }
+  .baltimore-people > div, .baltimore-reading > div:last-child { grid-template-columns: 1fr; }
+  .baltimore-people a { min-height: 270px; }
+  .baltimore-memory blockquote { margin-inline: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

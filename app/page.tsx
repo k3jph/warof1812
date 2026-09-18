@@ -30,9 +30,9 @@ export default function Home() {
       <section className="bookend">
         <p className="section-kicker">An American bookend</p>
         <div className="bookend-grid">
-          <article><span>1812</span><h2>Baltimore at war with itself.</h2><p>A newspaper press smashed. A city jail invaded. Revolutionary War General James M. Lingan murdered by a political mob.</p><Link href="/story/baltimore-at-war-with-itself">Enter the divided city →</Link></article>
+          <article><span>1812</span><h2>Baltimore at war with itself.</h2><p>A newspaper press smashed. A city jail invaded. Revolutionary War General James M. Lingan murdered by a political mob.</p><Link href="/baltimore">Enter the Baltimore exhibition →</Link></article>
           <div className="bookend-rule"><span>Between these two nights lies the War of 1812.</span></div>
-          <article><span>1814</span><h2>Baltimore at war with an empire.</h2><p>Earthworks, militia, laborers, bomb ships, rockets—and an invading British army stopped outside the city.</p><Link href="/story/baltimore-holds">Enter the defended city →</Link></article>
+          <article><span>1814</span><h2>Baltimore at war with an empire.</h2><p>Earthworks, militia, laborers, bomb ships, rockets—and an invading British army stopped outside the city.</p><Link href="/baltimore">Read the two years together →</Link></article>
         </div>
       </section>
 
