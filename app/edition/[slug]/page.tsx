@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { notFound } from "next/navigation";
 import { DocumentaryReader } from "@/components/DocumentaryReader";
 import { documentaryBySlug, documentaryPackets } from "@/lib/documentary";

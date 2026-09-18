@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { SourceList } from "@/components/SourceList";
 
 export const metadata: Metadata = { title: "The War in Five Minutes", description: "The causes, course, peace, and consequences of the War of 1812 in one concise visual narrative." };

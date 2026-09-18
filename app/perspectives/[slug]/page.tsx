@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { notFound } from "next/navigation";
 import { allCatalogRecords } from "@/lib/catalog";
 import { chapterBySlug, events, sourceById } from "@/lib/content";

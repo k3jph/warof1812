@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { BaltimoreExhibition } from "@/components/BaltimoreExhibition";
 import { SourceList } from "@/components/SourceList";
 

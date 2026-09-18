@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { baltimoreMoments, baltimoreSites, type BaltimoreYear } from "@/lib/baltimore";
 
 export function BaltimoreExhibition() {

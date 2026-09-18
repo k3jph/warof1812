@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { CatalogIndex } from "@/components/CatalogIndex";
 import { documents } from "@/lib/catalog";
 export const metadata: Metadata = { title: "Documents", description: "Documents that declared, described, contested, and ended the War of 1812." };

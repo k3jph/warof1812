@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { SourceList } from "@/components/SourceList";
 
 export const metadata: Metadata = { title: "History in Your Own Backyard", description: "A mobile field guide to the War of 1812 in Maryland—from Chesapeake raids and Bladensburg to North Point and Fort McHenry." };

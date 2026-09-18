@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { allCatalogRecords } from "@/lib/catalog";
 
 export function RelatedRecords({ chapter }: { chapter: string }) {

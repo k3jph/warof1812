@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import type { EventRecord } from "@/lib/content";
 import { gisFeatures, gisLayers, gisSources, gisTimeline, type Coordinate, type GisFeature, type GisGeometry, type GisLayerId } from "@/lib/historical-gis";
 

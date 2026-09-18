@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 
 export const metadata: Metadata = { title: "About This Project", description: "Why James P. Howard II built 1812: The Whole Story and how the project handles evidence, uncertainty, and institutional independence." };
 

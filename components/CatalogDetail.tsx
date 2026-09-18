@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { SourceList } from "@/components/SourceList";
 import type { CatalogRecord } from "@/lib/catalog";
 

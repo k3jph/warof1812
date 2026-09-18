@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 
 export const metadata: Metadata = { title: "Maryland, 1812–1814", description: "The Chesapeake raids, Washington campaign, North Point, Fort McHenry, privateering, civilian experience, and Black Marylanders." };
 

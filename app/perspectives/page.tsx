@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { perspectives } from "@/lib/perspectives";
 
 export const metadata: Metadata = { title: "Perspective Pathways", description: "Ten complete alternate readings of the War of 1812 through sovereignty, freedom seeking, labor, citizenship, occupation, captivity, place, objects, and memory." };

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { allCatalogRecords } from "@/lib/catalog";
 
 const records = allCatalogRecords

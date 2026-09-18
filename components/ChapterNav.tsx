@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { chapters } from "@/lib/content";
 
 export function ChapterNav({ current }: { current: number }) {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { documentaryPackets } from "@/lib/documentary";
 
 export const metadata: Metadata = { title: "Documentary Edition", description: "Nineteen primary-source packets with transcriptions, annotations, provenance, counter-records, and exportable citations." };

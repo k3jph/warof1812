@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { perspectivesForChapter } from "@/lib/perspectives";
 
 export function PerspectiveThreads({ chapter }: { chapter: string }) {

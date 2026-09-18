@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { useMemo, useState } from "react";
 import type { CatalogRecord } from "@/lib/catalog";
 import type { EventRecord } from "@/lib/content";

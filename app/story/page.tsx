@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import { chapters } from "@/lib/content";
 
 export const metadata: Metadata = { title: "The Whole Story", description: "Follow the complete War of 1812 from its Atlantic and continental origins through Ghent, New Orleans, and the unequal peace." };

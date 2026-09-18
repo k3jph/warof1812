@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import type { EventRecord } from "@/lib/content";
 
 const filters = ["All", "military", "naval", "political", "diplomatic", "Indigenous", "civilian", "Black history", "Chesapeake"];

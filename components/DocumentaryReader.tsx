@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/SafeLink";
 import Image from "next/image";
 import { documentaryCitation, type DocumentaryPacket } from "@/lib/documentary";
 
