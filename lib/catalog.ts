@@ -1,3 +1,5 @@
+import { humanIndexRecords } from "@/lib/human-record";
+
 export type CatalogKind = "people" | "places" | "ships" | "documents" | "objects";
 
 export type CatalogRecord = {
@@ -15,7 +17,7 @@ export type CatalogRecord = {
   evidence?: "Documented" | "Strongly supported" | "Plausible / inferential" | "Oral tradition / community memory" | "Disputed" | "Unresolved";
 };
 
-export const people: CatalogRecord[] = [
+const corePeople: CatalogRecord[] = [
   { slug:"alexander-contee-hanson", name:"Alexander Contee Hanson", kind:"people", eyebrow:"Editor · Federalist politician", dates:"1786–1819", role:"Publisher of the Federal Republican and target of the Baltimore mobs", summary:"Hanson opposed the declaration of war in uncompromising language. After a crowd destroyed his Gay Street office, he resumed publication and joined armed supporters in defending a Charles Street house on July 27, 1812.", significance:"His beating, imprisonment, later congressional service, and early death make press freedom inseparable from the physical danger of wartime dissent.", chapter:"baltimore-at-war-with-itself", sourceRefs:["nps-riots","msa-hanson","riot-narrative"] },
   { slug:"james-madison", name:"James Madison", kind:"people", eyebrow:"President · United States", dates:"1751–1836", role:"President and wartime commander in chief", summary:"Madison asked Congress for war in June 1812 and led a government whose constitutional theory, finances, military administration, and political coalition were all tested by it.", significance:"His war message assembled maritime, commercial, territorial, and security grievances without reducing the case to one cause. The war nearly broke his government, yet its conclusion strengthened the party system he led.", chapter:"why-war", sourceRefs:["house-declaration","loc-guide"] },
   { slug:"james-m-lingan", name:"James M. Lingan", kind:"people", eyebrow:"Revolutionary veteran · Federalist", dates:"1751–1812", role:"Defender of the Federal Republican", summary:"A Revolutionary War officer and former prisoner on the British prison ship Jersey, Lingan joined the armed defense of Alexander Contee Hanson’s antiwar newspaper in Baltimore.", significance:"A mob murdered him in the city jail on July 28, 1812. Naming him prevents the Baltimore riots from dissolving into euphemism: Americans killed a Revolutionary general over the new war.", chapter:"baltimore-at-war-with-itself", sourceRefs:["nps-riots","bca"] },
@@ -40,6 +42,29 @@ export const people: CatalogRecord[] = [
   { slug:"menawa", name:"Menawa", kind:"people", eyebrow:"Red Stick Muscogee leader", dates:"c. 1765–c. 1836", role:"Leader at Horseshoe Bend", summary:"Menawa helped organize the fortified Red Stick position at Tohopeka and survived severe wounds after the American assault.", significance:"His story keeps Horseshoe Bend centered on Muscogee political struggle rather than using it merely as Andrew Jackson’s opening act.", chapter:"southern-borderlands", sourceRefs:["nps-creek"] },
   { slug:"prince-witten", name:"Prince Witten", kind:"people", eyebrow:"Black Spanish militiaman · Florida", dates:"active early 1800s", role:"Militia leader and defender of Spanish authority", summary:"Witten’s career belonged to the multiracial military and political world of Spanish Florida during American-backed incursions.", significance:"He reveals that Florida could function as sanctuary, imperial borderland, and a target of American expansion all at once.", chapter:"southern-borderlands", sourceRefs:["nps-prince-witten"] },
   { slug:"jordan-noble", name:"Jordan Noble", kind:"people", eyebrow:"Free Black musician · Louisiana", dates:"c. 1800–1890", role:"Drummer associated with the New Orleans campaign", summary:"Noble was a young free Black drummer whose long life later connected the Battle of New Orleans to public commemoration.", significance:"He offers a named life within the city’s much larger free Black military participation, while later recollection must be separated from contemporary documentation.", chapter:"new-orleans", sourceRefs:["nps-new-orleans-black"] },
+];
+
+const corePersonSlugs = new Set(corePeople.map((record) => record.slug));
+const seenHumanSlugs = new Set<string>();
+export const people: CatalogRecord[] = [
+  ...corePeople,
+  ...humanIndexRecords.filter((record) => {
+    if (corePersonSlugs.has(record.slug) || seenHumanSlugs.has(record.slug)) return false;
+    seenHumanSlugs.add(record.slug);
+    return true;
+  }).map((record) => ({
+    slug:record.slug,
+    name:record.name,
+    kind:"people" as const,
+    eyebrow:record.group,
+    role:record.role,
+    summary:`${record.name} is preserved here as an index-level lead within ${record.group.toLowerCase()}. The record keeps the name, context, and source route visible while fuller biographical matching continues.`,
+    significance:record.archiveReason,
+    chapter:record.chapter,
+    sourceRefs:record.sourceRefs,
+    evidence:"Unresolved" as const,
+    facts:[{label:"Identity confidence",value:record.identityConfidence},{label:"Record depth",value:"Index entry; further reconciliation needed"}],
+  })),
 ];
 
 export const places: CatalogRecord[] = [

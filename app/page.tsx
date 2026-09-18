@@ -57,6 +57,12 @@ export default function Home() {
         <Link href="/evidence"><span>Open the case files</span><b>→</b></Link>
       </section>
 
+      <section className="home-systems-door">
+        <div><p className="section-kicker">Interactive historical systems</p><h2>Time, pressure,<br />supply, people.</h2></div>
+        <div><p>Choose a day and ask what news had arrived. Carry a treaty across the Atlantic. Tighten the blockade. Build a lake fleet. Follow a person through the uneven archive.</p><p>Each system exposes its evidence and assumptions instead of hiding them behind a game score.</p></div>
+        <Link href="/interactives">Open the five systems <span>→</span></Link>
+      </section>
+
       <section className="perspective-band"><p>The war was never owned by one national memory.</p><div><span>Sovereignty</span><span>Freedom seeking</span><span>Household labor</span><span>Citizenship</span><span>Occupation</span><span>Memory</span></div><Link href="/perspectives">Choose a perspective pathway →</Link></section>
     </main>
   );
