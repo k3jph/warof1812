@@ -17,43 +17,43 @@ export const pilotChapters: Record<string, PilotChapter> = {
     lede: "Baltimore entered the war by attacking itself. Four days after the United States declared war on Britain, a crowd wrecked an antiwar newspaper. Five weeks later another crowd entered the city jail and murdered James M. Lingan, a Revolutionary officer held there under a promise of protection. The sequence matters. This was not an argument that somehow became unruly. It was a political test of who could speak, who counted as loyal, and whether municipal authority would protect people it disliked.",
     sections: [
       {
-        heading: "A port with reasons to fight",
+        heading: "A city with reasons to fight",
         sourceRefs: ["bca", "bca-directories", "nps-privateers", "nps-riots"],
         paragraphs: [
           "Baltimore in 1812 was large by American standards, fast-growing, commercially aggressive, and difficult to govern through social deference. The 1810 census counted more than 46,000 residents, making it the third-largest city in the United States. Ships connected its merchants to Atlantic markets. Wharves, warehouses, ropewalks, sail lofts, taverns, counting houses, and small workshops connected maritime capital to skilled and unskilled labor. The city directories give that economy names and addresses. They also remind us that a port is not one interest. A shipowner, a clerk, a caulker, an immigrant laborer, an enslaved worker, and a sailor waiting for a berth could all depend on commerce while drawing very different conclusions about a war that threatened it.",
           "Baltimore nevertheless leaned Democratic-Republican and prowar. Its politics mixed party organization with street mobilization, newspaper combat, neighborhood loyalties, and the older language of the Revolution. Republican speakers could describe resistance to Britain as the unfinished defense of national independence. Privateering gave that claim a local business model. A federal commission could turn a privately owned vessel into a legal commerce raider, with captured ships and cargo sent to an admiralty court for judgment. Investors accepted large risks for the chance of prize money. Shipbuilders, suppliers, officers, and crews could profit too. Britain had reasons to remember Baltimore when it planned its Chesapeake campaign in 1814.",
           "None of that made the city unanimous. Federalist merchants and professionals feared that war with the world's strongest naval power would damage trade, expand federal power, and punish the very commercial communities the administration claimed to defend. They also objected to the Democratic-Republican habit of treating policy opposition as evidence of foreign attachment. Their critics answered with an old and potent insult: Tory. In a republic born from war against Britain, the word could turn an opponent into an internal enemy without the inconvenience of proving treason in court.",
-          "The division did not map neatly onto virtue. Federalists had used national power against dissent during the Adams administration. Republicans had denounced the Sedition Act as an assault on republican liberty. By 1812 some Republicans were prepared to consider coercive measures against Federalist opponents of their war. Party principle had not vanished. It had encountered party advantage, which is a more demanding test.",
+          "Neither party brought clean hands to the argument over dissent. Federalists had used national power against newspaper critics during the Adams administration. Republicans had denounced the Sedition Act as an assault on republican liberty. By 1812 some Republicans were prepared to consider coercive measures against Federalist opponents of their war. Party principle had not vanished. It had encountered party advantage, which is a more demanding test.",
           "Baltimore's immigrant population also appears often in accounts of the riots, sometimes as if Irish, German, or French birth explains collective violence. It does not. Immigration shaped neighborhoods, labor markets, memories of European conflict, and access to political organizations. It did not assign one political mind to thousands of residents. The evidence names some participants and leaves many others as a crowd described by hostile witnesses. That limit should remain visible. A mob can act collectively without every person in the street having arrived there for the same reason."
         ]
       },
       {
-        heading: "The paper was a machine",
+        heading: "Destroying a newspaper",
         sourceRefs: ["nps-riots", "msa-hanson", "riot-narrative", "loc-newspapers"],
         paragraphs: [
           "Alexander Contee Hanson edited the Federal Republican, an anti-administration newspaper with little interest in lowering the temperature. It attacked President James Madison, the declaration of war, and Baltimore's Republican leadership in language meant to wound. Calling the paper merely antiwar understates its partisan function. It was a Federalist instrument in a political culture where newspapers announced meetings, reproduced speeches, printed letters, named enemies, and told readers what events meant before those events had cooled.",
           "A newspaper was also a physical system. Editors needed type, cases, ink, paper, presses, a room, trained compositors, carriers, credit, and a distribution network. On June 22, four days after Madison signed the declaration of war, a crowd gathered at the Federal Republican's office on Gay Street. The attackers broke the press and destroyed the office. That was censorship by material means. No law had to forbid Hanson's opinions if a crowd could smash the equipment required to print them.",
           "City officials did not stop the destruction. Accounts differ on who urged restraint, who feared the crowd, and what force could have been assembled in time. They agree on the result. The office was wrecked and Hanson left Baltimore. The official failure was not simply that a mayor or constable lacked courage at one instant. Municipal government depended on citizens, watchmen, magistrates, militia officers, and men of standing who might themselves share the crowd's political assumptions or doubt that suppressing it was possible. Authority existed, but it did not act as a single machine.",
-          "The June assault established a rule unless someone broke it: Federalist publication in Baltimore continued by permission of the street. Hanson chose to challenge that rule. He arranged to resume publication and returned with allies who expected another attack. His decision can be described as brave, provocative, reckless, principled, or some combination of all four. Those judgments do not change the right involved. They do help explain why the next confrontation was armed.",
+          "The June assault established a rule unless someone broke it: Federalist publication in Baltimore continued by permission of the street. Hanson chose to break that rule. His return was principled and provocative. Those facts coexist easily enough. He had the right to publish, and he came back with allies who expected another attack. That helps explain why the next confrontation was armed. It does not decide who was entitled to do what once it began.",
           "The surviving record is uneven. Federalist testimony is unusually rich because the victims published a pamphlet in September, *An Exact and Authentic Narrative*, assembled from sufferers and eyewitnesses. It supplies names, sequence, depositions, and descriptions of injury. It also argues a case. The title promised exactness; the publication sought outrage, vindication, and political effect. Using it responsibly means neither discarding it as partisan nor repeating it as a neutral transcript."
         ]
       },
       {
-        heading: "Charles Street, July 27",
+        heading: "Hanson returns",
         sourceRefs: ["riot-narrative", "msa-hanson", "nps-riots"],
         paragraphs: [
           "Hanson's group occupied a house on Charles Street and prepared it for defense. Among the men with him were James M. Lingan and Henry Lee, both veterans of the Revolution. Lingan had been captured at Fort Washington in 1776 and confined on the British prison ship *Jersey*. Lee, the cavalry officer celebrated as Light-Horse Harry, had served under George Washington and later governed Virginia. Revolutionary service did not settle the politics of the new war. Men could have fought Britain in the 1770s and still believe war against Britain in 1812 was a national error.",
-          "The defenders had muskets, pistols, swords, and ammunition. They did not conceal their willingness to use them. A crowd gathered on the evening of July 27, threw stones, broke windows, shouted threats, and pressed the building. The men inside fired. People outside were killed and wounded. Partisan accounts fought immediately over whether warning shots came first, whether attackers had forced an entrance, and when lethal fire became justified. The safest conclusion is also the most useful one: the June destruction made another attack foreseeable; Hanson returned expecting it; the crowd assaulted the house; and the defenders answered with deadly force.",
-          "That sequence prevents two convenient stories. One treats the defenders as passive martyrs until the jail doors opened. They were armed political actors who chose a fortified return and killed people while holding the building. The other treats their gunfire as permission for everything that followed. It was not. A person accused of homicide was entitled to custody, process, and a trial. Moving a prisoner from a defended house to a jail did not place his body at the disposal of the people outside.",
-          "The confrontation lasted through the night. Local officials, including Mayor Edward Johnson, negotiated with the men in the house and the crowd around it. The exact balance of threat, promise, and practical necessity varies across accounts. By morning, the defenders accepted removal under civic authority. They were escorted to the Baltimore jail. The move solved the immediate tactical problem: it ended a siege in a residential street and separated armed Federalists from the crowd. It created a harder obligation. The city now had prisoners in its custody and public assurances tied to their safety.",
-          "A jail is not automatically protection. It protects only when locks, personnel, public legitimacy, and force remain aligned. In Baltimore they did not. The crowd knew where the prisoners had gone. Officials knew the crowd had already destroyed a press, besieged a house, and suffered casualties. The danger was not speculative."
+          "The defenders had muskets, pistols, swords, and ammunition. They did not conceal their willingness to use them. A crowd gathered on the evening of July 27, threw stones, broke windows, shouted threats, and pressed the building. The men inside fired. People outside were killed and wounded. Partisan accounts fought immediately over whether warning shots came first, whether attackers had forced an entrance, and when lethal fire became justified. The record supports a plainer sequence: the June destruction made another attack foreseeable; Hanson returned expecting it; the crowd assaulted the house; and the defenders answered with deadly force.",
+          "The defenders were not passive martyrs. They were armed political actors who chose a fortified return and killed people while holding the building. Their gunfire did not license what happened next. A person accused of homicide was entitled to custody, process, and a trial. Moving a prisoner from a defended house to a jail did not place his body at the disposal of the people outside.",
+          "The confrontation lasted through the night. Local officials, including Mayor Edward Johnson, negotiated with the men in the house and the crowd around it. The exact balance of threat, promise, and practical necessity varies across accounts. By morning, the defenders accepted removal under civic authority. They were escorted to the Baltimore jail. The move solved the immediate tactical problem: it ended a siege in a residential street and separated armed Federalists from the crowd. It created a harder obligation. The city now had prisoners in its custody and public assurances tied to their safety."
         ]
       },
       {
-        heading: "Protection without force",
+        heading: "Custody",
         sourceRefs: ["nps-riots", "riot-narrative", "msa-baltimore-records"],
         paragraphs: [
-          "On July 28, the jail became the center of the city. Officials attempted to secure it, but the protection was thin and the political will behind it thinner. Armed guards and militia could deter a crowd only if their commanders meant to hold the line and if the men believed they would be supported after firing on neighbors. Orders that exist on paper but cannot survive first contact with a crowd are not much of a defense.",
+          "A jail is not automatically protection. It protects only when locks, personnel, public legitimacy, and force remain aligned. In Baltimore they did not. The crowd knew where the prisoners had gone. Officials knew the crowd had already destroyed a press, besieged a house, and suffered casualties. The danger was not speculative.",
+          "On July 28, the jail became the center of the city. Officials attempted to secure it, but the protection was thin and broke down. Armed guards and militia could deter a crowd only if their commanders meant to hold the line and if the men believed they would be supported after firing on neighbors. Orders that exist on paper but cannot survive first contact with a crowd are not much of a defense.",
           "The attackers entered the jail. They removed prisoners from cells and beat, stabbed, and tortured them. The 1812 pamphlet records threats and injuries in detail. Some descriptions come from people who survived the assault or saw its aftermath; others traveled through partisan reporting. Exact blows cannot always be assigned with confidence. The central facts do not depend on the disputed particulars.",
           "James M. Lingan was murdered. The National Park Service account describes a knife wound to the chest. Henry Lee was beaten so badly that his health never recovered. Hanson was beaten and left for dead but survived. Other prisoners suffered severe injuries. The victims had entered the jail in official custody after giving up a defensible position. Calling the event a riot can make it sound like weather. People made choices: to assemble, to enter, to stand aside, to unlock or fail to hold a barrier, to strike a prisoner, and to continue after bodies were already broken.",
           "Lingan's death cut through both parties' claim to exclusive ownership of the Revolution. A man who had endured British captivity was killed by Americans who regarded themselves as defenders of the republic against Britain. That irony is not an ornament added by a later writer. It was politically usable in 1812. Federalists could present Lingan as proof that the party of popular liberty had become a persecuting faction. Republicans who condemned the killing still had to answer for rhetoric that had marked antiwar dissenters as Tories.",
@@ -66,7 +66,7 @@ export const pilotChapters: Record<string, PilotChapter> = {
         }
       },
       {
-        heading: "The argument after the killing",
+        heading: "A murder becomes an argument",
         sourceRefs: ["msa-hanson", "riot-narrative", "nps-riots", "bca"],
         paragraphs: [
           "Violence produced another contest over print. Federalists published testimony, letters, meeting resolutions, and accusations. Republican writers emphasized the gunfire from the Charles Street house, portrayed Hanson as an agitator, and argued that organized opposition during war threatened national survival. Each side arranged the chronology to locate the first act that supposedly explained all later acts. Start with Hanson's editorials and the Federalists appear to have provoked the city. Start with the June destruction and the July return appears as resistance to censorship. Start with the dead outside the house and the jail crowd appears to be avenging neighbors. Start with custody and the attack becomes the murder of prisoners. Sequence did political work.",
@@ -82,7 +82,13 @@ export const pilotChapters: Record<string, PilotChapter> = {
         paragraphs: [
           "The participants were not quarreling over an abstract right to disagree. They believed the war might decide whether the United States was an independent republic or a badly governed client exposed to ruin. Pro-war Republicans could point to British impressment, seizures, and frontier conflict. They saw continued submission as evidence that independence existed on paper but not at sea or on the border. If the nation had finally chosen resistance, a newspaper attacking that decision could look like assistance to the enemy.",
           "Federalists could point to an underprepared army, weak public credit, exposed commerce, and a government asking the Atlantic states to bear costs for a strategy centered on Canada. They did not have to admire British policy to believe Madison's remedy was worse. Some Federalist rhetoric exceeded policy criticism and approached the language of sectional resistance. But opposition to the war was not the same legal act as aiding Britain, and a newspaper office was not an enemy battery.",
-          "Both sides also believed public opinion had material effects. Recruitment, militia turnout, loans, privateering investment, elections, and compliance with federal policy all depended on whether citizens accepted the war as legitimate. Newspapers did not merely comment from outside the conflict. They helped assemble the political capacity to wage it or withhold it. That is why men treated type and presses as consequential objects.",
+          "Both sides also believed public opinion had material effects. Recruitment, militia turnout, loans, privateering investment, elections, and compliance with federal policy all depended on whether citizens accepted the war as legitimate. Newspapers did not merely comment from outside the conflict. They helped assemble the political capacity to wage it or withhold it. That is why men treated type and presses as consequential objects."
+        ]
+      },
+      {
+        heading: "Who was allowed to belong",
+        sourceRefs: ["nps-riots", "bca", "nps-privateers", "bca-directories"],
+        paragraphs: [
           "The threat did not feel equally distributed. A merchant watching insurance and shipping could fear a blockade. A sailor could fear impressment or unemployment. A party organizer could fear the collapse of the administration. A recent immigrant might hear Tory as a charge against belonging. An enslaved Baltimorean lived under a political order whose loudest claims about liberty did not include freedom from ownership. The surviving riot narratives center white male partisans because those men controlled the publications and proceedings that followed. Their crisis occupied the city, not the whole of its experience.",
           "Explaining why the stakes felt high does not reduce responsibility. It does the opposite. If people acted because they believed speech, mobilization, and loyalty could alter the war, then the violence was political in method as well as subject. It cannot be dismissed as alcohol, heat, or a timeless Baltimore disposition toward disorder."
         ]
@@ -92,7 +98,13 @@ export const pilotChapters: Record<string, PilotChapter> = {
         sourceRefs: ["nps-baltimore", "nps-north-point", "bca", "nps-privateers"],
         paragraphs: [
           "Two years later Baltimore mobilized against a British attack. The city financed defenses, dug earthworks, organized militia, supported batteries, and used its maritime knowledge to protect approaches. Privateering had made it a British target; the burning of Washington made the threat immediate. The political question was no longer whether the war should have been declared. British troops and ships had arrived in the Chesapeake.",
-          "That change in circumstance made broader cooperation possible. Federalists could oppose the administration's war and still defend their city from invasion. Republicans could work beside former opponents because fortifications, supply, and militia service required more people than one party could furnish alone. Free Black residents, immigrants, craftsmen, sailors, laborers, property owners, and people whose work appears only indirectly in official records contributed within an unequal society. Unity was built for a specific task.",
+          "That change in circumstance made broader cooperation possible. Federalists could oppose the administration's war and still defend their city from invasion. Republicans could work beside former opponents because fortifications, supply, and militia service required more people than one party could furnish alone. Free Black residents, immigrants, craftsmen, sailors, laborers, property owners, and people whose work appears only indirectly in official records contributed within an unequal society. Unity was built for a specific task. It was not a personality trait the city had possessed all along."
+        ]
+      },
+      {
+        heading: "After the emergency",
+        sourceRefs: ["nps-baltimore", "nps-north-point", "bca", "nps-riots"],
+        paragraphs: [
           "The later defense is often told backward, as if the city that resisted Britain in 1814 had been waiting in patriotic agreement since the declaration. The jail makes that impossible. Baltimore's mobilization was real. So was its earlier coercion. One does not expose the other as false. They show that political communities can change behavior when the threat, incentives, leadership, and acceptable boundaries of disagreement change.",
           "There is also a difference between external defense and internal tolerance. A city may be capable of building batteries while remaining bad at protecting dissenters. It may honor revolutionary veterans while failing one in custody. It may celebrate popular participation while fearing what a crowd can do. Those are not rhetorical contradictions invented after the fact. They are institutions performing different tasks with different results.",
           "Baltimore's first wartime campaign therefore ended without a battlefield and with a dead American general. The British had not killed him. His fellow citizens had. Any account of the city's 1814 defense that begins with sudden unanimity misses the work required to mobilize a place that had already shown what partisan war could do at home."
@@ -109,10 +121,10 @@ export const pilotChapters: Record<string, PilotChapter> = {
   },
 
   "easy-conquest-that-wasnt": {
-    lede: "The border was long, the army was small, and the invasion plan existed mainly as several plans that happened to point north. American leaders were right that British North America was vulnerable in 1812. They were wrong about what vulnerability allowed them to do. A province can be weak and still defeat an army that cannot keep its road open, coordinate commands, move militia across a river, or understand the alliance waiting on the other side.",
+    lede: "The border was long, the regular army was small, and the invasion plan existed mainly as several plans that happened to point north. American leaders were right that British North America was vulnerable in 1812. They were wrong about what vulnerability allowed them to do. A province can be weak and still defeat an army that cannot keep its road open, coordinate commands, move militia across a river, or understand the alliance waiting on the other side.",
     sections: [
       {
-        heading: "What Americans meant by Canada",
+        heading: "Canada was not one target",
         sourceRefs: ["founders-jefferson-duane", "army-campaign-1812", "cwm", "lac", "ontario-military-heritage"],
         paragraphs: [
           "When American politicians spoke of Canada in 1812, they usually compressed several colonies, regions, peoples, and military problems into one convenient noun. Lower Canada centered on the St. Lawrence and had a large French-speaking population. Upper Canada stretched along waterways and scattered settlements westward toward the Detroit River. Halifax, the Atlantic colonies, the Great Lakes posts, Montreal, Kingston, York, Niagara, and Amherstburg did not form one target that an army could seize at a single point.",
@@ -123,7 +135,7 @@ export const pilotChapters: Record<string, PilotChapter> = {
         ]
       },
       {
-        heading: "An army on a road",
+        heading: "The road to Detroit",
         sourceRefs: ["army-campaign-1812", "lac", "nara-war", "ontario-military-heritage", "nps-indigenous"],
         paragraphs: [
           "William Hull's army had to reach Detroit before it could invade anywhere. It assembled in Ohio and moved north through country where a road often meant a cut path improved by the soldiers using it. Trees had to be cleared. Swamps had to be crossed or avoided. Wagons broke. Draft animals consumed forage and weakened. Rain turned soil into resistance. Every mile increased the labor required to move food, ammunition, tents, tools, medical supplies, and baggage.",
@@ -145,7 +157,7 @@ export const pilotChapters: Record<string, PilotChapter> = {
         ]
       },
       {
-        heading: "Brock and Tecumseh make a larger army",
+        heading: "Brock, Tecumseh, and the force Hull could not measure",
         sourceRefs: ["army-campaign-1812", "cwm", "nps-indigenous", "ontario-military-heritage", "lac"],
         paragraphs: [
           "Isaac Brock did not defend Upper Canada by pretending it was strong. He moved because he knew it was weak. Delay gave the United States time to repair supply, concentrate troops, and exploit its larger population. Brock secured the provincial legislature's support for emergency measures, acted against suspected disloyalty, and pushed west after the capture of Michilimackinac. Speed allowed separate British advantages to meet before Hull could recover.",
@@ -161,7 +173,7 @@ export const pilotChapters: Record<string, PilotChapter> = {
         }
       },
       {
-        heading: "The surrender at Detroit",
+        heading: "One white flag",
         sourceRefs: ["army-campaign-1812", "cwm", "lac", "ontario-military-heritage"],
         paragraphs: [
           "British guns opened from across the river on August 15. Brock's force crossed below Detroit the next morning and advanced toward the fort. Tecumseh's warriors moved through the woods. Hull had more men available in and around Detroit than the attacking column, and the fort was not yet breached. Several of his officers wanted to fight.",
@@ -172,19 +184,25 @@ export const pilotChapters: Record<string, PilotChapter> = {
         ]
       },
       {
-        heading: "Niagara was a different failure",
-        sourceRefs: ["army-campaign-1812", "ontario-military-heritage", "cwm", "lac", "parks-black-militia", "parks-pierpoint"],
+        heading: "Getting across Niagara",
+        sourceRefs: ["army-campaign-1812", "ontario-military-heritage", "cwm", "lac", "parks-queenston"],
         paragraphs: [
           "The Niagara frontier offered a shorter crossing and a larger American force. That did not make it Detroit with different names. The Niagara River moved quickly through a corridor controlled by batteries, heights, roads, villages, and landing places. Boats had to be gathered without losing surprise. Troops had to enter them in darkness, cross under fire, find the landing, climb the escarpment, and receive reinforcements before the first wave was isolated.",
           "Major General Stephen Van Rensselaer was a militia officer appointed in a political context and placed over regulars who did not naturally accept his authority. His force included New York militia, federal regulars, and Seneca allies. Enlistment status mattered. State militia commonly understood their legal obligation as defense of the United States. Many refused to cross an international boundary. A commander could possess thousands of men on one bank and only the men willing, ordered, and physically able to enter boats on the other.",
-          "The attack on October 13 began badly. Current and confusion scattered boats. Some landed at the wrong place or returned. American troops who reached the Canadian bank came under fire, but a party found a path up the escarpment and captured the British battery on the heights. This was a real tactical success. It also placed the attackers above the river with an uncertain route back and too few reinforcements coming forward.",
+          "The attack on October 13 began badly. Current and confusion scattered boats. Some landed at the wrong place or returned. American troops who reached the Canadian bank came under fire, but a party found a path up the escarpment and captured the British battery on the heights. This was a real tactical success. It also placed the attackers above the river with an uncertain route back and too few reinforcements coming forward."
+        ]
+      },
+      {
+        heading: "Holding the heights",
+        sourceRefs: ["army-campaign-1812", "ontario-military-heritage", "cwm", "lac", "parks-queenston", "parks-black-militia", "parks-pierpoint"],
+        paragraphs: [
           "Brock arrived and led a counterattack. He was shot and killed. His death became one of the central images of later Canadian memory, often painted as a moment of national sacrifice before Canada existed in its later political form. On the ground, his loss did not end the defense. John Norton and Haudenosaunee warriors checked American movement and bought time. Major General Roger Sheaffe brought regulars, militia, and Indigenous reinforcements around the American position.",
           "Black service belongs in this defense as well. Richard Pierpoint, born in West Africa and formerly enslaved, had won freedom through Loyalist service during the Revolution and supported formation of a Black militia company in Upper Canada. The Coloured Corps and other Black participants defended a colony that offered them claims to freedom and belonging within a discriminatory imperial society. Their motives cannot be reduced to later Canadian patriotism, but neither should they be treated as incidental to the province's survival.",
           "By afternoon the Americans on the heights were trapped. Reinforcements had not crossed in sufficient numbers. Boats and boatmen were scarce, and the river under fire was not an open exit. British, Canadian, and Indigenous forces retook the position. Hundreds of Americans surrendered. At Detroit, a commander surrendered an intact position under accumulated pressure. At Queenston, troops took the objective and then lost it because the operation could not sustain them. Both were defeats. The mechanisms were different."
         ]
       },
       {
-        heading: "The border ran through Native homelands",
+        heading: "Whose border?",
         sourceRefs: ["nps-indigenous", "cwm", "lac", "ontario-military-heritage"],
         paragraphs: [
           "The international boundary divided Indigenous geographies it had not created. Haudenosaunee communities lived on both sides. Western nations connected Detroit, the Thames, the Maumee, and the upper lakes through kinship, diplomacy, trade, and war. American and British officers called on Native allies while also imagining a future in which imperial or national governments controlled the land.",
@@ -195,7 +213,7 @@ export const pilotChapters: Record<string, PilotChapter> = {
         ]
       },
       {
-        heading: "What failure changed",
+        heading: "What the failures changed",
         sourceRefs: ["army-campaign-1812", "cwm", "lac", "nara-war", "ontario-military-heritage", "nps-freshwater"],
         paragraphs: [
           "By the end of 1812, the United States had failed at Detroit, Queenston Heights, and other attempted crossings. The northern strategy did not disappear. Its requirements became harder to ignore. Armies needed magazines, passable routes, trained officers, longer service, boats, shipyards, lake squadrons, and commands capable of cooperating across distance. The war moved toward a larger contest for the Great Lakes because water could carry what roads could not.",
@@ -206,7 +224,7 @@ export const pilotChapters: Record<string, PilotChapter> = {
         ]
       }
     ],
-    sourceRefs: ["founders-jefferson-duane", "army-campaign-1812", "cwm", "lac", "nara-war", "nps-indigenous", "parks-pierpoint", "parks-black-militia", "ontario-military-heritage", "nps-freshwater"],
+    sourceRefs: ["founders-jefferson-duane", "army-campaign-1812", "cwm", "lac", "nara-war", "nps-indigenous", "parks-queenston", "parks-pierpoint", "parks-black-militia", "ontario-military-heritage", "nps-freshwater"],
     voice: {
       label: "Protection announced by an invader",
       excerpt: "I come to find enemies, not to make them. I come to protect, not to injure you.",
