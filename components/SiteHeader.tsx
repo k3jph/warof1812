@@ -1,0 +1,44 @@
+import Link from "next/link";
+
+const links = [
+  ["Story", "/story"],
+  ["Map", "/map"],
+  ["Timeline", "/timeline"],
+  ["Explore", "/explore"],
+  ["Maryland", "/maryland"],
+  ["Sources", "/sources"],
+];
+
+export function SiteHeader() {
+  return (
+    <header className="site-header">
+      <a className="skip-link" href="#main">Skip to content</a>
+      <div className="header-inner">
+        <Link className="wordmark" href="/" aria-label="1812: The Whole Story home">
+          <span className="wordmark-year">1812</span>
+          <span className="wordmark-name">The Whole Story</span>
+        </Link>
+        <nav aria-label="Primary navigation">
+          {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div>
+        <Link className="footer-mark" href="/">1812 <span>The Whole Story</span></Link>
+        <p>An independent public-history project built to make the war—and the evidence beneath it—easier to follow.</p>
+      </div>
+      <div className="footer-links">
+        <Link href="/about">About</Link>
+        <Link href="/sources">Sources &amp; research guide</Link>
+        <Link href="/five-minutes">The war in five minutes</Link>
+      </div>
+    </footer>
+  );
+}
+
