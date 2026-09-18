@@ -187,16 +187,34 @@ img { max-width: 100%; }
 .timeline h2 a:hover { color: var(--red); }
 .timeline .event-place, .event-place { color: var(--blue-light); font-size: .74rem; font-weight: 700; }
 .timeline article p { grid-column: 3; margin: .3rem 0 0; color: #5f5a53; }
+.timeline-filters { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1rem; }
+.timeline-filters button { padding: .55rem .75rem; border: 1px solid var(--line); background: transparent; font: 700 .65rem var(--sans); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.timeline-filters button.active, .timeline-filters button:hover { background: var(--blue); color: white; }
+.timeline .event-participants { font-size: .78rem; color: #756f66; }
 
 .map-controls { display: grid; grid-template-columns: minmax(280px, .7fr) 1fr; gap: 3rem; align-items: end; margin-bottom: 1.5rem; }
-.map-controls > div:first-child { display: grid; grid-template-columns: 100px 1fr; align-items: center; gap: .6rem 1rem; }
-.map-year { grid-row: 1 / 3; color: var(--red); font: 700 3.5rem/1 var(--serif); }
+.map-controls > div:first-child { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: .6rem 1rem; }
+.map-time-control > div { display: grid; gap: .4rem; }
+.map-year { color: var(--red); font: 700 clamp(1.4rem, 3vw, 2.6rem)/1 var(--serif); }
+.map-play { min-width: 72px; min-height: 72px; border: 0; border-radius: 50%; background: var(--red); color: white; font-weight: 800; cursor: pointer; }
 .map-controls label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; }
 .map-controls input { width: 100%; accent-color: var(--red); }
 .filter-row { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: end; }
 .filter-row button { padding: .45rem .65rem; border: 1px solid var(--line); background: transparent; color: inherit; font: 700 .65rem var(--sans); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
 .filter-row button.active, .filter-row button:hover { background: var(--blue); color: white; }
-.war-map { position: relative; min-height: min(63vw, 760px); background: var(--blue); border: 10px solid #d6c9b2; overflow: hidden; }
+.war-map { position: relative; background: var(--blue); border: 10px solid #d6c9b2; overflow: hidden; }
+.war-map svg { display: block; width: 100%; height: auto; }
+.map-water { fill: #173f5c; }
+.map-graticule line { stroke: rgba(255,255,255,.12); stroke-width: 1; }
+.map-land path { fill: #a99a78; stroke: #d6c9b2; stroke-width: 2; }
+.map-land .map-lakes { fill: #173f5c; stroke: #d6c9b2; }
+.map-labels { fill: rgba(255,255,255,.38); font: 700 14px var(--sans); letter-spacing: 3px; }
+.map-dot { fill: var(--red); stroke: white; stroke-width: 2; cursor: pointer; transform-box: fill-box; transform-origin: center; transition: transform .15s ease; }
+.map-dot:hover, .map-dot:focus { transform: scale(1.7); outline: none; }
+.map-dot.selected { fill: #f2ca67; stroke-width: 3; }
+.map-dot.type-naval { fill: #73b7d3; }
+.map-dot.type-diplomatic { fill: #f2ca67; }
+.map-dot.type-civilian { fill: #e58c80; }
 .map-grid { position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.25) 1px, transparent 1px); background-size: 8% 10%; }
 .war-map:after { content: "A STRATEGIC VIEW OF THE WAR"; position: absolute; right: 2rem; bottom: 1.3rem; color: rgba(255,255,255,.16); font: 700 clamp(1.4rem, 3.8vw, 4rem) var(--serif); }
 .region-label { position: absolute; color: rgba(255,255,255,.35); font-size: clamp(.55rem, 1vw, .8rem); letter-spacing: .2em; }
@@ -210,11 +228,24 @@ img { max-width: 100%; }
 .type-naval { background: #6ba2bd; }
 .type-civilian { background: #d07a5e; }
 .map-note { margin: .8rem 0 2rem; color: #6a655c; font-size: .72rem; }
+.map-selected { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin: 0 0 2rem; padding: 2rem; border: 1px solid var(--line); background: #f1eadc; }
+.map-selected time, .map-selected span { display: block; color: var(--red); font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.map-selected h2 { margin: .5rem 0; font: 700 clamp(2rem, 4vw, 3.4rem)/1 var(--serif); }
 .map-event-list { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .map-event-list article { padding: 1.2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .map-event-list time { color: var(--red); font-size: .65rem; font-weight: 800; text-transform: uppercase; }
 .map-event-list h3 { margin: .45rem 0; font: 700 1.2rem var(--serif); }
 .map-event-list p { color: #5d5952; font-size: .8rem; }
+.primary-voice { margin: 4rem 0; padding: clamp(2rem, 5vw, 4rem); background: var(--blue); color: white; }
+.primary-voice .section-kicker { color: #e58c80; }
+.primary-voice h2 { margin: 0; font: 700 clamp(2rem, 4vw, 3.5rem)/1 var(--serif); }
+.primary-voice blockquote { margin: 2rem 0 1rem; color: white; font: 700 clamp(1.6rem, 3vw, 2.5rem)/1.25 var(--serif); }
+.primary-voice > p:last-child { color: rgba(255,255,255,.7); font-size: .78rem; }
+.primary-voice a { color: #e58c80; }
+.event-detail-grid { display: grid; grid-template-columns: 1fr 1fr; margin: 3rem 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.event-detail-grid > div { padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.event-detail-grid h2 { margin-top: 0; font: 700 1.4rem var(--serif); }
+.event-detail-grid li, .event-detail-grid p { font-size: .88rem; }
 
 .explore-controls { display: grid; grid-template-columns: 1fr 260px; gap: 1rem; padding: 1.2rem; background: var(--blue); color: white; }
 .explore-controls label { display: grid; gap: .45rem; }
@@ -446,7 +477,8 @@ img { max-width: 100%; }
   .source-groups section > header { grid-template-columns: 1fr; }
   .source-groups section > header .section-kicker, .source-groups section > header h2, .source-groups section > header > p:last-child { grid-column: 1; }
   .filter-row { justify-content: start; }
-  .war-map { min-height: 520px; }
+  .war-map { min-height: 0; }
+  .map-selected, .event-detail-grid { grid-template-columns: 1fr; }
   .map-event-list { grid-template-columns: 1fr; }
   .about-copy blockquote { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
   .corrections-note { margin-inline: -1.2rem; padding: 2rem 1.2rem; }

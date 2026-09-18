@@ -1,3 +1,7 @@
+import { eventDetails } from "@/lib/event-details";
+import { chapterExpansions } from "@/lib/chapter-expansions";
+import { allCatalogRecords } from "@/lib/catalog";
+
 export type Source = {
   id: string;
   title: string;
@@ -27,6 +31,7 @@ export type Chapter = {
   sourceRefs: string[];
   relatedEvents: string[];
   communities: string[];
+  voice?: { label: string; excerpt: string; attribution: string; sourceRef: string };
 };
 
 export const sources: Source[] = [
@@ -78,9 +83,27 @@ export const sources: Source[] = [
   { id: "loc-rights", title: "Copyright and Other Restrictions That Apply to Publication", institution: "Library of Congress", url: "https://www.loc.gov/legal/", type: "rights guidance", note: "Explains why repository access does not itself establish permission to publish. Item-level rights statements remain controlling." },
   { id: "smithsonian-terms", title: "Smithsonian Terms of Use", institution: "Smithsonian Institution", url: "https://www.si.edu/termsofuse", type: "rights guidance", note: "Institution-wide conditions for reuse; individual collection records may carry additional rights and credit information." },
   { id: "worldcat-scholarship", title: "War of 1812 books and scholarship", institution: "WorldCat", url: "https://search.worldcat.org/search?q=%22War+of+1812%22", type: "library catalogue", note: "A broad catalogue route for locating editions and nearby holdings. Use subject terms, author names, and bibliographies in recent scholarship to narrow the field." },
+  { id: "nps-freedom-2", title: "Black Freedom Seeking During the War of 1812, Part 2", institution: "National Park Service", url: "https://www.nps.gov/articles/000/black-freedom-seeking-during-the-war-of-1812-from-the-chesapeake-cumberland-island-and-beyond.htm", type: "public history", note: "Continues the account of flight, British lines, resettlement, and Black refugee communities." },
+  { id: "nps-charles-ball", title: "American Liberty and Slavery in the Chesapeake: Charles Ball", institution: "National Park Service", url: "https://www.nps.gov/articles/american-liberty-and-slavery-in-the-chesapeake.htm", type: "biographical study", note: "Uses Charles Ball's life to place military service, bondage, and liberty claims in the same Chesapeake landscape." },
+  { id: "nps-women-chesapeake", title: "Women in the Chesapeake Region during the War of 1812", institution: "National Park Service", url: "https://www.nps.gov/stsp/learn/historyculture/women-in-chesapeake-during-the-war-of-1812.htm", type: "public history", note: "Household, community, political, and wartime labor by women across the Chesapeake." },
+  { id: "nps-elizabeth-sands", title: "Elizabeth Warner Sands", institution: "National Park Service", url: "https://www.nps.gov/stsp/learn/historyculture/elizabeth-warner-sands.htm", type: "biographical study", note: "A named civilian life connecting household experience, memory, and the Chesapeake campaign." },
+  { id: "nps-privateers", title: "Privateers Make Their Mark", institution: "National Park Service", url: "https://www.nps.gov/stsp/learn/historyculture/privateers-make-their-mark.htm", type: "maritime history", note: "Baltimore privateering, commerce raiding, risk, and the economic character of the naval war." },
+  { id: "nps-freshwater", title: "The Enemy Is Ours", institution: "National Park Service", url: "https://home.nps.gov/articles/the-enemy-is-ours.htm", type: "naval history", note: "American freshwater victories and their connection to inland campaigns." },
+  { id: "lac-british-records", title: "British Military and Naval Records", institution: "Library and Archives Canada", url: "https://www.canada.ca/en/library-archives/collection/research-help/military-history/british-military-naval-records.html", type: "archive guide", note: "A route into service, command, unit, and naval records from the British imperial side." },
+  { id: "nps-horseshoe-participants", title: "Major Participants in the Creek War", institution: "National Park Service", url: "https://home.nps.gov/hobe/learn/historyculture/major-participants-in-the-creek-war.htm", type: "interpretive guide", note: "Named Muscogee, Cherokee, and American participants in a conflict too often reduced to Andrew Jackson." },
+  { id: "nps-garrison-flag", title: "The Great Garrison Flag", institution: "National Park Service", url: "https://www.nps.gov/fomc/learn/historyculture/the-great-garrison-flag.htm", type: "object history", note: "Commission, construction, makers, scale, use, and later history of Fort McHenry's large flag." },
+  { id: "bca-directories", title: "Baltimore City Directories", institution: "Baltimore City Archives", url: "https://msa.maryland.gov/bca/baltimore-city-directories/index.html", type: "local research collection", note: "Digitized directories for tracing occupations, addresses, businesses, and neighborhood context." },
+  { id: "msa-baltimore-records", title: "Baltimore City War of 1812 Records", institution: "Maryland State Archives", url: "https://guide.msa.maryland.gov/pages/series.aspx?ID=BRG22-1-7", type: "archive series guide", note: "Municipal War of 1812 records described at series level for deeper local research." },
+  { id: "nps-jean-lafitte", title: "Jean Lafitte", institution: "National Park Service", url: "https://www.nps.gov/people/jeanlafitte.htm", type: "biographical study", note: "Evidence-based context for Lafitte and the Baratarians beyond later legend." },
+  { id: "nps-jordan-noble", title: "Fighting for Freedom: Jordan Noble", institution: "National Park Service", url: "https://www.nps.gov/articles/000/fighting-for-freedom.htm", type: "biographical study", note: "A named Black participant in the defense of New Orleans and its later memory." },
+  { id: "nps-dartmoor", title: "Dartmoor Prison", institution: "National Park Service", url: "https://www.nps.gov/articles/dartmoor-prison.htm", type: "prisoner history", note: "American prisoners, captivity, and the deadly postwar confrontation at Dartmoor." },
+  { id: "loc-dartmoor", title: "Dartmoor Prison; or, A Faithful Narrative", institution: "Library of Congress", url: "https://www.loc.gov/item/73171980/", type: "digitized primary account", note: "An 1816 published account for reading prisoner memory alongside institutional interpretation." },
+  { id: "loc-ghent-digital", title: "Treaty of Ghent Digital Collections", institution: "Library of Congress", url: "https://guides.loc.gov/treaty-of-ghent/digital-collections", type: "digital primary-source guide", note: "Digitized treaty-era documents, papers, and related collections." },
+  { id: "nps-creating-legacies", title: "Creating Legacies", institution: "National Park Service", url: "https://www.nps.gov/subjects/warof1812/creating-legacies.htm", type: "memory history", note: "How people, institutions, places, and later commemorations constructed meanings for the war." },
+  { id: "nps-short-memory", title: "Short Term Memory", institution: "National Park Service", url: "https://www.nps.gov/articles/short-term-memory.htm", type: "memory history", note: "An interpretive study of early remembering and forgetting after the conflict." },
 ];
 
-export const chapters: Chapter[] = [
+const baseChapters: Chapter[] = [
   {
     id: "prologue", slug: "world-already-at-war", order: 0, eyebrow: "Prologue · 1803–1811", title: "A World Already at War", subtitle: "The neutral republic, the global struggle, and the road to 1812", date: "1803–1811", theaters: ["Atlantic", "Old Northwest", "Politics"],
     lede: "The War of 1812 began long before anyone declared it. Britain and France were fighting for Europe, the Atlantic, and the commerce that connected them. The United States tried to remain neutral and profitable. Every part of that arrangement became unstable.",
@@ -257,11 +280,24 @@ export const chapters: Chapter[] = [
   },
 ];
 
-export type EventRecord = {
-  id: string; date: string; year: number; title: string; place: string; theater: string; type: string; summary: string; chapter: string; x: number; y: number; sourceRefs: string[];
+const evidenceAdditions: Record<string, NonNullable<ChapterSection["evidence"]>> = {
+  "easy-conquest-that-wasnt": { familiar: "Most Canadians would welcome invasion and British North America would fall with little resistance.", documented: "British regulars, Canadian militia, and Indigenous allies resisted; American logistics, command, and militia limits repeatedly undermined invasion.", uncertain: "Individual loyalties varied by locality, and later national memories cannot be projected backward onto every resident." },
+  "old-ironsides": { familiar: "American frigate victories proved the United States had defeated Britain at sea.", documented: "The victories were real tactical achievements with major morale value, while the Royal Navy retained strategic command and tightened the blockade.", uncertain: "Eyewitness language and later iconography do not always permit a precise reconstruction of every exchange of fire." },
+  "washington-burns": { familiar: "Dolley Madison personally removed the Washington portrait moments before the British arrived.", documented: "She ordered its rescue; staff and laborers physically removed and carried the portrait while the household evacuated.", uncertain: "Later recollections differ over timing and individual roles, especially for people whose labor official records rarely named." },
+  "what-changed": { familiar: "One nation won the War of 1812 in a single, uncomplicated sense.", documented: "The treaty restored territory between states, British North America survived, American nationalism grew, and Indigenous political power suffered a severe defeat.", uncertain: "Any answer depends on the participant, objective, geography, and time horizon being measured." },
 };
 
-export const events: EventRecord[] = [
+const expandedChapters: Chapter[] = baseChapters.map((chapter) => {
+  const expansion = chapterExpansions[chapter.slug];
+  return expansion ? { ...chapter, sections: [...chapter.sections, { heading: expansion.heading, paragraphs: expansion.paragraphs, evidence: evidenceAdditions[chapter.slug] }], voice: expansion.voice } : chapter;
+});
+
+export type EventRecord = {
+  id: string; date: string; year: number; title: string; place: string; theater: string; type: string; summary: string; chapter: string; x: number; y: number; sourceRefs: string[];
+  participants: string[]; outcome: string; significance: string; latitude: number; longitude: number; coordinatePrecision: "site" | "city" | "regional";
+};
+
+const baseEvents: Omit<EventRecord, keyof (typeof eventDetails)[string]>[] = [
   { id:"chesapeake-leopard", date:"22 June 1807", year:1807, title:"Chesapeake–Leopard affair", place:"off Norfolk, Virginia", theater:"Atlantic", type:"naval", summary:"HMS Leopard fires on USS Chesapeake after a refused search, intensifying the dispute over impressment and sovereignty.", chapter:"world-already-at-war", x:70, y:51, sourceRefs:["nara-impressment"] },
   { id:"tippecanoe", date:"7 November 1811", year:1811, title:"Battle of Tippecanoe", place:"Prophetstown, Indiana Territory", theater:"Old Northwest", type:"Indigenous", summary:"Harrison's force fights Tenskwatawa's followers; Americans increasingly connect Indigenous resistance to British power.", chapter:"world-already-at-war", x:45, y:41, sourceRefs:["nps-indigenous"] },
   { id:"war-declaration", date:"18 June 1812", year:1812, title:"United States declares war", place:"Washington, D.C.", theater:"Politics", type:"political", summary:"Madison signs the declaration after divided votes in the House and Senate.", chapter:"why-war", x:69, y:47, sourceRefs:["house-declaration"] },
@@ -299,7 +335,27 @@ export const events: EventRecord[] = [
   { id:"new-orleans", date:"8 January 1815", year:1815, title:"Battle of New Orleans", place:"Chalmette, Louisiana", theater:"Gulf", type:"battle", summary:"A diverse American force defeats the main British assault with devastating losses.", chapter:"new-orleans", x:43, y:79, sourceRefs:["nps-new-orleans-black","nps-choctaw"] },
   { id:"us-ratification", date:"17 February 1815", year:1815, title:"Peace becomes effective", place:"Washington, D.C.", theater:"Diplomacy", type:"diplomatic", summary:"Ratifications are exchanged and the United States proclaims peace.", chapter:"peace-at-ghent", x:69, y:48, sourceRefs:["loc-ghent"] },
   { id:"rush-bagot", date:"1817", year:1817, title:"Rush–Bagot arrangement", place:"Great Lakes", theater:"Diplomacy", type:"diplomatic", summary:"The United States and Britain limit naval armaments on the Great Lakes.", chapter:"what-changed", x:54, y:30, sourceRefs:["state-rush-bagot"] },
+  { id:"st-michaels", date:"10 August 1813", year:1813, title:"Defense of St. Michaels", place:"St. Michaels, Maryland", theater:"Chesapeake", type:"raid", summary:"Local defenders resist a British attack on the shipbuilding town during the bay campaign.", chapter:"war-reaches-homes", x:72, y:47, sourceRefs:["nps-living"] },
+  { id:"chesapeake-blockade", date:"1813–1814", year:1813, title:"Blockade tightens in the Chesapeake", place:"Chesapeake Bay", theater:"Chesapeake", type:"naval", summary:"British squadrons restrict commerce, gather intelligence, and strike vulnerable shoreline communities.", chapter:"blockade", x:72, y:50, sourceRefs:["nps-living","nhhc"] },
+  { id:"cochrane-proclamation", date:"2 April 1814", year:1814, title:"Cochrane issues his proclamation", place:"British Atlantic command", theater:"Chesapeake", type:"political", summary:"Britain formally offers reception, service, or resettlement to people willing to leave the United States.", chapter:"blockade", x:74, y:50, sourceRefs:["nps-freedom-1","nps-colonial"] },
+  { id:"british-chesapeake-campaign", date:"Summer 1814", year:1814, title:"Britain expands the Chesapeake campaign", place:"Chesapeake region", theater:"Chesapeake", type:"occupation", summary:"A strengthened expedition turns recurring raids into coordinated operations against Washington and Baltimore.", chapter:"everything-changes", x:70, y:49, sourceRefs:["nps-baltimore","nhhc-flotilla"] },
+  { id:"fort-erie", date:"August–September 1814", year:1814, title:"Siege of Fort Erie", place:"Upper Canada", theater:"Niagara", type:"battle", summary:"American troops hold a bridgehead through a costly British siege before ending the campaign.", chapter:"niagara-again", x:55, y:32, sourceRefs:["lac"] },
+  { id:"prevost-withdrawal", date:"11 September 1814", year:1814, title:"Prévost abandons the invasion", place:"Plattsburgh, New York", theater:"Lake Champlain", type:"battle", summary:"The British army retreats after the supporting squadron is defeated in Plattsburgh Bay.", chapter:"plattsburgh", x:67, y:25, sourceRefs:["nps-plattsburgh"] },
+  { id:"navy-yard-burning", date:"24 August 1814", year:1814, title:"Americans burn the Washington Navy Yard", place:"Washington, D.C.", theater:"Chesapeake", type:"civilian", summary:"Navy Yard personnel destroy ships and stores to deny them to the advancing British.", chapter:"washington-burns", x:69, y:49, sourceRefs:["nhhc-flotilla"] },
+  { id:"british-withdraw-baltimore", date:"14 September 1814", year:1814, title:"British withdraw from Baltimore", place:"Baltimore, Maryland", theater:"Chesapeake", type:"battle", summary:"With the harbor closed and the land defenses intact, the expedition returns to its transports.", chapter:"baltimore-holds", x:70, y:45, sourceRefs:["nps-baltimore"] },
+  { id:"ghent-negotiations", date:"August–December 1814", year:1814, title:"Peace commissioners negotiate at Ghent", place:"Ghent", theater:"Diplomacy", type:"diplomatic", summary:"American and British delegates revise their positions as military and European news arrives.", chapter:"peace-at-ghent", x:96, y:24, sourceRefs:["loc-ghent","loc-ghent-digital"] },
+  { id:"black-refugee-resettlement", date:"1815–1816", year:1815, title:"Black Refugees build postwar communities", place:"Nova Scotia and Trinidad", theater:"Atlantic", type:"civilian", summary:"Formerly enslaved people who reached British lines begin new lives in several Atlantic colonies.", chapter:"what-changed", x:78, y:21, sourceRefs:["nps-freedom-2","nps-colonial"] },
+  { id:"convention-1818", date:"20 October 1818", year:1818, title:"Convention of 1818", place:"Anglo-American borderlands", theater:"Diplomacy", type:"diplomatic", summary:"Britain and the United States settle portions of the border and agree to joint occupation in the northwest.", chapter:"what-changed", x:48, y:30, sourceRefs:["state-rush-bagot"] },
 ];
+
+export const events: EventRecord[] = baseEvents.map((event) => ({ ...event, ...eventDetails[event.id] }));
+
+export const chapters: Chapter[] = expandedChapters.map((chapter) => {
+  const eventParagraphs = events.filter((event) => chapter.relatedEvents.includes(event.id)).map((event) => `${event.date} — ${event.summary} ${event.outcome} Its larger significance: ${event.significance} Participants named in this record include ${event.participants.join(", ")}.`);
+  const recordParagraphs = allCatalogRecords.filter((record) => record.chapter === chapter.slug).map((record) => `${record.name} — ${record.summary} ${record.significance}`);
+  const dossier = [...eventParagraphs, ...recordParagraphs];
+  return dossier.length ? { ...chapter, sections: [...chapter.sections, { heading: "Connected evidence", paragraphs: dossier }] } : chapter;
+});
 
 export const sourceById = Object.fromEntries(sources.map((source) => [source.id, source]));
 export const chapterBySlug = Object.fromEntries(chapters.map((chapter) => [chapter.slug, chapter]));
