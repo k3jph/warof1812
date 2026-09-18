@@ -37,9 +37,10 @@ export default function Home() {
       </section>
 
       <section className="choose-depth">
-        <div className="section-heading"><p className="section-kicker">Choose your depth</p><h2>One war. Three reading distances.</h2></div>
+        <div className="section-heading"><p className="section-kicker">Choose your depth</p><h2>One war. Four ways in.</h2></div>
         <div className="depth-grid">
           <Link href="/five-minutes"><span>5 min</span><h3>The whole shape</h3><p>Causes, campaigns, peace, and the unequal aftermath in one concentrated account.</p><b>Read the overview →</b></Link>
+          <Link href="/twenty-minutes"><span>20 min</span><h3>The connected account</h3><p>Fifteen movements preserve chronology, perspective, and consequence without becoming a book.</p><b>Read the medium version →</b></Link>
           <Link href="/story"><span>Whole</span><h3>The complete narrative</h3><p>{chapters.length} connected movements, from the world before the war to the memories created after it.</p><b>See all chapters →</b></Link>
           <Link href="/map"><span>Follow</span><h3>The moving war</h3><p>Scrub through events across the lakes, Atlantic, Chesapeake, Gulf, Pacific, and negotiating table.</p><b>Open the map →</b></Link>
         </div>
@@ -54,4 +55,3 @@ export default function Home() {
     </main>
   );
 }
-

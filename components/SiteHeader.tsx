@@ -37,8 +37,8 @@ export function SiteFooter() {
         <Link href="/about">About</Link>
         <Link href="/sources">Sources &amp; research guide</Link>
         <Link href="/five-minutes">The war in five minutes</Link>
+        <Link href="/twenty-minutes">The war in twenty minutes</Link>
       </div>
     </footer>
   );
 }
-

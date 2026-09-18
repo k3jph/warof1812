@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SourceList } from "@/components/SourceList";
@@ -25,4 +26,3 @@ export default function FiveMinutes() {
     </main>
   );
 }
-
