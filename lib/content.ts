@@ -1,6 +1,7 @@
 import { eventDetails } from "@/lib/event-details";
 import { chapterExpansions } from "@/lib/chapter-expansions";
 import { allCatalogRecords } from "@/lib/catalog";
+import { pilotChapters } from "@/lib/pilot-chapters";
 
 export type Source = {
   id: string;
@@ -14,6 +15,7 @@ export type Source = {
 export type ChapterSection = {
   heading: string;
   paragraphs: string[];
+  sourceRefs?: string[];
   evidence?: { familiar: string; documented: string; uncertain?: string };
 };
 
@@ -41,7 +43,9 @@ export const sources: Source[] = [
   { id: "nps-war", title: "War of 1812", institution: "National Park Service", url: "https://www.nps.gov/subjects/warof1812/index.htm", type: "public-history gateway", note: "Campaigns, people, places, civilian experience, and legacies." },
   { id: "loc-guide", title: "War of 1812: A Resource Guide", institution: "Library of Congress", url: "https://guides.loc.gov/war-of-1812", type: "research guide", note: "Primary documents, maps, newspapers, prints, and manuscript collections." },
   { id: "nara-war", title: "War of 1812", institution: "National Archives", url: "https://www.archives.gov/research/military/war-of-1812", type: "archival gateway", note: "Federal military and maritime records, including impressed seamen." },
+  { id: "army-campaign-1812", title: "The Campaign of 1812", institution: "U.S. Army Center of Military History via GovInfo", url: "https://www.govinfo.gov/app/details/GOVPUB-D114-PURL-gpo45163", type: "official campaign study", note: "Steven J. Rauch's campaign study of mobilization, logistics, Detroit, Niagara, command, militia, and the United States Army's first year of war." },
   { id: "cwm", title: "1812: One War, Four Perspectives", institution: "Canadian War Museum", url: "https://www.warmuseum.ca/war-of-1812/", type: "digital exhibition", note: "American, British, Canadian, and Indigenous interpretations shown side by side." },
+  { id: "ontario-military-heritage", title: "Ontario's Military Heritage: War of 1812", institution: "Ontario Heritage Trust", url: "https://www.heritagetrust.on.ca/exhibits/ontarios-military-heritage-1-2", type: "campaign and visual history", note: "Campaign sequence, fort plans, battle images, force composition, and the operational relationship among roads, waterways, posts, militia, regulars, and Indigenous forces." },
   { id: "lac", title: "War of 1812 research help", institution: "Library and Archives Canada", url: "https://www.canada.ca/en/library-archives/collection/research-help/military-history/war-1812.html", type: "archive guide", note: "British, colonial, militia, and Indigenous-related records." },
   { id: "nhhc", title: "War of 1812", institution: "Naval History and Heritage Command", url: "https://www.history.navy.mil/browse-by-topic/wars-conflicts-and-operations/1812.html", type: "naval history", note: "Atlantic, lake, Chesapeake, and Pacific naval operations." },
   { id: "house-declaration", title: "War of 1812 Declaration", institution: "U.S. House of Representatives", url: "https://history.house.gov/Records-and-Research/Listing/lfp_012/", type: "primary document guide", note: "The declaration and congressional context." },
@@ -294,6 +298,8 @@ const evidenceAdditions: Record<string, NonNullable<ChapterSection["evidence"]>>
 };
 
 const expandedChapters: Chapter[] = baseChapters.map((chapter) => {
+  const pilot = pilotChapters[chapter.slug];
+  if (pilot) return { ...chapter, ...pilot };
   const expansion = chapterExpansions[chapter.slug];
   return expansion ? { ...chapter, sections: [...chapter.sections, { heading: expansion.heading, paragraphs: expansion.paragraphs, evidence: evidenceAdditions[chapter.slug] }], voice: expansion.voice } : chapter;
 });
@@ -357,6 +363,7 @@ const baseEvents: Omit<EventRecord, keyof (typeof eventDetails)[string]>[] = [
 export const events: EventRecord[] = baseEvents.map((event) => ({ ...event, ...eventDetails[event.id] }));
 
 export const chapters: Chapter[] = expandedChapters.map((chapter) => {
+  if (pilotChapters[chapter.slug]) return chapter;
   const eventParagraphs = events.filter((event) => chapter.relatedEvents.includes(event.id)).map((event) => `${event.date} — ${event.summary} ${event.outcome} Its larger significance: ${event.significance} Participants named in this record include ${event.participants.join(", ")}.`);
   const recordParagraphs = allCatalogRecords.filter((record) => record.chapter === chapter.slug).map((record) => `${record.name} — ${record.summary} ${record.significance}`);
   const dossier = [...eventParagraphs, ...recordParagraphs];

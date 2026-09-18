@@ -218,6 +218,21 @@ img { max-width: 100%; }
 .chapter-body h2 { margin: 0 0 1.4rem; font: 700 clamp(2rem, 4vw, 3.4rem)/1 var(--serif); letter-spacing: -.035em; }
 .chapter-body section p { font: 400 1.12rem/1.82 var(--serif); }
 .chapter-body > section:not(.source-list):not(.related-events):not(.related-records):not(.documentary-reader) > div:last-child > p + p { margin-top: 1.15em; }
+.section-source-route { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; margin-top: 2rem !important; padding-top: 1.1rem; border-top: 1px solid var(--line); font: 700 .68rem/1.3 var(--sans) !important; }
+.section-source-route span { width: 100%; color: #706b62; text-transform: uppercase; letter-spacing: .1em; }
+.section-source-route a { padding: .45rem .6rem; border: 1px solid var(--line); text-decoration: none; }
+.section-source-route a:hover { color: white; background: var(--blue); border-color: var(--blue); }
+.chapter-visual-evidence { margin: 0 0 6rem; padding: 2.3rem; color: white; background: var(--blue); }
+.chapter-visual-evidence > header { display: grid; grid-template-columns: .65fr 1.35fr; gap: 2rem; margin-bottom: 2rem; }
+.chapter-visual-evidence h2 { margin: 0; }
+.chapter-visual-evidence > header > p:last-child { margin: 0; color: rgba(255,255,255,.7); font: 400 1rem/1.55 var(--sans); }
+.chapter-visual-evidence > div { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid rgba(255,255,255,.2); border-left: 1px solid rgba(255,255,255,.2); }
+.chapter-visual-evidence a { min-height: 220px; display: flex; flex-direction: column; padding: 1.2rem; color: white; border-right: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); text-decoration: none; }
+.chapter-visual-evidence a:hover { background: rgba(255,255,255,.08); }
+.chapter-visual-evidence a span { color: #e58c80; font: 800 .64rem var(--sans); text-transform: uppercase; letter-spacing: .1em; }
+.chapter-visual-evidence a strong { margin-top: 1rem; font: 700 1.45rem/1.05 var(--serif); }
+.chapter-visual-evidence a p { color: rgba(255,255,255,.68); font: 400 .8rem/1.5 var(--sans) !important; }
+.chapter-visual-evidence a b { margin-top: auto; color: #e58c80; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
 .chapter-body sup a { color: var(--red); font: 700 .7rem var(--sans); text-decoration: none; }
 .narrative-link { text-decoration-color: rgba(168,58,50,.45); text-decoration-thickness: 1px; }
 .narrative-link:hover, .narrative-link:focus-visible { color: var(--red); text-decoration-color: var(--red); }
@@ -1306,6 +1321,8 @@ img { max-width: 100%; }
   .edition-caution { grid-template-columns: 1fr 1fr; }
   .documentary-apparatus > section + section { border-left: 0; border-top: 1px solid #b4aa98; }
   .chapter-body .documentary-reader { margin-inline: -3vw; }
+  .chapter-visual-evidence > header { grid-template-columns: 1fr; gap: 1rem; }
+  .chapter-visual-evidence > div { grid-template-columns: 1fr 1fr; }
   .gis-statline, .gis-presets { grid-template-columns: 1fr 1fr; }
   .gis-workbench { grid-template-columns: 245px minmax(0,1fr); }
   .gis-layer-panel { padding: 1rem; }
@@ -1350,6 +1367,8 @@ img { max-width: 100%; }
   .chapter-list a { min-height: 140px; grid-template-columns: 48px 1fr 20px; gap: 1rem; }
   .chapter-number { font-size: 2rem; }
   .chapter-body > section:not(.source-list):not(.related-events):not(.related-records):not(.documentary-reader) { grid-template-columns: 1fr; gap: .5rem; }
+  .chapter-visual-evidence { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
+  .chapter-visual-evidence > div { grid-template-columns: 1fr; }
   .section-number { border-bottom: 1px solid var(--line); }
   .related-events > div { grid-template-columns: 1fr; }
   .record-facts { grid-template-columns: 1fr; }
