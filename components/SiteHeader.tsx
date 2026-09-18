@@ -21,6 +21,10 @@ export function SiteHeader() {
         <nav aria-label="Primary navigation">
           {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
         </nav>
+        <details className="mobile-nav">
+          <summary>Menu</summary>
+          <nav aria-label="Mobile navigation">{links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
+        </details>
       </div>
     </header>
   );
@@ -38,6 +42,7 @@ export function SiteFooter() {
         <Link href="/sources">Sources &amp; research guide</Link>
         <Link href="/five-minutes">The war in five minutes</Link>
         <Link href="/twenty-minutes">The war in twenty minutes</Link>
+        <Link href="/backyard">Maryland field guide</Link>
       </div>
     </footer>
   );

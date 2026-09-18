@@ -29,9 +29,16 @@ img { max-width: 100%; }
 .wordmark { display: flex; align-items: baseline; gap: .8rem; text-decoration: none; }
 .wordmark-year { font: 800 1.7rem/1 var(--serif); letter-spacing: -.08em; }
 .wordmark-name { font-size: .69rem; text-transform: uppercase; letter-spacing: .19em; font-weight: 700; }
-.site-header nav { display: flex; align-items: center; gap: clamp(.8rem, 2vw, 2rem); }
+.header-inner > nav { display: flex; align-items: center; gap: clamp(.8rem, 2vw, 2rem); }
 .site-header nav a { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; }
 .site-header nav a:hover, .site-header nav a:focus-visible { color: var(--red); }
+.mobile-nav { display: none; position: relative; }
+.mobile-nav summary { cursor: pointer; list-style: none; padding: .55rem .7rem; border: 1px solid var(--line); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
+.mobile-nav summary::-webkit-details-marker { display: none; }
+.mobile-nav[open] summary { background: var(--blue); color: white; }
+.mobile-nav nav { position: absolute; right: 0; top: calc(100% + .55rem); min-width: 220px; display: grid; padding: .5rem; background: var(--cream); border: 1px solid var(--line); box-shadow: 0 16px 34px rgba(21,23,23,.16); }
+.mobile-nav nav a { padding: .75rem; border-bottom: 1px solid var(--line); }
+.mobile-nav nav a:last-child { border-bottom: 0; }
 
 .hero { min-height: calc(100vh - 68px); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, .82fr); overflow: hidden; color: var(--cream); background: var(--blue); }
 .hero-image { position: absolute; inset: 0; background: url('/images/fort-mchenry-bombardment.jpg') center 55% / cover no-repeat; filter: saturate(.6) contrast(1.08); }
@@ -116,11 +123,13 @@ img { max-width: 100%; }
 .chapter-tags span { border-color: rgba(255,255,255,.25); }
 .chapter-body { max-width: 980px; margin: auto; padding: clamp(4rem, 9vw, 8rem) 1.2rem; }
 .chapter-lede { margin: 0 0 5rem; font: 700 clamp(1.8rem, 3.5vw, 3.25rem)/1.18 var(--serif); letter-spacing: -.02em; }
-.chapter-body > section:not(.source-list):not(.related-events) { display: grid; grid-template-columns: 70px 1fr; gap: 2rem; margin: 0 0 4.7rem; }
+.chapter-body > section:not(.source-list):not(.related-events):not(.related-records) { display: grid; grid-template-columns: 70px 1fr; gap: 2rem; margin: 0 0 4.7rem; }
 .section-number { padding-top: .5rem; color: var(--red); font: 700 1rem var(--serif); }
 .chapter-body h2 { margin: 0 0 1.4rem; font: 700 clamp(2rem, 4vw, 3.4rem)/1 var(--serif); letter-spacing: -.035em; }
 .chapter-body section p { font: 400 1.12rem/1.82 var(--serif); }
 .chapter-body sup a { color: var(--red); font: 700 .7rem var(--sans); text-decoration: none; }
+.narrative-link { text-decoration-color: rgba(168,58,50,.45); text-decoration-thickness: 1px; }
+.narrative-link:hover, .narrative-link:focus-visible { color: var(--red); text-decoration-color: var(--red); }
 .evidence-box { margin: 3rem 0; padding: 2rem; border: 1px solid #c4a99d; border-left: 6px solid var(--red); background: #fff7ed; }
 .evidence-box h3 { margin: 1.3rem 0 .2rem; font: 700 1rem var(--sans); text-transform: uppercase; letter-spacing: .07em; }
 .evidence-box p { margin-top: .3rem; font-size: 1rem !important; }
@@ -136,6 +145,15 @@ img { max-width: 100%; }
 .related-events time { color: var(--red); font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .related-events h3 { margin: .6rem 0; font: 700 1.35rem var(--serif); }
 .related-events article p { font: 400 .9rem/1.5 var(--sans); color: #5e5a53; }
+.related-events h3 a:hover { color: var(--red); }
+.map-path { display: inline-block; margin-top: 1.2rem; color: var(--red); font-size: .78rem; font-weight: 800; }
+.related-records { margin: 6rem 0; }
+.related-records > div { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.related-records > div a { min-height: 160px; display: flex; flex-direction: column; padding: 1.2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.related-records > div a:hover { background: var(--blue); color: white; }
+.related-records span { color: var(--red); font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.related-records strong { margin: auto 0 .35rem; font: 700 1.35rem/1.05 var(--serif); }
+.related-records small { color: color-mix(in srgb, currentColor 65%, transparent); font-size: .72rem; }
 .source-list { margin: 6rem 0 1rem; padding-top: 3rem; border-top: 3px solid var(--ink); }
 .source-list ol { padding: 0; list-style: none; counter-reset: source; }
 .source-list li { counter-increment: source; display: grid; grid-template-columns: 30px 1fr; padding: 1.2rem 0; border-top: 1px solid var(--line); }
@@ -279,6 +297,38 @@ img { max-width: 100%; }
 .backyard-callout > p:not(.section-kicker) { max-width: 700px; font: 400 1.15rem/1.5 var(--serif); }
 .backyard-callout > div { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
 
+.backyard-page { background: var(--cream); }
+.backyard-hero { min-height: 76vh; display: flex; align-items: end; padding: clamp(7rem, 15vw, 13rem) clamp(1.2rem, 8vw, 8rem) 5rem; color: white; background: linear-gradient(135deg, rgba(12,45,71,.96), rgba(12,45,71,.82)), url('/images/fort-mchenry-bombardment.jpg') center 58% / cover; }
+.backyard-hero > div { max-width: 1050px; }
+.backyard-hero .section-kicker { color: #e58c80; }
+.backyard-hero h1 { max-width: 960px; margin: 0; font: 700 clamp(3.7rem, 10vw, 9.5rem)/.86 var(--serif); letter-spacing: -.06em; }
+.backyard-hero > div > p:not(.section-kicker) { max-width: 760px; color: rgba(255,255,255,.75); font: 400 clamp(1.1rem, 2vw, 1.45rem)/1.45 var(--serif); }
+.backyard-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.4rem; margin-top: 2rem; }
+.backyard-actions > a:not(.primary-action) { color: white; font-weight: 700; }
+.backyard-stops { padding: clamp(5rem, 10vw, 9rem) clamp(1.2rem, 7vw, 7rem); }
+.backyard-stops > div:last-child { max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.backyard-stops a { min-height: 340px; display: flex; flex-direction: column; padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.backyard-stops a:hover { background: var(--blue); color: white; }
+.stop-number { color: rgba(168,58,50,.3); font: 700 3rem/1 var(--serif); }
+.backyard-stops time { margin: 2rem 0 .4rem; color: var(--red); font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.backyard-stops h3 { margin: 0 0 .8rem; font: 700 2rem/1 var(--serif); }
+.backyard-stops p { color: color-mix(in srgb, currentColor 66%, transparent); font-size: .85rem; }
+.backyard-stops b { margin-top: auto; font-size: .74rem; }
+.backyard-story { max-width: 980px; margin: auto; padding: 2rem 1.2rem 7rem; }
+.backyard-story > header { margin-bottom: 4rem; }
+.backyard-story > header h2 { margin: 0; font: 700 clamp(3rem, 7vw, 6.5rem)/.92 var(--serif); letter-spacing: -.05em; }
+.backyard-story > section { display: grid; grid-template-columns: 65px 1fr; gap: 2rem; padding: 4rem 0; border-top: 1px solid var(--line); }
+.backyard-story > section > span { color: var(--red); font: 700 1rem var(--serif); }
+.backyard-story h3 { margin: 0 0 1.2rem; font: 700 clamp(2rem, 4vw, 3.4rem)/1 var(--serif); }
+.backyard-story section p { font: 400 1.08rem/1.78 var(--serif); }
+.field-note { padding: clamp(4rem, 8vw, 7rem) clamp(1.2rem, 8vw, 8rem); background: var(--blue); color: white; }
+.field-note .section-kicker { color: #e58c80; }
+.field-note h2 { max-width: 900px; margin: 0; font: 700 clamp(2.7rem, 6vw, 6rem)/.94 var(--serif); }
+.field-note > p:not(.section-kicker) { max-width: 760px; color: rgba(255,255,255,.7); font: 400 1.15rem/1.6 var(--serif); }
+.field-note > div { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2rem; }
+.field-note a { color: #e58c80; font-weight: 800; }
+.backyard-sources { max-width: 980px; margin: auto; padding: 1rem 1.2rem 7rem; }
+
 .source-policy, .rights-policy { display: grid; grid-template-columns: .7fr 1.3fr; gap: 4rem; padding: 2.5rem; background: var(--blue); color: white; }
 .source-policy h2, .rights-policy h2 { margin: 0; font: 700 2rem var(--serif); }
 .source-policy p, .rights-policy p { margin: 0; color: rgba(255,255,255,.72); }
@@ -299,6 +349,11 @@ img { max-width: 100%; }
 .about-copy blockquote { margin: 4rem -5rem; padding: 2.5rem 4rem; border-block: 1px solid var(--line); color: var(--blue); font: 700 clamp(2rem, 4vw, 3.7rem)/1.08 var(--serif); }
 .about-copy h2 { margin-top: 5rem; font: 700 clamp(2.4rem, 5vw, 4.8rem)/1 var(--serif); }
 .about-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-top: 4rem; }
+.corrections-note { margin: 5rem -5rem 0; padding: 3rem 5rem; background: var(--blue); color: white; }
+.corrections-note .section-kicker { color: #e58c80; }
+.corrections-note h2 { margin: 0 0 1rem; font: 700 clamp(2.2rem, 4vw, 4rem)/1 var(--serif); }
+.corrections-note p:not(.section-kicker) { color: rgba(255,255,255,.72); }
+.corrections-note a { color: #e58c80; font-weight: 800; }
 
 .site-footer { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; padding: 4rem clamp(1.2rem, 7vw, 7rem); background: #090b0d; color: white; }
 .footer-mark { text-decoration: none; font: 700 2.2rem var(--serif); }
@@ -308,7 +363,8 @@ img { max-width: 100%; }
 .footer-links a { color: rgba(255,255,255,.72); font-size: .78rem; }
 
 @media (max-width: 900px) {
-  .site-header nav { display: none; }
+  .header-inner > nav { display: none; }
+  .mobile-nav { display: block; }
   .hero { min-height: 880px; grid-template-columns: 1fr; }
   .hero-shade { background: linear-gradient(0deg, rgba(3,16,27,.98) 8%, rgba(3,16,27,.55) 72%, rgba(3,16,27,.2)); }
   .hero-copy { grid-column: 1; align-self: end; padding: 5rem 1.4rem 6rem; }
@@ -318,6 +374,7 @@ img { max-width: 100%; }
   .bookend-rule:before { inset-inline: 0; inset-block: auto; height: 1px; width: auto; }
   .bookend-rule span { writing-mode: initial; }
   .depth-grid, .event-grid, .catalog-grid, .collection-doors, .place-path > div, .source-groups section > div { grid-template-columns: 1fr 1fr; }
+  .related-records > div, .backyard-stops > div:last-child { grid-template-columns: 1fr 1fr; }
   .perspective-band { grid-template-columns: 1fr; }
   .chapter-hero { min-height: 66vh; }
   .timeline > section { grid-template-columns: 100px 1fr; }
@@ -336,11 +393,14 @@ img { max-width: 100%; }
   .door-list a { grid-template-columns: 48px 1fr 20px; }
   .chapter-list a { min-height: 140px; grid-template-columns: 48px 1fr 20px; gap: 1rem; }
   .chapter-number { font-size: 2rem; }
-  .chapter-body > section:not(.source-list):not(.related-events) { grid-template-columns: 1fr; gap: .5rem; }
+  .chapter-body > section:not(.source-list):not(.related-events):not(.related-records) { grid-template-columns: 1fr; gap: .5rem; }
   .section-number { border-bottom: 1px solid var(--line); }
   .related-events > div { grid-template-columns: 1fr; }
   .record-facts { grid-template-columns: 1fr; }
   .medium-read > section { grid-template-columns: 1fr; gap: .8rem; }
+  .related-records > div, .backyard-stops > div:last-child { grid-template-columns: 1fr; }
+  .backyard-hero { min-height: 82vh; }
+  .backyard-story > section { grid-template-columns: 1fr; gap: .7rem; }
   .chapter-nav { grid-template-columns: 1fr; }
   .chapter-nav a { min-height: 130px; }
   .longread p, .chapter-body section p { font-size: 1.04rem; line-height: 1.72; }
@@ -354,6 +414,7 @@ img { max-width: 100%; }
   .war-map { min-height: 520px; }
   .map-event-list { grid-template-columns: 1fr; }
   .about-copy blockquote { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
+  .corrections-note { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
   .footer-links { justify-content: start; }
 }
 
