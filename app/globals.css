@@ -217,6 +217,7 @@ img { max-width: 100%; }
 .section-number { padding-top: .5rem; color: var(--red); font: 700 1rem var(--serif); }
 .chapter-body h2 { margin: 0 0 1.4rem; font: 700 clamp(2rem, 4vw, 3.4rem)/1 var(--serif); letter-spacing: -.035em; }
 .chapter-body section p { font: 400 1.12rem/1.82 var(--serif); }
+.chapter-body > section:not(.source-list):not(.related-events):not(.related-records):not(.documentary-reader) > div:last-child > p + p { margin-top: 1.15em; }
 .chapter-body sup a { color: var(--red); font: 700 .7rem var(--sans); text-decoration: none; }
 .narrative-link { text-decoration-color: rgba(168,58,50,.45); text-decoration-thickness: 1px; }
 .narrative-link:hover, .narrative-link:focus-visible { color: var(--red); text-decoration-color: var(--red); }
@@ -455,10 +456,10 @@ img { max-width: 100%; }
 .source-policy h2, .rights-policy h2 { margin: 0; font: 700 2rem var(--serif); }
 .source-policy p, .rights-policy p { margin: 0; color: rgba(255,255,255,.72); }
 .source-guide { margin-top: 4rem; }
-.source-controls { position: sticky; z-index: 4; top: 74px; display: grid; grid-template-columns: 1fr 320px; gap: 1rem; padding: 1.2rem; background: var(--ink); color: white; box-shadow: 0 14px 30px rgba(9,11,13,.12); }
-.source-controls label { display: grid; gap: .45rem; }
+.source-controls { position: sticky; z-index: 4; top: 74px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,320px); gap: 1rem; padding: 1.2rem; background: var(--ink); color: white; box-shadow: 0 14px 30px rgba(9,11,13,.12); }
+.source-controls label { min-width: 0; display: grid; gap: .45rem; }
 .source-controls label span { font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.source-controls input, .source-controls select { min-height: 50px; padding: .75rem .85rem; border: 1px solid rgba(255,255,255,.28); border-radius: 0; background: rgba(255,255,255,.08); color: white; font: inherit; }
+.source-controls input, .source-controls select { width: 100%; min-width: 0; max-width: 100%; min-height: 50px; padding: .75rem .85rem; border: 1px solid rgba(255,255,255,.28); border-radius: 0; background: rgba(255,255,255,.08); color: white; font: inherit; }
 .source-controls input::placeholder { color: rgba(255,255,255,.55); }
 .source-controls select option { color: var(--ink); }
 .source-guide > .result-count { margin: 1rem 0 0; }
@@ -858,7 +859,7 @@ img { max-width: 100%; }
   .timeline article { grid-template-columns: 130px 90px 1fr; }
   .map-event-list { grid-template-columns: 1fr 1fr; }
   .maryland-intro { gap: 2rem; }
-  .source-controls { grid-template-columns: 1fr 240px; }
+  .source-controls { grid-template-columns: minmax(0,1fr) minmax(0,240px); }
   .baltimore-thesis > div { grid-template-columns: 1fr; }
   .baltimore-map-layout { grid-template-columns: 1fr; }
   .baltimore-site-card { min-height: 360px; }
