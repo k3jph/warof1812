@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { events, sources } from "@/lib/content";
 import { people } from "@/lib/catalog";
 import { imageLedger } from "@/lib/images";
+import { gisFeatures } from "@/lib/historical-gis";
 
 export const metadata: Metadata = { title: "Open Data", description: "Download the public event, timeline, people, and source records behind 1812: The Whole Story." };
 
 const downloads = [
   { href: "/data/events.json", title: "Events", count: events.length, description: "Dated public event records with theater, type, chapter, summary, and source references." },
   { href: "/data/events.geojson", title: "Event GeoJSON", count: events.length, description: "Point features with latitude, longitude, coordinate precision, participants, outcomes, and sources." },
+  { href: "/data/historical-gis.geojson", title: "Historical GIS", count: gisFeatures.length, description: "Dated campaign lines, operational zones, homeland regions, freedom-seeking routes, logistics, historical geography, and surviving-site points—with uncertainty and provenance." },
   { href: "/data/timeline.json", title: "Timeline", count: events.length, description: "The event corpus in narrative chronology for timelines and teaching tools." },
   { href: "/data/people.json", title: "People", count: people.length, description: "Public biographical records with roles, significance, evidence labels, chapters, and sources." },
   { href: "/data/sources.json", title: "Sources", count: sources.length, description: "The source registry plus the categories used in the research guide." },
