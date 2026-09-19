@@ -40,7 +40,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div>
         <Link className="footer-mark" href="/">1812 <span>The Whole Story</span></Link>
-        <p>An independent public-history project built to make the war and the evidence beneath it easier to follow.</p>
+        <p>An independent public-history project built to make the war, and the evidence beneath it, easier to follow.</p>
       </div>
       <div className="footer-links">
         <Link href="/about">About</Link>

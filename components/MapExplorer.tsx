@@ -121,7 +121,7 @@ export function MapExplorer({ events }: { events: EventRecord[] }) {
     </div>
 
     {inspection ? <section className="gis-inspection">
-      <header><p className="section-kicker">What was here then?</p><h2>{Math.abs(inspection.coordinate[1]).toFixed(2)}°{inspection.coordinate[1] >= 0 ? "N" : "S"}, {Math.abs(inspection.coordinate[0]).toFixed(2)}°W</h2><p>The nearest mapped evidence, not a claim that every polygon occupied this exact point.</p></header>
+      <header><p className="section-kicker">What was here then?</p><h2>{Math.abs(inspection.coordinate[1]).toFixed(2)}°{inspection.coordinate[1] >= 0 ? "N" : "S"}, {Math.abs(inspection.coordinate[0]).toFixed(2)}°W</h2><p>This is the nearest mapped evidence, not a claim that every polygon occupied this exact point.</p></header>
       <div>{inspection.nearby.map((item) => <button key={item.id} onClick={() => { selectFeature(item.id); setInspection(null); }}><span style={{ "--layer-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} /><small>{layerMap.get(item.properties.layer)?.label}</small><strong>{item.properties.title}</strong><p>{item.properties.then ?? item.properties.summary}</p></button>)}</div>
     </section> : selectedFeature ? <FeatureRecord feature={selectedFeature} /> : selectedEvent ? <EventRecordCard event={selectedEvent} /> : null}
 

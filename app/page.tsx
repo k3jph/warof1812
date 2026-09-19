@@ -21,7 +21,7 @@ export default function Home() {
           <p className="hero-kicker">The war no one explains as one story</p>
           <h1><span>18</span><span>12</span></h1>
           <p className="hero-deck">The United States declares war on the most powerful empire on Earth.</p>
-          <p className="hero-summary">The fighting will stretch from Detroit to the Pacific, from the Great Lakes to the Chesapeake and Gulf, across Indigenous homelands and communities already caught in older struggles over land, empire, slavery, trade, and sovereignty.</p>
+          <p className="hero-summary">The fighting will stretch from Detroit to the Pacific and from the Great Lakes to the Chesapeake and Gulf, crossing Indigenous homelands and communities already caught in older struggles over land, empire, slavery, trade, and sovereignty.</p>
           <div className="hero-actions"><Link className="primary-action" href="/story/world-already-at-war">Begin the story <span>→</span></Link><Link href="/five-minutes">The war in five minutes</Link></div>
         </div>
         <a className="image-credit" href="https://www.loc.gov/pictures/item/2013645001/" target="_blank" rel="noreferrer">John Bower, <em>A View of the Bombardment of Fort McHenry</em>, c. 1819 · Library of Congress · No known restrictions</a>

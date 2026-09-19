@@ -141,7 +141,7 @@ export const documentaryPackets: DocumentaryPacket[] = [
   {
     slug: "cochrane-proclamation", chapterSlug: "blockade", chapterOrder: 9, chapterTitle: "Blockade",
     title: "Proclamation offering reception and resettlement", creator: "Alexander Cochrane", date: "2 April 1814", documentType: "British military proclamation",
-    editorialIntroduction: "The proclamation was a weapon against the American slave system and a route used by people already seeking freedom. Its bureaucratic options, service or resettlement, cannot contain the personal danger of escape.",
+    editorialIntroduction: "The proclamation was a weapon against the American slave system and a route used by people already seeking freedom. Its bureaucratic options of service or resettlement cannot contain the personal danger of escape.",
     diplomatic: "All those who may be disposed to emigrate from the United States, will, with their families, be received on board.",
     modernized: "People leaving the United States could bring their families and seek refuge aboard British ships.",
     transcriptionNote: "The excerpt preserves the proclamation's phrasing while omitting the clauses that specify military service and resettlement.",

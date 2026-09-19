@@ -3,7 +3,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://war1812.jameshoward.us"),
+  metadataBase: new URL("https://war-of-1812-whole-story.k3jph.chatgpt.site"),
   title: { default: "1812: The Whole Story", template: "%s · 1812: The Whole Story" },
   description: "A narrative-first, citation-rich public history of the War of 1812, from the Atlantic crisis to Ghent, New Orleans, and the unequal peace.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
@@ -13,6 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const structuredData = { "@context": "https://schema.org", "@type": "WebSite", name: "1812: The Whole Story", url: "https://war1812.jameshoward.us", description: "A narrative-first, citation-rich public history of the War of 1812." };
+  const structuredData = { "@context": "https://schema.org", "@type": "WebSite", name: "1812: The Whole Story", url: "https://war-of-1812-whole-story.k3jph.chatgpt.site", description: "A narrative-first, citation-rich public history of the War of 1812." };
   return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><SiteHeader />{children}<SiteFooter /></body></html>;
 }

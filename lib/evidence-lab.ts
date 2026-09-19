@@ -123,7 +123,7 @@ export const evidenceClaims: EvidenceClaim[] = [
     contradictions: [
       "Dolley’s agency in giving the order is sometimes treated as proof that she did the manual work herself.",
       "Paul Jennings later rejected the version in which she personally removed the portrait, while still placing her at the center of the decision.",
-      "Accounts differ about who broke the frame, who carried the canvas, and who took it onward, evidence of a chain of custody, not necessarily a single winner.",
+      "Accounts differ about who broke the frame, who carried the canvas, and who took it onward. The disagreement is evidence of a chain of custody, not necessarily a single winner.",
     ],
     evidence: [
       { date: "23–24 August 1814", label: "Dolley’s account", kind: "contemporary", note: "Her letter places the portrait among the objects she was determined to secure before evacuation.", href: "https://www.whitehousehistory.org/questions/how-did-dolley-madison-save-george-washingtons-portrait" },
@@ -178,14 +178,14 @@ export const evidenceClaims: EvidenceClaim[] = [
     contradictions: [
       "The treaty was signed on December 24; the main battle occurred on January 8.",
       "Peace was not yet legally complete: the United States ratified the treaty in February, which explains why fighting continued without making the battle the cause of the signed agreement.",
-      "The memorable final victory obscures both earlier defeats and the coalition, including free Black battalions, Choctaw fighters, militia, regulars, sailors, and Baratarians, that defended the city.",
+      "The memorable final victory obscures both earlier defeats and the coalition of free Black battalions, Choctaw fighters, militia, regulars, sailors, and Baratarians that defended the city.",
     ],
     evidence: [
       { date: "24 December 1814", label: "Treaty signed at Ghent", kind: "contemporary", note: "Negotiators agreed to restore conquered territory and end the war without settling the maritime issues that had helped produce it.", href: "/events/treaty-ghent" },
       { date: "8 January 1815", label: "Main Battle of New Orleans", kind: "contemporary", note: "British troops attacked Jackson’s prepared line and suffered severe losses.", href: "/events/new-orleans" },
       { date: "16 February 1815", label: "U.S. Senate consents", kind: "contemporary", note: "American ratification came after news of both treaty and battle arrived.", href: "/events/us-ratification" },
       { date: "Postwar politics", label: "Jackson becomes a national figure", kind: "later", note: "The victory’s political afterlife was immense even though its diplomatic role was not." },
-      { date: "Popular retelling", label: "Last battle becomes final cause", kind: "later", note: "Narrative order, great victory followed by celebrated peace, encouraged a causal connection the calendar does not support." },
+      { date: "Popular retelling", label: "Last battle becomes final cause", kind: "later", note: "Narrative order, with a great victory followed by celebrated peace, encouraged a causal connection the calendar does not support." },
     ],
     memoryPath: [
       { date: "December 1814", title: "Peace on paper", note: "Diplomats sign an agreement, but slow Atlantic communication leaves armies in the field." },
@@ -213,7 +213,7 @@ export const evidenceClaims: EvidenceClaim[] = [
     earliest: {
       date: "14 September 1814",
       label: "Francis Scott Key’s lyric",
-      note: "The poem’s “rockets’ red glare” and “bombs bursting in air” are near-immediate evidence of flashes during the bombardment, and of uncertainty relieved only in moments.",
+      note: "The poem’s “rockets’ red glare” and “bombs bursting in air” are near-immediate evidence of flashes during the bombardment and of uncertainty relieved only in moments.",
       href: "/explore/documents/defence-fort-mhenry",
     },
     accepted: [
@@ -231,7 +231,7 @@ export const evidenceClaims: EvidenceClaim[] = [
       "The surviving flag’s exact hour-by-hour use can be reconstructed with certainty.",
     ],
     contradictions: [
-      "The lyric’s question, whether the banner still waves, expresses impaired visibility, not an uninterrupted view.",
+      "The lyric’s question of whether the banner still waves expresses impaired visibility, not an uninterrupted view.",
       "The great flag’s scale makes it central to memory, but the fort possessed a smaller storm flag suited to bad weather.",
       "Later images often show a clear, cinematic sky; accounts of the night describe rain, smoke, distance, and darkness.",
     ],
@@ -261,7 +261,7 @@ export const evidenceClaims: EvidenceClaim[] = [
     number: "05",
     title: "An organized Filipino contingent fought at New Orleans",
     familiarVersion: "Hundreds of Filipino sailors from the St. Malo settlement fought as a distinct unit under Andrew Jackson at the Battle of New Orleans.",
-    verdict: "Filipino and Asian maritime presence in Louisiana has a real history, and individual participation at New Orleans remains possible. The stronger claim, a separately organized Filipino or “Manilamen” contingent often supplied with a precise large number, has not been established by the available military rolls or contemporary battle accounts. Community tradition is evidence of memory and identity; it is not automatically a roster.",
+    verdict: "Filipino and Asian maritime presence in Louisiana has a real history, and individual participation at New Orleans remains possible. The stronger claim of a separately organized Filipino or “Manilamen” contingent, often supplied with a precise large number, has not been established by the available military rolls or contemporary battle accounts. Community tradition is evidence of memory and identity; it is not automatically a roster.",
     state: "unsupported",
     confidence: 89,
     confidenceNote: "High confidence that the organized-contingent claim lacks current documentary support; individual service remains an open research question.",
