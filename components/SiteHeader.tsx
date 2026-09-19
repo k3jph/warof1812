@@ -42,16 +42,6 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="footer-identity">
-        <a className="publisher-mark" href="https://jameshoward.us" aria-label="James Howard, publisher">
-          <img src="https://jameshoward.us/assets/img/identity/jh-badge-1x1.svg" alt="" width="52" height="52" aria-hidden="true" />
-          <span>
-            <strong>war1812.jameshoward.us</strong>
-            <span>A website of James Howard</span>
-          </span>
-        </a>
-        <p className="footer-copyright">Copyright © 2026 James P. Howard, II</p>
-      </div>
       <div className="footer-links">
         <Link href="/about">About</Link>
         <Link href="/sources">Sources &amp; research guide</Link>
@@ -64,6 +54,16 @@ export function SiteFooter() {
         <Link href="/twenty-minutes">The war in twenty minutes</Link>
         <Link href="/backyard">Maryland field guide</Link>
         <Link href="/baltimore">Baltimore, 1812–1814</Link>
+      </div>
+      <div className="footer-identity">
+        <a className="publisher-mark" href="https://jameshoward.us" aria-label="James Howard, publisher">
+          <img src="https://jameshoward.us/assets/img/identity/jh-badge-1x1.svg" alt="" width="52" height="52" aria-hidden="true" />
+          <span>
+            <strong>war1812.jameshoward.us</strong>
+            <span>A website of James Howard</span>
+          </span>
+        </a>
+        <p className="footer-copyright">Copyright © 2026 James P. Howard, II</p>
       </div>
     </footer>
   );
