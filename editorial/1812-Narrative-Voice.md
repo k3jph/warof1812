@@ -54,11 +54,15 @@ Use direct sentences. Use technical terms when they perform necessary work, then
 
 Vary sentence and paragraph length. A short sentence may follow a longer explanation when the result needs no ornament. Parentheses may carry a genuine qualification or side observation. They should not become a hiding place for essential facts.
 
+Allow greater paragraph irregularity. Do not normalize long-form prose into consistently medium-sized paragraphs. A thought that needs one sentence may receive one sentence. A closely connected argument may occasionally need a substantially longer paragraph. Let the reasoning determine the paragraph rather than a visual rhythm.
+
 Keep some productive roughness. Do not smooth every transition into magazine prose. Do not make every paragraph the same size. Do not make every section end with a miniature moral.
 
 Dry humor is allowed when it comes from a documented mechanism, contradiction, or bureaucratic absurdity. Do not schedule jokes. Do not write cute history. The dead are not performers hired to entertain the reader.
 
 Do not optimize for quotability. A memorable sentence may result from a plain conclusion. Do not manufacture one.
+
+Do not overproduce aphoristic or quotable endings. Plenty of paragraphs and sections should simply end on a fact, consequence, detail, date, uncertainty, or transition. Preserve sharp short conclusions when they arise naturally, but do not make every section earn one. If several consecutive sections end with compact thesis-like sentences, flatten at least one.
 
 ## Public-history practice
 

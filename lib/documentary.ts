@@ -86,7 +86,7 @@ export const documentaryPackets: DocumentaryPacket[] = [
   {
     slug: "lawrence-last-command", chapterSlug: "old-ironsides", chapterOrder: 4, chapterTitle: "“Old Ironsides” and the War at Sea",
     title: "The reported last command of James Lawrence", creator: "James Lawrence, as remembered by survivors", date: "1 June 1813", documentType: "Attributed battlefield utterance",
-    editorialIntroduction: "The phrase became more durable than the defeat in which it was spoken. Treating it as transmitted memory—rather than a stenographic record—shows how sailors and newspapers converted loss into usable heroism.",
+    editorialIntroduction: "The phrase became more durable than the defeat in which it was spoken. Treating it as transmitted memory–rather than a stenographic record–shows how sailors and newspapers converted loss into usable heroism.",
     diplomatic: "Don't give up the ship. Fight her till she sinks.",
     modernized: "Continue fighting and do not surrender the ship, even if she is destroyed.",
     transcriptionNote: "This is an attributed recollection with variant wording, not a signed document. The uncertainty is part of the record.",
@@ -141,7 +141,7 @@ export const documentaryPackets: DocumentaryPacket[] = [
   {
     slug: "cochrane-proclamation", chapterSlug: "blockade", chapterOrder: 9, chapterTitle: "Blockade",
     title: "Proclamation offering reception and resettlement", creator: "Alexander Cochrane", date: "2 April 1814", documentType: "British military proclamation",
-    editorialIntroduction: "The proclamation was a weapon against the American slave system and a route used by people already seeking freedom. Its bureaucratic options—service or resettlement—cannot contain the personal danger of escape.",
+    editorialIntroduction: "The proclamation was a weapon against the American slave system and a route used by people already seeking freedom. Its bureaucratic options–service or resettlement–cannot contain the personal danger of escape.",
     diplomatic: "All those who may be disposed to emigrate from the United States, will, with their families, be received on board.",
     modernized: "People leaving the United States could bring their families and seek refuge aboard British ships.",
     transcriptionNote: "The excerpt preserves the proclamation's phrasing while omitting the clauses that specify military service and resettlement.",
@@ -219,7 +219,7 @@ export const documentaryPackets: DocumentaryPacket[] = [
   {
     slug: "treaty-ghent-article-one", chapterSlug: "peace-at-ghent", chapterOrder: 16, chapterTitle: "Peace at Ghent",
     title: "Treaty of Ghent, Article I", creator: "British and American plenipotentiaries", date: "24 December 1814", documentType: "Bilateral peace treaty",
-    editorialIntroduction: "The first article restores peace and territory. What it does not mention—impressment and neutral rights—is as important as what it commands.",
+    editorialIntroduction: "The first article restores peace and territory. What it does not mention–impressment and neutral rights–is as important as what it commands.",
     diplomatic: "There shall be a firm and universal Peace between His Britannic Majesty and the United States.",
     modernized: "Britain and the United States agreed to a comprehensive peace.",
     transcriptionNote: "Capitalization follows the diplomatic transcription published by the Avalon Project.",
@@ -245,7 +245,7 @@ export const documentaryPackets: DocumentaryPacket[] = [
     diplomatic: "The naval force to be maintained upon the American lakes by His Majesty and the Government of the United States shall be confined.",
     modernized: "Britain and the United States agreed to strict limits on warships kept on the Great Lakes.",
     transcriptionNote: "The excerpt retains the formal diplomatic syntax while omitting the vessel-by-vessel limits that follow.",
-    annotations: [{ term: "exchange of notes", note: "Matching diplomatic letters that together created an international agreement." }, { term: "confined", note: "Restricted to specified numbers, armament, and size—not abolished without exception." }],
+    annotations: [{ term: "exchange of notes", note: "Matching diplomatic letters that together created an international agreement." }, { term: "confined", note: "Restricted to specified numbers, armament, and size–not abolished without exception." }],
     repository: "Office of the Historian, U.S. Department of State", collection: "Milestones in the History of U.S. Foreign Relations", identifier: "Rush–Bagot Agreement, 1817", provenance: "Parallel diplomatic notes later treated as a binding bilateral arrangement.", sourceUrl: "https://history.state.gov/milestones/1801-1829/rush-bagot", rights: "Public-domain diplomatic record.",
     counterpoint: { title: "Treaty promises and Indigenous dispossession", creator: "United States treaty system and Native petitioners", date: "1815 and after", summary: "A quieter international border coexisted with accelerating United States pressure on Indigenous homelands south of it; peace between states did not mean restored security for Native nations.", sourceUrl: "https://www.nps.gov/subjects/warof1812/legacies-of-the-war-of-1812.htm" }
   }

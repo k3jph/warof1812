@@ -54,7 +54,7 @@ export function WarClock() {
       </section>
 
       <section className="knowledge-lag">
-        <header><p className="section-kicker">Knowledge horizon</p><h2>What has happened—but may not be known?</h2><p>Choose a route and conditions. The shaded window is not a precise delivery prediction; it makes information latency visible.</p></header>
+        <header><p className="section-kicker">Knowledge horizon</p><h2>What has happened–but may not be known?</h2><p>Choose a route and conditions. The shaded window is not a precise delivery prediction; it makes information latency visible.</p></header>
         <div className="lag-controls">
           <label>Route<select value={routeId} onChange={(event) => setRouteId(event.target.value)}>{communicationRoutes.map((item) => <option value={item.id} key={item.id}>{item.from} → {item.to}</option>)}</select></label>
           <label>Conditions<select value={conditions} onChange={(event) => setConditions(event.target.value as typeof conditions)}><option value="best">Fast favorable passage</option><option value="typical">Typical estimate</option><option value="severe">Severe delay</option></select></label>

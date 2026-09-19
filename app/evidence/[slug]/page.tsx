@@ -42,7 +42,7 @@ export default async function EvidenceCasePage({ params }: { params: Promise<{ s
       </section>
 
       <section className="evidence-ledger" aria-labelledby="ledger-title">
-        <header><p className="section-kicker">Evidence ledger</p><h2 id="ledger-title">What the record can—and cannot—do</h2></header>
+        <header><p className="section-kicker">Evidence ledger</p><h2 id="ledger-title">What the record can–and cannot–do</h2></header>
         <div>
           {claim.evidence.map((item, index) => (
             <article data-kind={item.kind} key={`${item.date}-${item.label}`}>

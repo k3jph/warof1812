@@ -51,7 +51,7 @@ export const perspectives: Perspective[] = [
   },
   {
     slug: "slavery-and-freedom", number: "02", title: "Slavery & Freedom Seeking", shortTitle: "Freedom seeking", accent: "#b94e82",
-    subtitle: "Follow people who turned imperial war into an opening—while both belligerents used Black service without accepting Black equality.",
+    subtitle: "Follow people who turned imperial war into an opening–while both belligerents used Black service without accepting Black equality.",
     question: "What does the war look like when freedom seeking, rather than state policy, drives the route?",
     thesis: "British strategy created openings, but enslaved people made the decisive choices: gathering intelligence, reaching ships, enlisting, evacuating, and building new communities after the peace.",
     introduction: ["This pathway refuses to treat emancipation as a gift bestowed by an empire. Cochrane's proclamation mattered because people already searching for escape acted on it.", "The route also holds several Black experiences together: enslavement and flight in the Chesapeake, Loyalist settlement and militia service in Upper Canada, free Black military service in Louisiana, and coerced labor inside a celebrated Baltimore household."],
@@ -65,7 +65,7 @@ export const perspectives: Perspective[] = [
       stage("Gulf and aftermath", "Service, refuge, diaspora", "Free Black units defended New Orleans while Black refugees from British lines formed communities in Nova Scotia and Trinidad.", "The peace produced no single Black outcome: service, liberation, discrimination, mobility, and exclusion coexisted.", [ref("people","jordan-noble"),ref("events","new-orleans"),ref("events","black-refugee-resettlement"),ref("story","what-changed")], ["nps-new-orleans-black","nps-freedom-2"]),
     ],
     tensions: ["British strategy versus Black agency", "Military service versus civil equality", "National iconography versus racialized labor"],
-    conclusion: "This route transforms the Chesapeake from the setting of raids into a geography of freedom seeking—and makes the postwar Black Atlantic one of the war's major outcomes."
+    conclusion: "This route transforms the Chesapeake from the setting of raids into a geography of freedom seeking–and makes the postwar Black Atlantic one of the war's major outcomes."
   },
   {
     slug: "women-and-household-labor", number: "03", title: "Women & Household Labor", shortTitle: "Women and labor", accent: "#c76b52",
@@ -105,7 +105,7 @@ export const perspectives: Perspective[] = [
   },
   {
     slug: "british-north-america", number: "05", title: "British North America", shortTitle: "British North America", accent: "#6f8158",
-    subtitle: "Follow Upper and Lower Canada as colonies defended by imperial troops, local militia, Black settlers, and Indigenous allies—not a modern nation acting in unison.",
+    subtitle: "Follow Upper and Lower Canada as colonies defended by imperial troops, local militia, Black settlers, and Indigenous allies–not a modern nation acting in unison.",
     question: "How can the Canadian story be told without projecting Canada backward into 1812?",
     thesis: "British North America survived invasion through an imperial and local coalition whose participants did not share one identity, one purpose, or equal power.",
     introduction: ["This path treats later Canadian memory as an outcome to be explained, not a starting assumption. Upper Canada was vulnerable, politically divided, and dependent on waterways and alliance.", "It follows defense, occupation, retaliation, logistics, and the gradual conversion of wartime survival into a national origin story."],
@@ -173,12 +173,12 @@ export const perspectives: Perspective[] = [
       stage("Afterward", "A local survival becomes a national symbol", "Key's lyric and the great flag traveled far beyond the defensive system that produced them.", "National memory magnified Baltimore while often losing the riots, privateering, household labor, and bay communities around it.", [ref("documents","defence-fort-mhenry"),ref("objects","star-spangled-banner"),ref("objects","fort-mchenry-bombardment-print"),ref("story","what-changed")], ["smithsonian-flag","nps-creating-legacies"]),
     ],
     tensions: ["Partisan fracture versus wartime unity", "Local defense versus national memory", "One iconic night versus a two-year Chesapeake war"],
-    conclusion: "Maryland turns the war into a problem of political transformation: how a city capable of murdering dissenters became a disciplined defensive system—and how that complicated story was compressed into a flag."
+    conclusion: "Maryland turns the war into a problem of political transformation: how a city capable of murdering dissenters became a disciplined defensive system–and how that complicated story was compressed into a flag."
   },
   {
     slug: "material-war", number: "09", title: "The Material War", shortTitle: "Material objects", accent: "#9a7041",
     subtitle: "Let documents, ships, flags, weapons, shipyards, earthworks, and printed images carry the narrative.",
-    question: "What can an object prove—and what stories have later owners made it carry?",
+    question: "What can an object prove–and what stories have later owners made it carry?",
     thesis: "The war was assembled from things. Material evidence reveals labor, technology, scale, damage, custody, and memory that heroic narrative routinely smooths away.",
     introduction: ["This path treats an identity paper, a frigate, a battle flag, a rocket, a treaty, and a print as historical arguments rather than illustrations.", "Objects are not transparent. Their survival is selective; captions can overclaim; conservation changes appearance; and a later national relic may have begun as an ordinary working tool."],
     tags: ["objects", "technology", "labor", "provenance"],

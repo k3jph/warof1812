@@ -1523,7 +1523,7 @@ img { max-width: 100%; }
   .chapter-case-files { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
 }
 
-/* Historical systems — responsive */
+/* Historical systems – responsive */
 @media (max-width: 1100px) {
   .systems-header, .interactive-intro, .people-lab-header, .human-detail-core,
   .relationship-graph > header, .archive-visibility > header, .human-movement > header,

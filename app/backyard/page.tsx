@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/components/SafeLink";
 import { SourceList } from "@/components/SourceList";
 
-export const metadata: Metadata = { title: "History in Your Own Backyard", description: "A mobile field guide to the War of 1812 in Maryland—from Chesapeake raids and Bladensburg to North Point and Fort McHenry." };
+export const metadata: Metadata = { title: "History in Your Own Backyard", description: "A mobile field guide to the War of 1812 in Maryland–from Chesapeake raids and Bladensburg to North Point and Fort McHenry." };
 
 const stops = [
   ["Havre de Grace", "3 May 1813", "A British raid burned much of the town and showed how quickly naval power could reach civilian streets.", "/places/havre-de-grace"],
@@ -27,7 +27,7 @@ export default function BackyardPage() {
         <section><span>05</span><div><h3>The flag becomes evidence</h3><p>Mary Pickersgill’s household made two flags for Fort McHenry: a smaller storm flag and the enormous garrison flag now held by the Smithsonian. Grace Wisher, a young African American indentured servant, was part of that skilled household labor. The object’s history is therefore also a history of work, race, gender, and power in wartime Baltimore.</p><p>Francis Scott Key watched from a truce vessel after helping secure the release of Dr. William Beanes. At morning, the flag told him the fort had not surrendered. His poem became a song and, much later, a national anthem. The immediate military result was more concrete: Baltimore remained beyond British control.</p></div></section>
       </article>
 
-      <aside className="field-note"><p className="section-kicker">When you visit</p><h2>Read the landscape, not just the monument</h2><p>Ask what a defender could see, how troops and supplies moved, where water controlled access, and whose labor created the position. Then ask who is easiest to commemorate—and who is easiest to lose.</p><div><Link href="/story/baltimore-holds">Read the complete Baltimore chapter →</Link><Link href="/objects/star-spangled-banner">Examine the garrison flag →</Link><Link href="/people/grace-wisher">Meet Grace Wisher →</Link></div></aside>
+      <aside className="field-note"><p className="section-kicker">When you visit</p><h2>Read the landscape, not just the monument</h2><p>Ask what a defender could see, how troops and supplies moved, where water controlled access, and whose labor created the position. Then ask who is easiest to commemorate–and who is easiest to lose.</p><div><Link href="/story/baltimore-holds">Read the complete Baltimore chapter →</Link><Link href="/objects/star-spangled-banner">Examine the garrison flag →</Link><Link href="/people/grace-wisher">Meet Grace Wisher →</Link></div></aside>
       <div className="backyard-sources"><SourceList ids={["nps-living", "nps-freedom-1", "nhhc-flotilla", "nps-baltimore", "nps-north-point", "nps-bombardment", "nps-grace", "smithsonian-flag"]} heading="Sources for this field guide" /></div>
     </main>
   );

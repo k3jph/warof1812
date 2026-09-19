@@ -13,7 +13,7 @@ function evidenceRecord(reference: PerspectiveRef) {
   if (reference.kind === "story") { const record=chapterBySlug[reference.slug]; return record && { title:record.title, eyebrow:record.eyebrow, summary:record.lede, sourceRefs:record.sourceRefs }; }
   if (reference.kind === "events") { const record=events.find((item)=>item.id===reference.slug); return record && { title:record.title, eyebrow:`${record.date} · ${record.place}`, summary:record.summary, sourceRefs:record.sourceRefs }; }
   if (reference.kind === "edition") { const record=documentaryBySlug[reference.slug]; return record && { title:record.title, eyebrow:`Documentary edition · ${record.date}`, summary:record.editorialIntroduction, sourceRefs:[] as string[] }; }
-  if (reference.kind === "map") return { title:reference.label ?? "Historical GIS", eyebrow:"Spatial evidence", summary:"Compare dated routes, regions, operational zones, and surviving places—with construction notes and confidence labels.", sourceRefs:[] as string[] };
+  if (reference.kind === "map") return { title:reference.label ?? "Historical GIS", eyebrow:"Spatial evidence", summary:"Compare dated routes, regions, operational zones, and surviving places–with construction notes and confidence labels.", sourceRefs:[] as string[] };
   const record=allCatalogRecords.find((item)=>item.kind===reference.kind&&item.slug===reference.slug);
   return record && { title:record.name, eyebrow:`${reference.kind} · ${record.eyebrow}`, summary:record.summary, sourceRefs:record.sourceRefs };
 }
