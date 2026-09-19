@@ -6,5 +6,5 @@ export async function GET() {
     void displayY;
     return { ...event, storyUrl: `/story/${event.chapter}`, eventUrl: `/events/${event.id}` };
   });
-  return Response.json({ title: "1812: The Whole Story – Timeline", generatedFrom: "/timeline", ordering: "Narrative chronology; date labels preserve ranges and approximate years.", recordCount: records.length, records }, { headers: { "Content-Disposition": "attachment; filename=1812-timeline.json", "Cache-Control": "public, max-age=300" } });
+  return Response.json({ title: "1812: The Whole Story: Timeline", generatedFrom: "/timeline", ordering: "Narrative chronology; date labels preserve ranges and approximate years.", recordCount: records.length, records }, { headers: { "Content-Disposition": "attachment; filename=1812-timeline.json", "Cache-Control": "public, max-age=300" } });
 }
