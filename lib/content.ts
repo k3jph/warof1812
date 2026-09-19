@@ -292,11 +292,18 @@ const baseChapters: Chapter[] = [
   },
 ];
 
+const evidenceAdditions: Record<string, NonNullable<ChapterSection["evidence"]>> = {
+  "easy-conquest-that-wasnt": { familiar: "Most Canadians would welcome invasion and British North America would fall with little resistance.", documented: "British regulars, Canadian militia, and Indigenous allies resisted; American logistics, command, and militia limits repeatedly undermined invasion.", uncertain: "Individual loyalties varied by locality, and later national memories cannot be projected backward onto every resident." },
+  "old-ironsides": { familiar: "American frigate victories proved the United States had defeated Britain at sea.", documented: "The victories were real tactical achievements with major morale value, while the Royal Navy retained strategic command and tightened the blockade.", uncertain: "Eyewitness language and later iconography do not always permit a precise reconstruction of every exchange of fire." },
+  "washington-burns": { familiar: "Dolley Madison personally removed the Washington portrait moments before the British arrived.", documented: "She ordered its rescue; staff and laborers physically removed and carried the portrait while the household evacuated.", uncertain: "Later recollections differ over timing and individual roles, especially for people whose labor official records rarely named." },
+  "what-changed": { familiar: "One nation won the War of 1812 in a single, uncomplicated sense.", documented: "The treaty restored territory between states, British North America survived, American nationalism grew, and Indigenous political power suffered a severe defeat.", uncertain: "Any answer depends on the participant, objective, geography, and time horizon being measured." },
+};
+
 const expandedChapters: Chapter[] = baseChapters.map((chapter) => {
   const pilot = pilotChapters[chapter.slug];
   if (pilot) return { ...chapter, ...pilot };
   const expansion = chapterExpansions[chapter.slug];
-  return expansion ? { ...chapter, ...expansion } : chapter;
+  return expansion ? { ...chapter, sections: [...chapter.sections, { heading: expansion.heading, paragraphs: expansion.paragraphs, evidence: evidenceAdditions[chapter.slug] }], voice: expansion.voice } : chapter;
 });
 
 export type EventRecord = {
@@ -358,7 +365,7 @@ const baseEvents: Omit<EventRecord, keyof (typeof eventDetails)[string]>[] = [
 export const events: EventRecord[] = baseEvents.map((event) => ({ ...event, ...eventDetails[event.id] }));
 
 export const chapters: Chapter[] = expandedChapters.map((chapter) => {
-  if (pilotChapters[chapter.slug] || chapterExpansions[chapter.slug]) return chapter;
+  if (pilotChapters[chapter.slug]) return chapter;
   const eventParagraphs = events.filter((event) => chapter.relatedEvents.includes(event.id)).map((event) => `${event.date}: ${event.summary} ${event.outcome} Its larger significance: ${event.significance} Participants named in this record include ${event.participants.join(", ")}.`);
   const recordParagraphs = allCatalogRecords.filter((record) => record.chapter === chapter.slug).map((record) => `${record.name}: ${record.summary} ${record.significance}`);
   const dossier = [...eventParagraphs, ...recordParagraphs];
