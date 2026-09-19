@@ -2,9 +2,7 @@
 
 **1812: The Whole Story** is a citation-rich public-history site about the War of 1812. Its nineteen-chapter narrative follows the war across the Atlantic, Great Lakes, Indigenous homelands, Chesapeake, Gulf Coast, Pacific, diplomatic table, and later public memory. Reference collections, source packets, evidence panels, maps, objects, and interactive systems let readers inspect the record beneath the narrative.
 
-Current hosted build: <https://war-of-1812-whole-story.k3jph.chatgpt.site>
-
-The intended canonical hostname is `war1812.jameshoward.us`. It should replace the temporary URL in site metadata only after DNS and deployment are ready.
+Canonical site: <https://war1812.jameshoward.us>
 
 ## Local development
 
