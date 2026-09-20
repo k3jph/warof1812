@@ -27,13 +27,13 @@ export default async function EvidenceCasePage({ params }: { params: Promise<{ s
       <header className="case-hero">
         <div className="case-hero-number"><span>Case file</span><b>{claim.number}</b><small>of {String(evidenceClaims.length).padStart(2, "0")}</small></div>
         <div className="case-hero-copy"><p className="section-kicker">Evidence laboratory</p><h1>{claim.title}</h1><p>{claim.familiarVersion}</p></div>
-        <div className="verdict-stamp"><small>Assessment</small><strong>{claimStateLabel[claim.state]}</strong><div><span>Confidence</span><b>{claim.confidence}%</b></div><i aria-hidden="true"><span style={{ width: `${claim.confidence}%` }} /></i></div>
+        <div className="verdict-stamp"><small>Assessment</small><strong>{claimStateLabel[claim.state]}</strong><div><span>Evidence status</span><b>{claim.evidenceStatus}</b></div></div>
       </header>
 
       <section className="case-verdict">
         <p className="section-kicker">Finding</p>
         <h2>{claim.verdict}</h2>
-        <p>{claim.confidenceNote}</p>
+        <p>{claim.statusNote}</p>
       </section>
 
       <section className="earliest-trace">

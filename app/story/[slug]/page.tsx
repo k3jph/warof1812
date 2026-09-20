@@ -20,6 +20,11 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
   if (!chapter) notFound();
   const related = events.filter((event) => chapter.relatedEvents.includes(event.id));
   const documentaryPacket = documentaryByChapter[chapter.slug];
+  const sourceIds = Array.from(new Set([
+    ...chapter.sourceRefs,
+    ...chapter.sections.flatMap((section) => section.sourceRefs ?? []),
+    ...(chapter.voice ? [chapter.voice.sourceRef] : []),
+  ]));
   return (
     <main id="main" className="chapter-page">
       <header className="chapter-hero"><div className="chapter-progress"><span style={{ width: `${((chapter.order + 1) / chapters.length) * 100}%` }} /></div><div className="chapter-title-wrap"><p className="section-kicker">{chapter.eyebrow}</p><h1>{chapter.title}</h1><p className="chapter-subtitle">{chapter.subtitle}</p><div className="chapter-tags"><span>{chapter.date}</span>{chapter.theaters.map((item) => <span key={item}>{item}</span>)}</div></div></header>
@@ -28,13 +33,13 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
         <PerspectiveThreads chapter={chapter.slug} />
         <EvidenceCases chapter={chapter.slug} />
         <ChapterVisualEvidence chapter={chapter.slug} />
-        {chapter.sections.map((section, sectionIndex) => <section key={section.heading}><div className="section-number">{String(sectionIndex + 1).padStart(2, "0")}</div><div><h2>{section.heading}</h2>{section.paragraphs.map((paragraph, index) => <p key={index}><LinkedText text={paragraph} />{index === section.paragraphs.length - 1 && sectionIndex === chapter.sections.length - 1 ? <sup><a href={`#source-${chapter.sourceRefs[0]}`}>1</a></sup> : null}</p>)}{section.sourceRefs?.length ? <p className="section-source-route"><span>Evidence for this section</span>{section.sourceRefs.map((id) => sourceById[id] ? <a href={`#source-${id}`} key={id}>{sourceById[id].title}</a> : null)}</p> : null}{section.evidence && <aside className="evidence-box"><p className="section-kicker">History / Memory / Evidence</p><h3>The familiar story</h3><p><LinkedText text={section.evidence.familiar} /></p><h3>What the evidence shows</h3><p><LinkedText text={section.evidence.documented} /></p>{section.evidence.uncertain && <><h3>What remains uncertain</h3><p><LinkedText text={section.evidence.uncertain} /></p></>}</aside>}</div></section>)}
+        {chapter.sections.map((section, sectionIndex) => <section key={section.heading}><div className="section-number">{String(sectionIndex + 1).padStart(2, "0")}</div><div><h2>{section.heading}</h2>{section.paragraphs.map((paragraph, index) => <p key={index}><LinkedText text={paragraph} /></p>)}{section.sourceRefs?.length ? <p className="section-source-route"><span>Evidence for this section</span>{section.sourceRefs.map((id) => sourceById[id] ? <a href={`#source-${id}`} key={id}>{sourceById[id].title}</a> : null)}</p> : null}{section.evidence && <aside className="evidence-box"><p className="section-kicker">History / Memory / Evidence</p><h3>The familiar story</h3><p><LinkedText text={section.evidence.familiar} /></p><h3>What the evidence shows</h3><p><LinkedText text={section.evidence.documented} /></p>{section.evidence.uncertain && <><h3>What remains uncertain</h3><p><LinkedText text={section.evidence.uncertain} /></p></>}</aside>}</div></section>)}
         {chapter.voice && <aside className="primary-voice"><p className="section-kicker">Primary-source window</p><h2>{chapter.voice.label}</h2><blockquote>{chapter.voice.excerpt}</blockquote><p>{chapter.voice.attribution} · <a href={`#source-${chapter.voice.sourceRef}`}>source note</a></p></aside>}
         {documentaryPacket && <DocumentaryReader packet={documentaryPacket} />}
         <aside className="participation-audit"><p className="section-kicker">Who else was here?</p><h2>Communities in this chapter</h2><div>{chapter.communities.map((community) => <span key={community}>{community}</span>)}</div><p>These labels are research pathways, not claims that every member of a community shared one allegiance or experience.</p></aside>
         {related.length > 0 && <section className="related-events"><p className="section-kicker">From the event corpus</p><h2>Events in this movement</h2><div>{related.map((event) => <article key={event.id}><time>{event.date}</time><h3><a href={`/events/${event.id}`}>{event.title}</a></h3><p>{event.summary}</p></article>)}</div><a className="map-path" href="/map">See these events on the map →</a></section>}
         <RelatedRecords chapter={chapter.slug} />
-        <SourceList ids={chapter.sourceRefs} />
+        <SourceList ids={sourceIds} />
       </article>
       <ChapterNav current={chapter.order} />
     </main>

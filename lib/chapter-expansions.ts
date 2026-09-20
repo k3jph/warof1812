@@ -79,7 +79,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       }
     ],
     sourceRefs: ["nara-impressment", "house-declaration", "nps-indigenous", "loc-guide", "nara-war", "cwm"],
-    voice: { label: "A neutral nation closes its ports", excerpt: "An embargo be, and hereby is, laid on all ships and vessels within the limits and jurisdiction of the United States.", attribution: "Embargo Act, 22 December 1807", sourceRef: "loc-guide" }
+    voice: { label: "A neutral nation closes its ports", excerpt: "An embargo be, and hereby is, laid on all ships and vessels in the ports and places within the limits or jurisdiction of the United States ...", attribution: "Embargo Act, 22 December 1807, 2 Stat. 451, section 1", sourceRef: "primary-embargo-act" }
   },
 
   "why-war": {
@@ -99,7 +99,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         heading: "The closest declaration",
         sourceRefs: ["house-declaration", "loc-newspapers", "nara-war"],
         paragraphs: [
-          "The House approved war 79 to 49. The Senate approved it 19 to 13 after delays and efforts to narrow or redirect the measure. No earlier American declaration of war existed, and no later declaration would pass by so small a proportion. Voting followed party and region but not mechanically. Most Federalists opposed the bill. Republicans supplied nearly all its support, while a meaningful number of Republicans also voted no.",
+          "The House approved war 79 to 49. The Senate approved it 19 to 13 after delays and efforts to narrow or redirect the measure. No earlier American declaration of war existed, and no later declaration would pass by so small a proportion. Voting followed party and region but not mechanically. All 39 Federalists serving in Congress voted against the declaration. Republicans supplied all its support, while a meaningful number of Republicans also voted no.",
           "Geography reflected exposure and expectation. Representatives from the South and West tended to support war. Commercial New England contained the strongest opposition. Yet port cities were not uniformly antiwar, and western members did not speak with one mind. A roll call records a decision, not the pressures behind each name. Constituents, local credit, party discipline, newspaper campaigns, and estimates of military readiness rarely survive in equal measure.",
           "The declaration enacted on June 18 named the United Kingdom, its dependencies, and its subjects. It did not state a detailed list of war aims. That omission gave the government room to wage the conflict, but it also left Americans to argue whether conquering British territory was a means of bargaining, a defensive necessity, an object worth keeping, or evidence that expansion had been the purpose all along.",
           "The United States entered war divided in a way visible to the enemy. Opposition would affect loans, militia cooperation, elections, and enforcement. It would also remain lawful political opposition until officials or crowds decided to treat it otherwise. Baltimore provided the first violent warning four days after the declaration."
@@ -158,7 +158,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       }
     ],
     sourceRefs: ["house-declaration", "nara-impressment", "army-campaign-1812", "cwm", "founders-jefferson-duane", "loc-newspapers"],
-    voice: { label: "The administration's case", excerpt: "British cruisers have been in the continued practice of violating the American flag on the great highway of nations.", attribution: "James Madison, message to Congress, 1 June 1812", sourceRef: "house-declaration" }
+    voice: { label: "The administration's case", excerpt: "British cruisers have been in the continued practice of violating the American flag on the great highway of nations, and of seizing and carrying off persons sailing under it; not in the exercise of a belligerent right founded on the law of nations against an enemy, but of a municipal prerogative over British subjects.", attribution: "James Madison, message to Congress, 1 June 1812", sourceRef: "primary-madison-war-message" }
   },
 
   "old-ironsides": {
@@ -211,7 +211,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nhhc", "nps-privateers", "nara-war", "loc-pictures", "loc-newspapers"],
-    voice: { label: "A command remembered", excerpt: "Don't give up the ship. Fight her till she sinks.", attribution: "Attributed to James Lawrence, 1 June 1813", sourceRef: "nhhc" }
+    voice: { label: "A surviving officer reports the loss", excerpt: "The unfortunate death of captain James Lawrence, and lieutenant Augustus C. Ludlow, has rendered it my duty to inform you of the capture of the late United States' frigate Chesapeake.", attribution: "George Budd to the Secretary of the Navy, 15 June 1813", sourceRef: "primary-brannan-letters" }
   },
 
   "war-for-the-interior": {
@@ -261,12 +261,12 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         "Fort Malden and Amherstburg changed hands within a region where military occupation had depended on farms, merchants, and Native supply networks. American destruction and British retreat left residents to rebuild under the expectation that another campaign could return.",
         "Harrison's army contained Kentucky volunteers whose memory of the River Raisin intensified the pursuit. Some wanted vengeance against Indigenous opponents. Commanders did not always control how that motive shaped treatment, language, or later celebration.",
         "Tecumseh's body was not securely identified in the documented aftermath. Competing burial and removal traditions reflect efforts to protect remains, claim association, or resolve a national hero story. The uncertainty should remain rather than yielding to one convenient site.",
-        "Perry died in 1819 while serving in the Caribbean; Harrison's political career continued for decades. The different afterlives of the commanders and the coalition leader helped determine whose papers, portraits, and descendants entered national collections.",
+        "Perry died of yellow fever in Trinidad in 1819 while returning from a diplomatic mission to Venezuela; Harrison's political career continued for decades. The different afterlives of the commanders and the coalition leader helped determine whose papers, portraits, and descendants entered national collections.",
         "Detroit's recovery was announced through proclamations before its administration was fully restored. The ordinary return of mail, courts, trade licenses, and land business made military victory usable to the government."
       ] }
     ],
     sourceRefs: ["nps-lake-erie", "nps-indigenous", "ontario-military-heritage", "army-campaign-1812", "nhhc", "lac-british-records"],
-    voice: { label: "The dispatch", excerpt: "We have met the enemy and they are ours.", attribution: "Oliver Hazard Perry to William Henry Harrison, 10 September 1813", sourceRef: "nps-lake-erie" }
+    voice: { label: "The dispatch", excerpt: "We have met the enemy and they are ours: two ships, two brigs, one schooner and one sloop.", attribution: "Oliver Hazard Perry to William Henry Harrison, 10 September 1813", sourceRef: "primary-perry-dispatch" }
   },
 
   "continental-naval-arms-race": {
@@ -281,7 +281,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       { heading: "Sackets Harbor and Kingston", sourceRefs: ["ontario-military-heritage", "lac", "nhhc", "loc-maps"], paragraphs: [
         "Sackets Harbor became a military town under pressure. Shipwrights, carpenters, caulkers, sailors, soldiers, merchants, women running households and businesses, and laborers drawn or compelled from surrounding communities sustained the yard. Timber had to be selected and moved; green wood entered hulls because there was no time for ideal seasoning. Barracks, hospitals, storehouses, fortifications, and crowded housing grew beside the slips.",
         "Kingston performed the corresponding role for Britain. It guarded the eastern lake and the supply route down the St. Lawrence. Royal Navy administration brought resources and hierarchy, but those resources still had to move across an ocean and upriver. Provincial workers, soldiers, sailors, and Indigenous allies lived within the dockyard's expanding demand.",
-        "Both bases were targets. In May 1813, while much of the American squadron supported operations at the western lake, British forces attacked Sackets Harbor. American defenders burned stores and a vessel under construction when defeat appeared possible. The attack was repelled, but the destruction showed how a raid could delay a fleet without sinking it in open water.",
+        "Both bases were targets. In May 1813, while much of the American squadron supported operations at the western lake, British forces attacked Sackets Harbor. American defenders burned stores and set fire to the unfinished General Pike when defeat appeared possible. The shipyard fire was extinguished, and General Pike was launched on June 12. The attack was repelled, but the lost stores showed how a raid could delay a fleet without sinking it in open water.",
         "Maps show a blue lake separating national colors. The dockyards reveal routes from forest to sawpit, forge to gun carriage, Atlantic supply to Kingston, New York transport to Sackets Harbor, and a crowded hospital back to the regiments supplying sick men."
       ] },
       { heading: "Fleets support invasions", sourceRefs: ["ontario-military-heritage", "nhhc", "lac"], paragraphs: [
@@ -291,8 +291,8 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         "York, Fort George, Stoney Creek, and supply of Niagara positions were all shaped by who could move on the water at a given moment."
       ] },
       { heading: "Building past the enemy", sourceRefs: ["nhhc", "lac-british-records", "ontario-military-heritage"], paragraphs: [
-        "The contest escalated through size. If one side launched a ship carrying more heavy guns, the other planned something larger. USS General Pike gave Chauncey an advantage in 1813. HMS Prince Regent and Princess Charlotte helped Yeo recover it in 1814. At Sackets Harbor, Henry Eckford directed rapid construction; at Kingston, William Bell oversaw British building. Returns listing vessels, guns, crews, and construction state became strategic documents.",
-        "The largest result was HMS St. Lawrence, a 112-gun ship of the line launched at Kingston in September 1814. It was more powerful than anything the Americans could then put on the lake. Its presence secured British command without a fleet battle. The United States responded with two enormous ships under construction, New Orleans and Chippewa, each intended to carry 130 guns. Peace stopped the work before either sailed.",
+        "The contest escalated through size. If one side launched a ship carrying more heavy guns, the other planned something larger. USS General Pike gave Chauncey an advantage in 1813. HMS Prince Regent and Princess Charlotte helped Yeo recover it in 1814. At Sackets Harbor, Henry Eckford directed rapid construction; at Kingston, contractor John Goudie and Royal Navy shipwrights led the 1814 building program. Returns listing vessels, guns, crews, and construction state became strategic documents.",
+        "The largest result was HMS St. Lawrence, a 112-gun ship of the line launched at Kingston in September 1814. It was more powerful than anything the Americans could then put on the lake. Its presence secured British command without a fleet battle. The United States responded with two enormous ships under construction. New Orleans was designed for roughly 120 to 130 guns and Chippewa for 106. Peace stopped the work before either sailed.",
         "These vessels could never reach the Atlantic because the St. Lawrence route contained rapids. They were capital ships built for one inland sea. Their guns, fittings, and crews nevertheless drew on Atlantic systems. The local extravagance followed a continental calculation: control of the lake might determine whether armies held Upper Canada.",
         "Arms races do not require irrational actors. Chauncey and Yeo each faced the possibility that stopping first would concede movement. Rational responses accumulated into ships whose scale exceeded anything imagined at the start."
       ], evidence: { familiar: "The Lake Ontario squadrons failed because timid commanders refused to fight.", documented: "Chauncey and Yeo sought advantage and avoided conditions likely to destroy forces essential to supply and invasion. Their caution coexisted with aggressive construction and smaller actions.", uncertain: "Missed opportunities remain disputed because wind, intelligence, ship condition, and commanders' intentions cannot always be reconstructed." } },
@@ -322,7 +322,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["ontario-military-heritage", "lac", "lac-british-records", "nhhc", "state-rush-bagot", "nysl-war"],
-    voice: { label: "The administrative war", excerpt: "Vessels building at Sacket's Harbour.", attribution: "United States Navy fleet return, 1814", sourceRef: "nhhc" }
+    voice: { label: "The yard survives", excerpt: "The new ship and commodore Chauncey's prize, the Duke of Gloucester, are yet safe in Sackett's Harbor.", attribution: "Jacob Brown to Henry Dearborn, 29 May 1813", sourceRef: "primary-brannan-letters" }
   },
 
   "war-around-cape-horn": {
@@ -347,7 +347,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         "Community knowledge does not survive in the same documentary volume as Porter's journal. That imbalance is a reason for caution, not permission to let the captain's vocabulary define every encounter."
       ], evidence: { familiar: "Porter founded an American base on an unclaimed Pacific island.", documented: "He refitted at inhabited Nuku Hiva, intervened in local conflicts, built a small post, and declared American possession.", uncertain: "Porter's narrative is detailed but partial; Marquesan motives and losses are filtered through outsiders, later scholarship, and unevenly preserved community histories." } },
       { heading: "Valparaíso", sourceRefs: ["nhhc-pacific", "nhhc"], paragraphs: [
-        "Porter returned to the South American coast knowing that British forces were searching for him. At neutral Valparaíso in March 1814, Essex encountered HMS Phoebe and HMS Cherub. Captain James Hillyar had superior combined force and had learned enough about Essex to avoid the close-range fight Porter preferred.",
+        "Porter returned to the South American coast knowing that British forces were searching for him. HMS Phoebe and HMS Cherub arrived at Valparaíso on February 8, 1814, and watched Essex for seven weeks before the battle on March 28. Captain James Hillyar had superior combined force and had learned enough about Essex to avoid the close-range fight Porter preferred.",
         "A squall damaged Essex's main topmast as Porter attempted to leave. He tried to regain the harbor and then anchored in a position whose neutrality became disputed. The British ships fired from ranges that exploited their long guns. Essex could not close effectively. Casualties mounted, men went overboard or escaped ashore, and fire threatened the ship. Porter eventually struck his colors.",
         "American accounts condemned an attack in neutral waters and praised resistance against unequal force. British accounts emphasized that Essex had passed beyond recognized protection and that Hillyar fought with tactical discipline. The geography of the anchorage and the sequence of movement matter more than a general claim that one nation possessed honor and the other violated it.",
         "The defeat ended the cruise. It did not erase the prizes, but many had already been recaptured or dispersed. A commerce raider could produce a dramatic temporary disruption without creating a secure American Pacific presence."
@@ -371,12 +371,12 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         "Essex's loss removed the force that had made Porter's island claim imaginable. No American relief expedition arrived to transform the declaration into government. The gap between saying possession and exercising it became obvious within months.",
         "Pacific histories later encountered Porter's narrative as an early American source that was both detailed and violent in its framing. Using it requires extracting evidence without inheriting the assumption that the cruise supplied the island's most important history.",
         "The crew's return route was itself part of captivity. Parole constrained combat service without ending travel, and officers navigated legal obligations while public receptions treated them as victorious sufferers rather than defeated belligerents.",
-        "The British renamed the captured Essex and used it in imperial service. A ship built for the American republic could change flag, crew, and administrative identity while remaining materially continuous.",
+        "The Royal Navy retained the captured frigate's name as HMS Essex and used it in imperial service. A ship built for the American republic could change flag, crew, and administrative identity while remaining materially continuous.",
         "Later American expansion into the Pacific gave Porter's claim a retrospective national context it did not possess in 1813. The United States had neither annexed nor governed Nuku Hiva after his departure."
       ] }
     ],
     sourceRefs: ["nhhc-pacific", "nhhc", "loc-maps", "loc-pictures", "worldcat-scholarship"],
-    voice: { label: "A claim made at a distance", excerpt: "I took possession of this island for the United States, and called it Madison's Island.", attribution: "David Porter, Nuku Hiva, 19 November 1813", sourceRef: "nhhc-pacific" }
+    voice: { label: "A claim made at a distance", excerpt: "I do declare that I have, in the most solemn manner, under the American flag displayed in Fort Madison, and in the presence of numerous witnesses taken possession of the said island, called Madison's Island, for the use of the United States, whereof I am a citizen.", attribution: "David Porter's published declaration, Nuku Hiva, 19 November 1813", sourceRef: "primary-porter-journal" }
   },
 
   "war-reaches-homes": {
@@ -433,7 +433,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nps-living", "ontario-military-heritage", "lac", "nps-freedom-1", "nps-women-chesapeake", "nhhc-flotilla"],
-    voice: { label: "A town in an official sentence", excerpt: "The village was set fire to, and about one hundred and fifty houses were laid in ashes.", attribution: "George McClure's report on Newark, December 1813", sourceRef: "nps-living" }
+    voice: { label: "A town in an official sentence", excerpt: "I accordingly gave orders for all the arms, ammunition and public stores, of every description, to be sent across the river ... and ordered the town of Newark to be burnt.", attribution: "George McClure's published defense, December 1813", sourceRef: "primary-brannan-letters" }
   },
 
   blockade: {
@@ -459,7 +459,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] },
       { heading: "Revenue disappeared when trade did", sourceRefs: ["whha-war-finance", "nps-trade-commerce", "nara-war"], paragraphs: [
         "The federal government had built its ordinary finances around customs duties and land sales. It entered the war after the charter of the first Bank of the United States expired in 1811 and without a mature system of internal taxation. War spending rose just as restrictions, capture, and blockade reduced the imports on which customs officers collected revenue. The connection between a cruiser off New York and an unpaid army contractor was not rhetorical. Fewer entered cargoes meant fewer federal receipts.",
-        "Congress responded in July 1813 with direct and excise taxes on land, property, auctions, carriages, distilled liquor, retail wine licenses, and refined sugar. It authorized loans and Treasury notes. Those measures could not instantly create confidence, administrative capacity, or coin. By the spring of 1814 Madison had authority to borrow another $32.5 million, but investors demanded unfavorable terms or declined to subscribe. After the burning of Washington, banks outside New England suspended specie payments. Their paper continued to circulate, but redemption in gold or silver could no longer be assumed.",
+        "Congress responded in July and August 1813 with direct and excise taxes on land, property, auctions, carriages, distilled liquor, retail wine licenses, and refined sugar. It authorized loans and Treasury notes. Those measures could not instantly create confidence, administrative capacity, or coin. By the spring of 1814 the government sought a $25 million loan and also relied on Treasury notes; together the authorizations totaled $32.5 million. Investors demanded unfavorable terms or declined to subscribe. After the burning of Washington, banks outside New England suspended specie payments. Their paper continued to circulate, but redemption in gold or silver could no longer be assumed.",
         "Fiscal failure reached campaigns through contracts. The government relied on private suppliers to assemble food, clothing, wagons, animals, and transport across a large country with poor roads. A contractor uncertain of payment charged for the risk, delivered late, or did not deliver. Soldiers saw the result as missing rations and wages. Officers wrote about discipline as if hunger were separate from finance, although the same broken credit connected them.",
         "Customs officers faced the contradiction directly. They were expected to enforce wartime restrictions and collect the revenue produced by legal trade while legal trade contracted. Smuggling offered goods and income outside the system, and selective enforcement invited accusations of corruption or political favoritism. The Treasury did not need every harbor to be physically sealed before its receipts collapsed."
       ] },
@@ -490,7 +490,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nps-trade-commerce", "whha-war-finance", "nhhc", "nps-privateers", "nps-freedom-1", "nps-freedom-2", "nps-colonial", "nps-tangier", "nhhc-flotilla", "nara-war"],
-    voice: { label: "An offer aboard the fleet", excerpt: "All those who may be disposed to emigrate from the United States, will, with their families, be received on board.", attribution: "Alexander Cochrane, proclamation of 2 April 1814", sourceRef: "nps-freedom-1" }
+    voice: { label: "An offer aboard the fleet", excerpt: "All those who may be disposed to emigrate from the UNITED STATES will, with their Families, be received on board His Majesty's Ships or Vessels of War, or at the Military Posts that may be established, upon or near the Coast of the UNITED STATES, when they will have their choice of either entering into His Majesty's Sea or Land Forces, or of being sent as FREE Settlers to the British Possessions in North America or the West Indies, where they will meet with due encouragement.", attribution: "Alexander Cochrane, proclamation issued at Bermuda, 2 April 1814", sourceRef: "primary-cochrane-proclamation" }
   },
 
   "southern-borderlands": {
@@ -548,7 +548,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nps-creek", "nps-horseshoe-participants", "nps-prince-witten", "nps-indigenous", "nps-colonial"],
-    voice: { label: "The destination of victory", excerpt: "The Creek nation cede to the United States all the territory belonging to said nation within the territories of the United States.", attribution: "Treaty of Fort Jackson, 9 August 1814", sourceRef: "nps-creek" }
+    voice: { label: "The destination of victory", excerpt: "The United States demand an equivalent for all expenses incurred in prosecuting the war to its termination, by a cession of all the territory belonging to the Creek nation within the territories of the United States, lying west, south, and south-eastwardly, of a line to be run and described by persons duly authorized and appointed by the President of the United States: ...", attribution: "Treaty of Fort Jackson, Article 1, 9 August 1814", sourceRef: "primary-fort-jackson" }
   },
 
   "everything-changes": {
@@ -569,7 +569,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       { heading: "An American government short of money", sourceRefs: ["nara-war", "loc-manuscripts", "worldcat-scholarship"], paragraphs: [
         "The United States had expanded its army and navy while the blockade reduced customs income. Loans became harder to sell. Internal taxes arrived late and unevenly. The absence of a national bank complicated transfers and credit. By 1814, the Treasury could authorize expenditure more easily than it could deliver reliable payment where an army needed it.",
         "Financial weakness was operational. Contractors hesitated when government paper lost value. Wagons and animals could not be summoned by patriotic language alone. Soldiers deserted or protested when pay failed. Regional banks and local suppliers judged federal promises through recent military news and party allegiance.",
-        "The administration changed personnel and attempted reforms. William Jones at the Treasury and later Alexander Dallas confronted a system under stress. In the War Department, James Monroe eventually combined responsibilities after John Armstrong's resignation. Institutional repair took place during invasion.",
+        "The administration changed personnel and attempted reforms. William Jones served as acting Treasury secretary from May 1813 until February 1814. George Washington Campbell held the office from February 9 to October 5, 1814, and Alexander Dallas succeeded him on October 6. In the War Department, James Monroe eventually combined responsibilities after John Armstrong's resignation. Institutional repair took place during invasion.",
         "A nation with large population and resources could still be unable to concentrate them at the chosen hour."
       ] },
       { heading: "Three approaches, different wars", sourceRefs: ["nps-baltimore", "nps-plattsburgh", "nps-new-orleans-black", "canada-military-history"], paragraphs: [
@@ -611,7 +611,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ], evidence: { familiar: "After Napoleon fell, Britain sent an overwhelming force to conquer the United States.", documented: "Britain redirected experienced troops and expanded operations, but pursued several campaigns with different objectives and logistical limits.", uncertain: "British leaders revised demands as news arrived, so no single final conquest plan governed every operation." } }
     ],
     sourceRefs: ["cwm", "canada-military-history", "loc-ghent", "nara-war", "nps-plattsburgh", "nps-baltimore", "loc-newspapers"],
-    voice: { label: "The strategic premise", excerpt: "The military possession of the Lakes is essential to the security of His Majesty's North American dominions.", attribution: "British war aims memorandum, 1814", sourceRef: "loc-ghent" }
+    voice: { label: "The opening British terms", excerpt: "The Indian allies of Great Britain to be included in the pacification, and a definite boundary to be settled for their territory. The British commissioners stated that an arrangement upon this point was a sine qua non.", attribution: "American commissioners to the Secretary of State, 12 August 1814", sourceRef: "primary-ghent-dispatch" }
   },
 
   "niagara-again": {
@@ -630,7 +630,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         "For the people living nearby, professional improvement meant that two disciplined forces could inflict casualties more efficiently close to farms and roads."
       ] },
       { heading: "Indigenous choices in a changed campaign", sourceRefs: ["nps-indigenous", "ontario-military-heritage", "parks-queenston"], paragraphs: [
-        "Indigenous warriors had been essential to British defense in 1812 and 1813 and had suffered losses at the Thames, Moraviantown, and other actions. By 1814, some Haudenosaunee leaders sought to limit a war that placed related communities on opposite sides of the border. Others continued service according to local alliance and security calculations.",
+        "Indigenous warriors had been essential to British defense in 1812 and 1813 and had suffered losses at the Thames, also called Moraviantown, and in other actions. By 1814, some Haudenosaunee leaders sought to limit a war that placed related communities on opposite sides of the border. Others continued service according to local alliance and security calculations.",
         "The United States also used Indigenous allies. Earlier fighting near Buffalo had included Haudenosaunee people aligned with the Americans against those aligned with Britain. Describing this as a national civil war can overstate unity that did not exist, but kinship made the divided alignment particularly destructive.",
         "At Chippawa and Lundy's Lane, regular army narratives often move Native participation to the edges because massed infantry dominated the best-known actions. Scouting, skirmishing, intelligence, and the decision to withdraw from participation remained consequential. Absence from one tactical center can itself reflect political choice and accumulated loss.",
         "The border crossed Haudenosaunee homelands before the armies crossed it."
@@ -673,7 +673,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["ontario-military-heritage", "lac", "lac-british-records", "canada-military-history", "nps-indigenous"],
-    voice: { label: "Meeting on the plain", excerpt: "The enemy had collected in great force in the plains of Chippewa, and was moving rapidly to meet us.", attribution: "Jacob Brown's report, July 1814", sourceRef: "lac" }
+    voice: { label: "Movement on the left", excerpt: "At 4 o'clock in the afternoon, agreeably to a plan I had given general Porter, he advanced from the rear of our camp, with the volunteers and Indians (taking the woods in order to keep out of view of the enemy).", attribution: "Jacob Brown's report, 7 July 1814", sourceRef: "primary-brannan-letters" }
   },
 
   plattsburgh: {
@@ -731,7 +731,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nps-plattsburgh", "nhhc", "canada-military-history", "lac-british-records", "loc-maps", "nysl-war", "loc-ghent", "nps-baltimore", "state-rush-bagot"],
-    voice: { label: "The victory report", excerpt: "The Almighty has been pleased to grant us a signal victory on Lake Champlain.", attribution: "Thomas Macdonough, 11 September 1814", sourceRef: "nps-plattsburgh" }
+    voice: { label: "The victory report", excerpt: "The Almighty has been pleased to grant us a signal victory on lake Champlain, in the capture of one frigate, one brig, and two sloops of war of the enemy.", attribution: "Thomas Macdonough to William Jones, 11 September 1814", sourceRef: "primary-brannan-letters" }
   },
 
   "washington-burns": {
@@ -795,7 +795,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nhhc-flotilla", "whha-portrait", "whha-jennings", "loc-guide", "nps-freedom-1", "nps-women-chesapeake", "uk-discovery"],
-    voice: { label: "An order during evacuation", excerpt: "I insist on waiting until the large picture of Genl. Washington is secured.", attribution: "Dolley Madison, August 1814", sourceRef: "whha-portrait" }
+    voice: { label: "An order during evacuation", excerpt: "I insist on waiting until the large picture of Genl. Washington is secured.", attribution: "Dolley Madison, later handwritten extract of a lost letter dated 23–24 August 1814", sourceRef: "primary-dolley-extract" }
   },
 
   "baltimore-holds": {
@@ -860,7 +860,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nps-baltimore", "nps-north-point", "nps-bombardment", "nps-grace", "smithsonian-flag", "nps-garrison-flag", "bca"],
-    voice: { label: "The question at dawn", excerpt: "O say can you see, by the dawn's early light", attribution: "Francis Scott Key, 'Defence of Fort M'Henry,' 1814", sourceRef: "nps-bombardment" }
+    voice: { label: "The question at dawn", excerpt: "O! say can you see by the dawn's early light, What so proudly we hailed at the twilight's last gleaming, ...", attribution: "Francis Scott Key, Defence of Fort M'Henry broadside, 1814", sourceRef: "primary-key-broadside" }
   },
 
   "peace-at-ghent": {
@@ -918,13 +918,13 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
         "Language choices created future work. Terms such as possessions, islands, and boundaries required reference to earlier treaties and geographic knowledge that was itself disputed. The peace used commissions because precision exceeded what diplomats could safely improvise in December.",
         "The ratification vote was unanimous in the Senate, a contrast with the declaration. Senators could accept a treaty without agreeing about the war's wisdom. Their consent recorded the value of ending uncertainty as much as a shared verdict on the past.",
         "Madison did not submit reservations that might reopen talks. Speed mattered because combat and capture continued until legal peace and communication reached the forces involved.",
-        "Celebrations used illuminations, bells, salutes, sermons, and printed copies to make a diplomatic document public. Many citizens encountered the treaty first as news of peace rather than as ten articles to be parsed.",
+        "Celebrations used illuminations, bells, salutes, sermons, and printed copies to make a diplomatic document public. Many citizens encountered the treaty first as news of peace rather than as eleven articles to be parsed.",
         "The official text then entered statute books and archives, where later readers could see omissions that public rejoicing had little reason to emphasize.",
         "Boundary work and claims arbitration ensured that Ghent remained an active legal reference long after the commissioners went home."
       ] }
     ],
     sourceRefs: ["loc-ghent", "loc-ghent-digital", "avalon-ghent", "senate-ghent", "nps-indigenous", "nps-legacies", "nara-impressment"],
-    voice: { label: "The first article", excerpt: "There shall be a firm and universal Peace between His Britannic Majesty and the United States.", attribution: "Treaty of Ghent, Article I, 24 December 1814", sourceRef: "avalon-ghent" }
+    voice: { label: "The first article", excerpt: "There shall be a firm and universal Peace between His Britannic Majesty and the United States, and between their respective Countries, Territories, Cities, Towns and People of every Degree, without exception of Places or Persons.", attribution: "Treaty of Ghent, Article I, 24 December 1814", sourceRef: "avalon-ghent" }
   },
 
   "new-orleans": {
@@ -945,7 +945,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       { heading: "The night battle and the line", sourceRefs: ["nps-jean-lafitte", "nps-new-orleans-black", "nps-jordan-noble"], paragraphs: [
         "Jackson attacked on the night of December 23 rather than allow the British to consolidate undisturbed. The schooner Carolina fired from the river while American columns entered confused fighting in darkness, smoke, ditches, and fields. Units lost direction, officers misread movement, and neither side achieved a decisive tactical result.",
         "The attack disrupted British confidence and bought time. Jackson established his principal line behind the Rodriguez Canal at the Chalmette plantation. Workers deepened the canal, raised earthworks, positioned artillery, and extended the defense from the Mississippi toward the swamp. Enslaved labor was part of that construction, alongside soldiers and free workers.",
-        "British artillery damaged or drove off Carolina, and on January 1 the armies engaged in an artillery duel. American guns, including crews associated with Barataria and naval service, held effective positions. The British still intended a full assault after bringing up forces and preparing ladders and fascines to cross the ditch and scale the works.",
+        "British heated shot set Carolina afire on December 27. Her crew abandoned the schooner before the flames reached the magazine and she exploded. On January 1 the armies engaged in an artillery duel. American guns, including crews associated with Barataria and naval service, held effective positions. The British still intended a full assault after bringing up forces and preparing ladders and fascines to cross the ditch and scale the works.",
         "The battlefield was being made while diplomats' signatures traveled westward as information no one present possessed."
       ] },
       { heading: "The coalition behind the works", sourceRefs: ["nps-new-orleans-black", "nps-choctaw", "nps-jordan-noble", "nps-jean-lafitte"], paragraphs: [
@@ -991,7 +991,7 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ] }
     ],
     sourceRefs: ["nps-new-orleans-black", "nps-choctaw", "nps-jean-lafitte", "nps-jordan-noble", "lafolklife", "loc-ghent", "senate-ghent"],
-    voice: { label: "Recruitment in emergency", excerpt: "To every noble-hearted, generous freeman of color, volunteering to serve during the present contest.", attribution: "Andrew Jackson, 21 September 1814", sourceRef: "nps-new-orleans-black" }
+    voice: { label: "Recruitment in emergency", excerpt: "To every noble-hearted, generous freeman of color, volunteering to serve during the present contest with Great Britain, and no longer, there will be paid the same bounty in money and lands, now received by the white soldiers of the United States, viz. one hundred and twenty-four dollars in money, and one hundred and sixty acres in land.", attribution: "Andrew Jackson, 21 September 1814", sourceRef: "primary-jackson-address" }
   },
 
   "what-changed": {
@@ -1061,6 +1061,6 @@ export const chapterExpansions: Record<string, ChapterExpansion> = {
       ], evidence: { familiar: "The War of 1812 had one winner, or no winner at all.", documented: "Territory was restored between states, Canada remained British, American nationalism strengthened, and Indigenous power and land security declined sharply.", uncertain: "Any overall verdict depends on whose objectives, which geography, and what time horizon are being measured." } }
     ],
     sourceRefs: ["nps-legacies", "state-rush-bagot", "nps-freedom-1", "nps-freedom-2", "nps-indigenous", "cwm", "nps-creating-legacies", "nps-short-memory"],
-    voice: { label: "Limiting what remained", excerpt: "The naval force to be maintained upon the American lakes by His Majesty and the Government of the United States shall be confined.", attribution: "Rush-Bagot correspondence, 1817", sourceRef: "state-rush-bagot" }
+    voice: { label: "Limiting what remained", excerpt: "The naval force to be maintained upon the American lakes, by his majesty and the government of the United States, shall henceforth be confined to the following vessels on each side, that is: ...", attribution: "Rush-Bagot correspondence, 1817", sourceRef: "primary-rush-bagot" }
   }
 };

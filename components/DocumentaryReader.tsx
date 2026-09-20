@@ -19,15 +19,15 @@ export function DocumentaryReader({ packet, standalone = false }: { packet: Docu
 
       {packet.image && <figure className="documentary-image"><Image src={packet.image.src} alt={packet.image.alt} width={640} height={507} /><figcaption><span>{packet.image.caption}</span><small>{packet.image.credit}</small></figcaption></figure>}
 
-      <div className="transcription-pair" aria-label="Diplomatic and modernized transcriptions">
-        <article><p>Diplomatic reading</p><blockquote>{packet.diplomatic}</blockquote><span>Historical wording and forms retained where stated.</span></article>
+      <div className="transcription-pair" aria-label="Historical excerpt and modernized reading">
+        <article><p>Excerpt</p><blockquote>{packet.diplomatic}</blockquote><span>Historical wording and forms retained where stated.</span></article>
         <article><p>Modernized reading</p><blockquote>{packet.modernized}</blockquote><span>Plain-language reading; not a substitute for quotation.</span></article>
       </div>
       <p className="transcription-note"><strong>Editorial method:</strong> {packet.transcriptionNote}</p>
 
       <div className="documentary-apparatus">
         <section><p className="section-kicker">Annotations</p><ol>{packet.annotations.map((annotation) => <li key={annotation.term}><strong>{annotation.term}</strong><span>{annotation.note}</span></li>)}</ol></section>
-        <section className="provenance-card"><p className="section-kicker">Provenance</p><dl><div><dt>Creator</dt><dd>{packet.creator}</dd></div><div><dt>Repository</dt><dd>{packet.repository}</dd></div><div><dt>Collection</dt><dd>{packet.collection}</dd></div><div><dt>Identifier</dt><dd>{packet.identifier}</dd></div><div><dt>Chain of custody</dt><dd>{packet.provenance}</dd></div><div><dt>Rights</dt><dd>{packet.rights}</dd></div></dl><a href={packet.sourceUrl} target="_blank" rel="noreferrer">Open the repository record ↗</a></section>
+        <section className="provenance-card"><p className="section-kicker">Witness and provenance</p><dl><div><dt>Creator</dt><dd>{packet.creator}</dd></div><div><dt>Witness used</dt><dd>{packet.witness}</dd></div><div><dt>Repository or edition</dt><dd>{packet.repository}</dd></div><div><dt>Collection</dt><dd>{packet.collection}</dd></div><div><dt>Identifier</dt><dd>{packet.identifier}</dd></div><div><dt>Transmission</dt><dd>{packet.provenance}</dd></div><div><dt>Rights</dt><dd>{packet.rights}</dd></div></dl><a href={packet.sourceUrl} target="_blank" rel="noreferrer">Open the cited witness ↗</a></section>
       </div>
 
       {packet.counterpoint && <aside className="counterpoint"><div><p className="section-kicker">Read against the grain</p><h3>{packet.counterpoint.title}</h3><p>{packet.counterpoint.creator} · {packet.counterpoint.date}</p></div><div><p>{packet.counterpoint.summary}</p><a href={packet.counterpoint.sourceUrl} target="_blank" rel="noreferrer">Open the counter-record ↗</a></div></aside>}

@@ -41,7 +41,7 @@ export default function EvidenceLabPage() {
               <span className="case-number">{claim.number}</span>
               <div className="case-title"><small>Claim</small><h3>{claim.title}</h3><p>{claim.familiarVersion}</p></div>
               <div className="case-finding"><small>Finding</small><strong>{claimStateLabel[claim.state]}</strong><p>{claim.verdict}</p></div>
-              <div className="case-confidence"><small>Confidence</small><b>{claim.confidence}%</b><span aria-hidden="true"><i style={{ width: `${claim.confidence}%` }} /></span></div>
+              <div className="case-confidence"><small>Evidence status</small><b>{claim.evidenceStatus}</b><p>{claim.statusNote}</p></div>
               <span className="case-open">Open file <b>→</b></span>
             </Link>
           ))}

@@ -1,4 +1,5 @@
 export type ClaimState = "documented" | "qualified" | "unsupported";
+export type EvidenceStatus = "Documented" | "Strongly supported" | "Plausible / inferential" | "Later recollection" | "Oral tradition / community memory" | "Disputed" | "Unresolved";
 
 export type EvidenceItem = {
   date: string;
@@ -21,8 +22,8 @@ export type EvidenceClaim = {
   familiarVersion: string;
   verdict: string;
   state: ClaimState;
-  confidence: number;
-  confidenceNote: string;
+  evidenceStatus: EvidenceStatus;
+  statusNote: string;
   earliest: { date: string; label: string; note: string; href?: string };
   accepted: string[];
   possible: string[];
@@ -43,8 +44,8 @@ export const evidenceClaims: EvidenceClaim[] = [
     familiarVersion: "American leaders assumed Canada would fall almost without a fight, and the phrase “a mere matter of marching” summarized the invasion plan.",
     verdict: "The phrase is authentic, but its usual job in the story is too large. Thomas Jefferson used it in a private letter on August 4, 1812, after war had begun. It documents his confidence, not a formal plan or a unanimous national belief. Failed campaigns at Detroit and Queenston Heights expose the distance between optimism and operational capacity.",
     state: "qualified",
-    confidence: 96,
-    confidenceNote: "High confidence in the wording, date, and context; lower confidence in claims about how widely the exact assumption was shared.",
+    evidenceStatus: "Documented",
+    statusNote: "The letter documents Jefferson's wording, date, and prediction. It does not document a cabinet plan or unanimous national belief.",
     earliest: {
       date: "4 August 1812",
       label: "Thomas Jefferson to William Duane",
@@ -71,8 +72,8 @@ export const evidenceClaims: EvidenceClaim[] = [
       "Later quotation often turns one former president’s private confidence into a collective national position.",
     ],
     evidence: [
-      { date: "18 June 1812", label: "War declared", kind: "contemporary", note: "The United States declared war before Jefferson wrote the famous sentence.", href: "/events/war-declared" },
-      { date: "4 August 1812", label: "Jefferson–Duane letter", kind: "contemporary", note: "The exact phrase appears in private correspondence, paired with a prediction that Quebec could be attacked in the next campaign.", href: "https://founders.archives.gov/documents/Jefferson/03-05-02-0231" },
+      { date: "18 June 1812", label: "War declared", kind: "contemporary", note: "The United States declared war before Jefferson wrote the famous sentence.", href: "/events/war-declaration" },
+      { date: "4 August 1812", label: "Jefferson–Duane letter", kind: "contemporary", note: "The exact phrase appears in private correspondence. Jefferson predicted reaching the neighborhood of Quebec that year and attacking Halifax the next.", href: "https://founders.archives.gov/documents/Jefferson/03-05-02-0231" },
       { date: "16 August 1812", label: "Detroit surrendered", kind: "contemporary", note: "Hull surrendered Detroit and his army, a sharp contradiction to the imagined ease of conquest.", href: "/events/detroit-surrender" },
       { date: "13 October 1812", label: "Queenston Heights", kind: "contemporary", note: "A second major invasion failed amid command, transport, and militia problems.", href: "/events/queenston-heights" },
       { date: "Later retelling", label: "A sentence becomes a consensus", kind: "later", note: "Histories repeatedly use the compact line as shorthand for a broad American underestimation of Canada." },
@@ -98,13 +99,13 @@ export const evidenceClaims: EvidenceClaim[] = [
     familiarVersion: "As British troops approached, Dolley Madison personally cut Gilbert Stuart’s portrait of George Washington from its frame and carried it to safety.",
     verdict: "Dolley Madison deserves credit for ordering that the portrait be saved and refusing to leave it behind. The physical removal and transport were collective work. Contemporary and later accounts identify White House steward Jean Pierre Sioussat, enslaved servant Paul Jennings, gardener Thomas McGrath, and New Yorkers Jacob Barker and Robert G. L. De Peyster in overlapping roles. The scissors-and-heroic-carry image is later embroidery.",
     state: "qualified",
-    confidence: 94,
-    confidenceNote: "High confidence in Dolley’s instruction and in a multi-person rescue; the participants’ exact sequence remains contested across accounts.",
+    evidenceStatus: "Strongly supported",
+    statusNote: "Madison's instruction and a multi-person rescue are strongly supported. The original letter is lost, and the participants' exact sequence remains disputed across surviving accounts.",
     earliest: {
       date: "23–24 August 1814",
       label: "Dolley Madison’s letter and recollection",
       note: "Her near-contemporary account records her determination to secure the portrait before leaving. It establishes the order and urgency, not a solo physical rescue.",
-      href: "https://www.whitehousehistory.org/questions/how-did-dolley-madison-save-george-washingtons-portrait",
+      href: "https://rotunda.upress.virginia.edu/dmde/intro.xqy",
     },
     accepted: [
       "Dolley Madison insisted that the Washington portrait be secured before she left the President’s House.",
@@ -126,7 +127,7 @@ export const evidenceClaims: EvidenceClaim[] = [
       "Accounts differ about who broke the frame, who carried the canvas, and who took it onward. The disagreement is evidence of a chain of custody, not necessarily a single winner.",
     ],
     evidence: [
-      { date: "23–24 August 1814", label: "Dolley’s account", kind: "contemporary", note: "Her letter places the portrait among the objects she was determined to secure before evacuation.", href: "https://www.whitehousehistory.org/questions/how-did-dolley-madison-save-george-washingtons-portrait" },
+      { date: "23–24 August 1814", label: "Dolley's later copy of her account", kind: "later", note: "The original letter is lost. A later extract in Madison's hand places the portrait among the objects she was determined to secure before evacuation.", href: "https://rotunda.upress.virginia.edu/dmde/intro.xqy" },
       { date: "1814", label: "The object survives", kind: "material", note: "The Stuart portrait escaped the burning and remains a physical endpoint for the rescue story." },
       { date: "1865", label: "Paul Jennings publishes his memoir", kind: "later", note: "Jennings supplies a corrective eyewitness tradition: servants and other men took down the portrait after Dolley ordered its rescue.", href: "https://www.whitehousehistory.org/paul-jennings" },
       { date: "Later 19th century", label: "Names and roles multiply", kind: "later", note: "Accounts by or about Sioussat, McGrath, Barker, and De Peyster complicate a single-hero version." },
@@ -153,8 +154,8 @@ export const evidenceClaims: EvidenceClaim[] = [
     familiarVersion: "Andrew Jackson’s victory at New Orleans defeated Britain, forced peace, and won the War of 1812.",
     verdict: "The victory was real, overwhelming, and politically transformative. It did not force the Treaty of Ghent: negotiators had signed that agreement in Europe on December 24, 1814, two weeks before the main battle. But the treaty had not yet been ratified and news had not reached Louisiana. New Orleans shaped how Americans experienced the war’s ending and remembered its result, even though it did not write the peace terms.",
     state: "qualified",
-    confidence: 99,
-    confidenceNote: "The treaty, battle, and ratification dates are fixed. Interpretation is needed only when measuring the victory’s political and cultural consequences.",
+    evidenceStatus: "Documented",
+    statusNote: "The treaty, battle, and ratification dates are documented. Interpretation is required when measuring the victory's political and cultural consequences.",
     earliest: {
       date: "24 December 1814",
       label: "Treaty of Ghent signed",
@@ -181,9 +182,9 @@ export const evidenceClaims: EvidenceClaim[] = [
       "The memorable final victory obscures both earlier defeats and the coalition of free Black battalions, Choctaw fighters, militia, regulars, sailors, and Baratarians that defended the city.",
     ],
     evidence: [
-      { date: "24 December 1814", label: "Treaty signed at Ghent", kind: "contemporary", note: "Negotiators agreed to restore conquered territory and end the war without settling the maritime issues that had helped produce it.", href: "/events/treaty-ghent" },
+      { date: "24 December 1814", label: "Treaty signed at Ghent", kind: "contemporary", note: "The treaty is the direct documentary trace: negotiators agreed to restore conquered territory and end the war before the main battle at New Orleans.", href: "https://avalon.law.yale.edu/19th_century/ghent.asp" },
       { date: "8 January 1815", label: "Main Battle of New Orleans", kind: "contemporary", note: "British troops attacked Jackson’s prepared line and suffered severe losses.", href: "/events/new-orleans" },
-      { date: "16 February 1815", label: "U.S. Senate consents", kind: "contemporary", note: "American ratification came after news of both treaty and battle arrived.", href: "/events/us-ratification" },
+      { date: "16 February 1815", label: "U.S. Senate consents", kind: "contemporary", note: "American ratification came after news of both treaty and battle arrived.", href: "https://www.senate.gov/about/powers-procedures/treaties/senate-approves-treaty-of-ghent.htm" },
       { date: "Postwar politics", label: "Jackson becomes a national figure", kind: "later", note: "The victory’s political afterlife was immense even though its diplomatic role was not." },
       { date: "Popular retelling", label: "Last battle becomes final cause", kind: "later", note: "Narrative order, with a great victory followed by celebrated peace, encouraged a causal connection the calendar does not support." },
     ],
@@ -208,13 +209,13 @@ export const evidenceClaims: EvidenceClaim[] = [
     familiarVersion: "The rockets’ red glare continuously lit the enormous Star-Spangled Banner above Fort McHenry, letting Francis Scott Key watch it fly throughout the bombardment.",
     verdict: "British forces did fire Congreve rockets and exploding bombs, and Key’s lyric is contemporary testimony to their visible flashes. The rest needs restraint. Rain, darkness, smoke, and distance limited visibility; the lyric says the bursts gave intermittent proof, not continuous illumination. Fort McHenry also had a smaller storm flag. The famous large garrison flag is securely tied to the morning scene, but claims about which flag flew through every hour of the night exceed the surviving evidence.",
     state: "qualified",
-    confidence: 91,
-    confidenceNote: "High confidence that rockets were used and visible; moderate confidence in reconstructing nighttime flag visibility and which flag flew at each moment.",
+    evidenceStatus: "Strongly supported",
+    statusNote: "The use of rockets and the lyric's intermittent flashes are strongly supported. The flag's hour-by-hour visibility and identity remain unresolved.",
     earliest: {
       date: "14 September 1814",
       label: "Francis Scott Key’s lyric",
       note: "The poem’s “rockets’ red glare” and “bombs bursting in air” are near-immediate evidence of flashes during the bombardment and of uncertainty relieved only in moments.",
-      href: "/explore/documents/defence-fort-mhenry",
+      href: "/documents/defence-fort-mhenry",
     },
     accepted: [
       "British vessels fired Congreve rockets and explosive shells during the bombardment.",
@@ -236,9 +237,9 @@ export const evidenceClaims: EvidenceClaim[] = [
       "Later images often show a clear, cinematic sky; accounts of the night describe rain, smoke, distance, and darkness.",
     ],
     evidence: [
-      { date: "13–14 September 1814", label: "Congreve rockets and bomb shells", kind: "material", note: "Weapon type, British bombardment vessels, and defensive records establish that rockets and shells were part of the attack.", href: "/explore/objects/congreve-rocket" },
-      { date: "14 September 1814", label: "Defence of Fort M’Henry", kind: "contemporary", note: "Key’s lyric describes intermittent visual evidence during the night and the flag visible at dawn.", href: "/explore/documents/defence-fort-mhenry" },
-      { date: "1813–1814", label: "Two flags", kind: "material", note: "The fort’s large garrison flag and smaller storm flag complicate claims about exactly what flew during rain and bombardment.", href: "/explore/objects/fort-mchenry-storm-flag" },
+      { date: "13–14 September 1814", label: "Congreve rockets and bomb shells", kind: "material", note: "Weapon type, British bombardment vessels, and defensive records establish that rockets and shells were part of the attack.", href: "/objects/congreve-rocket" },
+      { date: "14 September 1814", label: "Defence of Fort M’Henry", kind: "contemporary", note: "Key's broadside is the primary trace. Its lyric describes intermittent visual evidence during the night and the flag visible at dawn.", href: "/documents/defence-fort-mhenry" },
+      { date: "1813–1814", label: "Two flags", kind: "material", note: "The fort's large garrison flag and smaller storm flag complicate claims about exactly what flew during rain and bombardment.", href: "/objects/fort-mchenry-storm-flag" },
       { date: "About 1819", label: "John Bower print", kind: "later", note: "An early visual commemoration dramatizes the night attack but is not a real-time optical record.", href: "https://www.loc.gov/pictures/item/2013645001/" },
       { date: "Later iconography", label: "A clear view replaces uncertainty", kind: "later", note: "Paintings and civic imagery often make flag, rockets, fleet, and fort simultaneously legible." },
     ],
@@ -251,8 +252,8 @@ export const evidenceClaims: EvidenceClaim[] = [
     sourceRefs: ["nps-bombardment", "smithsonian-flag", "nps-garrison-flag", "loc-fort-print"],
     related: [
       { label: "Read Baltimore Holds", href: "/story/baltimore-holds" },
-      { label: "Inspect the Congreve rocket", href: "/explore/objects/congreve-rocket" },
-      { label: "Compare the two flags", href: "/explore/objects/fort-mchenry-storm-flag" },
+      { label: "Inspect the Congreve rocket", href: "/objects/congreve-rocket" },
+      { label: "Compare the two flags", href: "/objects/fort-mchenry-storm-flag" },
     ],
     chapters: ["baltimore-holds"],
   },
@@ -263,8 +264,8 @@ export const evidenceClaims: EvidenceClaim[] = [
     familiarVersion: "Hundreds of Filipino sailors from the St. Malo settlement fought as a distinct unit under Andrew Jackson at the Battle of New Orleans.",
     verdict: "Filipino and Asian maritime presence in Louisiana has a real history, and individual participation at New Orleans remains possible. The stronger claim of a separately organized Filipino or “Manilamen” contingent, often supplied with a precise large number, has not been established by the available military rolls or contemporary battle accounts. Community tradition is evidence of memory and identity; it is not automatically a roster.",
     state: "unsupported",
-    confidence: 89,
-    confidenceNote: "High confidence that the organized-contingent claim lacks current documentary support; individual service remains an open research question.",
+    evidenceStatus: "Unresolved",
+    statusNote: "No identified contemporary record establishes an organized Filipino contingent. Individual service remains an open research question rather than a negative finding.",
     earliest: {
       date: "Later retellings",
       label: "St. Malo tradition enters print",
@@ -291,7 +292,7 @@ export const evidenceClaims: EvidenceClaim[] = [
       "Historical labels can conceal people, so documentary silence does not prove no Filipino individual participated; it does limit a confident collective claim.",
     ],
     evidence: [
-      { date: "1814–1815", label: "Military organization and battle accounts", kind: "absence", note: "The available unit records and contemporary descriptions reviewed by historians do not identify a separate Filipino contingent." },
+      { date: "1814–1815", label: "Military organization and battle accounts", kind: "absence", note: "The available unit records and contemporary descriptions reviewed by historians do not identify a separate Filipino contingent.", href: "https://archive.org/details/officialletterso00bran" },
       { date: "1815", label: "A diverse defense", kind: "contemporary", note: "Sources securely document free men of color, Choctaw fighters, Baratarians, state militia, regulars, and naval personnel.", href: "/story/new-orleans" },
       { date: "19th century onward", label: "St. Malo histories", kind: "later", note: "Writing about the settlement mixes documentation, oral tradition, local pride, and later elaboration.", href: "https://www.louisianafolklife.org/LT/Articles_Essays/lfmStMalo.html" },
       { date: "Modern repetition", label: "A precise contingent", kind: "later", note: "Popular summaries repeat unit language and large totals more confidently than the cited evidence warrants." },
