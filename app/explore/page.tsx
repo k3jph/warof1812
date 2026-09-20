@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Explore", description: "Search the e
 export default function ExplorePage() {
   const collections = [
     ["events", "Events", events.length, "Battles, raids, occupations, politics, and peace."],
-    ["people", "People", catalogByKind.people.length, "Leaders, witnesses, workers, and fighters."],
+    ["people", "People", catalogByKind.people.length, "Curated dossiers and separately labeled research leads."],
     ["places", "Places", catalogByKind.places.length, "Cities, forts, shipyards, islands, and battlefields."],
     ["ships", "Ships", catalogByKind.ships.length, "Atlantic frigates and inland flagships."],
     ["documents", "Documents", catalogByKind.documents.length, "Messages, treaties, newspapers, and lyrics."],

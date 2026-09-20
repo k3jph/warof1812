@@ -11,7 +11,7 @@ const downloads = [
   { href: "/data/events.geojson", title: "Event GeoJSON", count: events.length, description: "Point features with latitude, longitude, coordinate precision, participants, outcomes, and sources." },
   { href: "/data/historical-gis.geojson", title: "Historical GIS", count: gisFeatures.length, description: "Dated campaign lines, operational zones, homeland regions, freedom-seeking routes, logistics, historical geography, and surviving-site points, with uncertainty and provenance." },
   { href: "/data/timeline.json", title: "Timeline", count: events.length, description: "The event corpus in narrative chronology for timelines and teaching tools." },
-  { href: "/data/people.json", title: "People", count: people.length, description: "Public biographical records with roles, significance, evidence labels, chapters, and sources." },
+  { href: "/data/people.json", title: "People", count: people.length, description: "Twenty-four curated dossiers plus a separately labeled research index with group-level source routes." },
   { href: "/data/sources.json", title: "Sources", count: sources.length, description: "The source registry plus the categories used in the research guide." },
   { href: "/data/images.json", title: "Image rights", count: imageLedger.length, description: "Item-level creator, repository, credit, rights, caption, and alt-text metadata." },
 ];

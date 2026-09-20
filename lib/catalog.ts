@@ -1,4 +1,4 @@
-import { humanIndexRecords } from "@/lib/human-record";
+import { humanIndexRecords, resolvePersonSlug } from "@/lib/human-record";
 
 export type CatalogKind = "people" | "places" | "ships" | "documents" | "objects";
 
@@ -11,17 +11,19 @@ export type CatalogRecord = {
   role: string;
   summary: string;
   significance: string;
-  chapter: string;
+  chapter?: string;
   sourceRefs: string[];
+  aliases?: string[];
+  recordDepth?: "dossier" | "index";
   facts?: { label: string; value: string }[];
   evidence?: "Documented" | "Strongly supported" | "Plausible / inferential" | "Oral tradition / community memory" | "Disputed" | "Unresolved";
 };
 
-const corePeople: CatalogRecord[] = [
+export const curatedPeople: CatalogRecord[] = [
   { slug:"alexander-contee-hanson", name:"Alexander Contee Hanson", kind:"people", eyebrow:"Editor · Federalist politician", dates:"1786–1819", role:"Publisher of the Federal Republican and target of the Baltimore mobs", summary:"Hanson opposed the declaration of war in uncompromising language. After a crowd destroyed his Gay Street office, he resumed publication and joined armed supporters in defending a Charles Street house on July 27, 1812.", significance:"His beating, imprisonment, later congressional service, and early death make press freedom inseparable from the physical danger of wartime dissent.", chapter:"baltimore-at-war-with-itself", sourceRefs:["nps-riots","msa-hanson","riot-narrative"] },
   { slug:"james-madison", name:"James Madison", kind:"people", eyebrow:"President · United States", dates:"1751–1836", role:"President and wartime commander in chief", summary:"Madison asked Congress for war in June 1812 and led a government whose constitutional theory, finances, military administration, and political coalition were all tested by it.", significance:"His war message assembled maritime, commercial, territorial, and security grievances without reducing the case to one cause. The war nearly broke his government, yet its conclusion strengthened the party system he led.", chapter:"why-war", sourceRefs:["house-declaration","loc-guide"] },
   { slug:"james-m-lingan", name:"James M. Lingan", kind:"people", eyebrow:"Revolutionary veteran · Federalist", dates:"1751–1812", role:"Defender of the Federal Republican", summary:"A Revolutionary War officer and former prisoner on the British prison ship Jersey, Lingan joined the armed defense of Alexander Contee Hanson’s antiwar newspaper in Baltimore.", significance:"A mob murdered him in the city jail on July 28, 1812. Naming him prevents the Baltimore riots from dissolving into euphemism: Americans killed a Revolutionary general over the new war.", chapter:"baltimore-at-war-with-itself", sourceRefs:["nps-riots","bca"] },
-  { slug:"henry-lee", name:"Henry “Light-Horse Harry” Lee", kind:"people", eyebrow:"Revolutionary general · Federalist", dates:"1756–1818", role:"Defender of the Federal Republican", summary:"The celebrated Revolutionary cavalry commander joined Hanson and other Federalists in Baltimore, was taken to jail under official protection, and was savagely beaten when the mob entered.", significance:"Lee survived but never fully recovered. His suffering connects Revolutionary memory, violent party conflict, and the family history later overshadowed by his son Robert E. Lee.", chapter:"baltimore-at-war-with-itself", sourceRefs:["nps-riots"] },
+  { slug:"henry-lee", name:"Henry “Light-Horse Harry” Lee", aliases:["Henry Lee", "Light-Horse Harry Lee"], kind:"people", eyebrow:"Revolutionary general · Federalist", dates:"1756–1818", role:"Defender of the Federal Republican", summary:"The celebrated Revolutionary cavalry commander joined Hanson and other Federalists in Baltimore, was taken to jail under official protection, and was savagely beaten when the mob entered.", significance:"Lee survived but never fully recovered. His suffering connects Revolutionary memory, violent party conflict, and the family history later overshadowed by his son Robert E. Lee.", chapter:"baltimore-at-war-with-itself", sourceRefs:["nps-riots"] },
   { slug:"tecumseh", name:"Tecumseh", kind:"people", eyebrow:"Shawnee leader · Indigenous coalition", dates:"c. 1768–1813", role:"Diplomat, strategist, and coalition builder", summary:"Tecumseh worked across Native nations and communities to resist piecemeal land cessions and build a political and military coalition capable of checking American expansion.", significance:"His alliance with Britain was strategic, not subordinate. His death at the Thames weakened the coalition and helped make Indigenous diplomatic exclusion at Ghent catastrophic.", chapter:"war-for-the-interior", sourceRefs:["nps-indigenous","lac"] },
   { slug:"tenskwatawa", name:"Tenskwatawa", kind:"people", eyebrow:"Shawnee religious leader", dates:"1775–1836", role:"Religious and political leader at Prophetstown", summary:"Known as the Prophet, Tenskwatawa led a program of spiritual renewal and resistance to accommodation that helped make Prophetstown a center of intertribal organizing.", significance:"His presence keeps the coalition story from becoming a biography of Tecumseh alone and reveals that resistance drew on religious, social, and political transformation as well as battlefield strategy.", chapter:"world-already-at-war", sourceRefs:["nps-indigenous"] },
   { slug:"isaac-brock", name:"Isaac Brock", kind:"people", eyebrow:"British Army · Upper Canada", dates:"1769–1812", role:"Major general and civil administrator", summary:"Brock used speed, bluff, and alliance with Tecumseh to compel Hull’s surrender at Detroit, then died leading a counterattack at Queenston Heights.", significance:"He became central to later Canadian memory, but his strategic aims were British imperial aims distinct from both later Canadian nationalism and Tecumseh’s defense of Native autonomy.", chapter:"easy-conquest-that-wasnt", sourceRefs:["cwm","lac"] },
@@ -44,10 +46,10 @@ const corePeople: CatalogRecord[] = [
   { slug:"jordan-noble", name:"Jordan Noble", kind:"people", eyebrow:"Free Black musician · Louisiana", dates:"c. 1800–1890", role:"Drummer associated with the New Orleans campaign", summary:"Noble was a young free Black drummer whose long life later connected the Battle of New Orleans to public commemoration.", significance:"He offers a named life within the city’s much larger free Black military participation, while later recollection must be separated from contemporary documentation.", chapter:"new-orleans", sourceRefs:["nps-new-orleans-black"] },
 ];
 
-const corePersonSlugs = new Set(corePeople.map((record) => record.slug));
+const corePersonSlugs = new Set(curatedPeople.map((record) => record.slug));
 const seenHumanSlugs = new Set<string>();
 export const people: CatalogRecord[] = [
-  ...corePeople,
+  ...curatedPeople.map((record) => ({ ...record, recordDepth:"dossier" as const })),
   ...humanIndexRecords.filter((record) => {
     if (corePersonSlugs.has(record.slug) || seenHumanSlugs.has(record.slug)) return false;
     seenHumanSlugs.add(record.slug);
@@ -58,12 +60,12 @@ export const people: CatalogRecord[] = [
     kind:"people" as const,
     eyebrow:record.group,
     role:record.role,
-    summary:`${record.name} is preserved here as an index-level lead within ${record.group.toLowerCase()}. The record keeps the name, context, and source route visible while fuller biographical matching continues.`,
-    significance:record.archiveReason,
-    chapter:record.chapter,
+    summary:`${record.name} is preserved as a research lead in the ${record.group.toLowerCase()} index. This entry does not yet contain an individualized biography.`,
+    significance:record.scopeNote,
     sourceRefs:record.sourceRefs,
-    evidence:"Unresolved" as const,
-    facts:[{label:"Identity confidence",value:record.identityConfidence},{label:"Record depth",value:"Index entry; further reconciliation needed"}],
+    aliases:record.aliases,
+    recordDepth:"index" as const,
+    facts:[{label:"Record depth",value:"Research-index entry; person-specific reconciliation remains incomplete"}],
   })),
 ];
 
@@ -120,4 +122,7 @@ export const objects: CatalogRecord[] = [
 
 export const catalogByKind: Record<CatalogKind, CatalogRecord[]> = { people, places, ships, documents, objects };
 export const allCatalogRecords = Object.values(catalogByKind).flat();
-export const catalogRecord = (kind: string, slug: string) => (catalogByKind[kind as CatalogKind] || []).find((record) => record.slug === slug);
+export const catalogRecord = (kind: string, slug: string) => {
+  const resolvedSlug = kind === "people" ? resolvePersonSlug(slug) : slug;
+  return (catalogByKind[kind as CatalogKind] || []).find((record) => record.slug === resolvedSlug);
+};

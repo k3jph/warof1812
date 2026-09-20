@@ -1,8 +1,13 @@
 import Link from "@/components/SafeLink";
 import { allCatalogRecords } from "@/lib/catalog";
 
-export function RelatedRecords({ chapter }: { chapter: string }) {
-  const records = allCatalogRecords.filter((record) => record.chapter === chapter);
+export function RelatedRecords({ chapter, narrativeText }: { chapter: string; narrativeText: string }) {
+  const chapterText = narrativeText.toLowerCase();
+  const records = allCatalogRecords.filter((record) => {
+    if (record.chapter !== chapter || record.recordDepth === "index") return false;
+    if (record.kind !== "people") return true;
+    return [record.name, ...(record.aliases ?? [])].some((name) => chapterText.includes(name.toLowerCase()));
+  });
   if (!records.length) return null;
   return (
     <section className="related-records">
@@ -12,4 +17,3 @@ export function RelatedRecords({ chapter }: { chapter: string }) {
     </section>
   );
 }
-
