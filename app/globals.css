@@ -47,6 +47,9 @@ img { max-width: 100%; }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,16,27,.1), rgba(3,16,27,.48) 48%, rgba(3,16,27,.97) 73%), linear-gradient(0deg, rgba(3,16,27,.75), transparent 50%); }
 .hero-copy { position: relative; z-index: 2; grid-column: 2; align-self: center; max-width: 710px; padding: 5rem clamp(2rem, 6vw, 7rem) 7rem 1rem; }
 .hero-kicker, .section-kicker { margin: 0 0 1rem; color: var(--red); font-size: .72rem; line-height: 1.2; font-weight: 800; text-transform: uppercase; letter-spacing: .19em; }
+/* Surface-aware kicker color: currentColor resolves from the surrounding surface text color,
+   then keeps a red cast without requiring route-specific light/dark overrides. */
+.section-kicker { color: color-mix(in srgb, currentColor 90%, var(--red) 10%) !important; }
 .hero-kicker { color: #e08b7e; }
 .hero h1 { display: flex; margin: 0; font: 700 clamp(8rem, 18vw, 17rem)/.69 var(--serif); letter-spacing: -.09em; }
 .hero h1 span:last-child { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.52); }
@@ -438,6 +441,7 @@ img { max-width: 100%; }
 .backyard-callout > div { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
 
 .backyard-page { background: var(--cream); }
+.backyard-hero, .baltimore-exhibition-hero { background-color: var(--blue) !important; }
 .backyard-hero { min-height: 76vh; display: flex; align-items: end; padding: clamp(7rem, 15vw, 13rem) clamp(1.2rem, 8vw, 8rem) 5rem; color: white; background: linear-gradient(135deg, rgba(12,45,71,.96), rgba(12,45,71,.82)), url('/images/fort-mchenry-bombardment.jpg') center 58% / cover; }
 .backyard-hero > div { max-width: 1050px; }
 .backyard-hero .section-kicker { color: #e58c80; }
@@ -579,9 +583,14 @@ img { max-width: 100%; }
 .transcription-pair { display: grid; grid-template-columns: 1fr 1fr; border-block: 1px solid #b4aa98; }
 .transcription-pair article { min-height: 360px; display: flex; flex-direction: column; padding: 3.2rem; }
 .transcription-pair article + article { border-left: 1px solid #b4aa98; background: #e4edf0; }
-.transcription-pair article > p { margin: 0; color: var(--red); font-size: .74rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.transcription-pair blockquote { margin: auto 0; font: 700 clamp(1.8rem, 4vw, 3.4rem)/1.12 var(--serif); }
-.transcription-pair article > span { color: #696258; font-size: .78rem; }
+.transcription-label, .documentary-section-title { margin: 0; color: var(--red); font: 800 .74rem/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+.transcription-pair blockquote { margin: auto 0; font-family: var(--serif); }
+.transcription-pair.excerpt-short blockquote { font-size: clamp(1.8rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.12; }
+.transcription-pair.excerpt-medium blockquote { margin: 1.7rem 0; font-size: clamp(1.35rem, 2.2vw, 2rem); font-weight: 600; line-height: 1.35; }
+.transcription-pair.excerpt-long article { min-height: 0; }
+.transcription-pair.excerpt-long blockquote { max-width: 64ch; margin: 1.7rem 0; font-size: clamp(1.08rem, 1.45vw, 1.35rem); font-weight: 400; line-height: 1.62; }
+.transcription-pair article > span { margin-top: auto; color: #696258; font-size: .78rem; }
+.documentary-section-title { margin-bottom: 1.2rem; }
 .transcription-note { margin: 0; padding: 1rem 3.2rem; color: #686158; font-size: .83rem; border-bottom: 1px solid #b4aa98; }
 .documentary-apparatus { display: grid; grid-template-columns: .8fr 1.2fr; }
 .documentary-apparatus > section { padding: 3.2rem; }
@@ -598,12 +607,13 @@ img { max-width: 100%; }
 .provenance-card > a { color: var(--red); font-weight: 800; }
 .counterpoint { display: grid; grid-template-columns: .75fr 1.25fr; gap: 4rem; padding: 3.2rem; background: #11191d; color: white; }
 .counterpoint .section-kicker { color: #df7d72; }
-.counterpoint h3 { margin: .5rem 0; font: 700 2.5rem/1 var(--serif); }
+.counterpoint .documentary-section-title { color: #df7d72; }
+.counterpoint h3, .counterpoint h4 { margin: .5rem 0; font: 700 2.5rem/1 var(--serif); }
 .counterpoint > div:first-child > p:last-child { color: rgba(255,255,255,.5); }
 .counterpoint > div:last-child p { color: rgba(255,255,255,.75); font: 400 1.05rem/1.65 var(--serif); }
 .counterpoint a { color: #df7d72; font-weight: 800; }
 .citation-downloads { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: end; padding: 3.2rem; }
-.citation-downloads h3 { margin: .4rem 0 0; font: 700 2.5rem var(--serif); }
+.citation-downloads h3, .citation-downloads h4 { margin: .4rem 0 0; font: 700 2.5rem var(--serif); }
 .citation-downloads > div:last-child { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #aaa08e; border-left: 1px solid #aaa08e; }
 .citation-downloads > div:last-child a { display: flex; justify-content: space-between; padding: 1rem; border-right: 1px solid #aaa08e; border-bottom: 1px solid #aaa08e; font-size: .8rem; font-weight: 800; text-decoration: none; }
 .citation-downloads a span { color: var(--red); }
@@ -1148,6 +1158,8 @@ img { max-width: 100%; }
 [data-state="documented"] { --state-color: var(--lab-green); }
 [data-state="qualified"] { --state-color: var(--lab-amber); }
 [data-state="unsupported"] { --state-color: var(--lab-red); }
+.evidence-case[data-state="qualified"] .case-verdict { color: var(--ink); }
+.evidence-case[data-state="qualified"] .case-verdict > p:last-child { color: var(--ink); }
 .lab-key-grid span { color: var(--state-color); font-size: .7rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .lab-key-grid p { margin: 0; color: #615c54; }
 .case-index { background: #f7f2e8; }
@@ -1651,6 +1663,17 @@ img { max-width: 100%; }
 .gis-off-frame button[aria-pressed="true"] span, .gis-off-frame button:hover span, .gis-off-frame button:focus-visible span { color: #e58c80; }
 .gis-off-frame button strong { margin-top: auto; font: 700 1.18rem/1.08 var(--serif); overflow-wrap: anywhere; }
 .gis-off-frame button small { color: color-mix(in srgb,currentColor 68%,transparent); line-height: 1.35; }
+.gis-deep-link-status { width: 100%; max-width: 760px; min-width: 0; display: grid; gap: .35rem; margin: 2rem 0 0; padding: 1rem 1.1rem; border-left: 5px solid var(--red); background: var(--blue); color: white; overflow-wrap: anywhere; }
+.gis-deep-link-status > span, .gis-off-frame-selection > span { color: #f3d8d4; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.gis-deep-link-status strong, .gis-off-frame-selection strong { font: 700 1.2rem/1.1 var(--serif); }
+.gis-deep-link-status small, .gis-off-frame-selection small { color: rgba(255,255,255,.72); }
+.gis-deep-link-status > div { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin-top: .35rem; }
+.gis-deep-link-status a, .gis-off-frame-selection a { min-width: 0; color: white; font-size: .76rem; font-weight: 800; overflow-wrap: anywhere; }
+.gis-off-frame > .gis-off-frame-selection { min-width: 0; display: grid; grid-template-columns: 1fr; gap: .3rem; margin: 0 0 1rem; padding: 1rem; color: white; background: var(--blue); border: 0; border-left: 5px solid var(--red); overflow-wrap: anywhere; }
+
+.gis-selected-record-anchor { scroll-margin-top: 92px; }
+.gis-selected-record-anchor:focus { outline: 3px solid var(--red); outline-offset: 4px; }
+
 .lake-model-note { margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.68); font-size: .8rem; line-height: 1.55; }
 .lake-model-note strong { color: white; }
 .not-found-page { min-height: 70vh; }

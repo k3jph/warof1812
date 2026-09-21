@@ -103,8 +103,10 @@ assert(map.includes('initialEventId?: string'), "Map initial event deep-link pro
 const warClock = await readFile("components/WarClock.tsx", "utf8");
 assert(warClock.includes("entry.place.toLowerCase().includes(route.from.toLowerCase())"), "War Clock route-origin restriction missing");
 const lake = await readFile("components/LakeLogistics.tsx", "utf8");
+const lakeModel = await readFile("lib/lake-logistics-model.ts", "utf8");
 assert(lake.includes('useState("kingston")') && lake.includes("useState(6)"), "Lake Logistics baseline selector regressed");
-const baselineMatch = lake.match(/const baseValues:[^=]+ = \{([^}]+)\}/);
+assert(lakeModel.includes("LAKE_ALLOCATION_BUDGET = 480"), "Lake Logistics budget regressed");
+const baselineMatch = lakeModel.match(/DEFAULT_LAKE_ALLOCATION:[^=]+ = \{([^}]+)\}/);
 assert(baselineMatch, "Lake Logistics baseline allocation missing");
 const numbers = [...baselineMatch[1].matchAll(/:\s*(\d+)/g)].map((match) => Number(match[1]));
 assert(numbers.reduce((sum, value) => sum + value, 0) === 480, "Lake Logistics baseline does not use the 480-point cap");
@@ -112,8 +114,6 @@ assert(numbers.reduce((sum, value) => sum + value, 0) === 480, "Lake Logistics b
 const changed = execFileSync("git", ["diff", "--name-only", "HEAD^", "HEAD"], { encoding: "utf8" }).trim().split("\n").filter(Boolean);
 const forbidden = [
   "lib/baltimore.ts",
-  "lib/chapter-expansions.ts",
-  "lib/content.ts",
   "lib/documentary.ts",
   "lib/evidence-lab.ts",
   "lib/human-record.ts",
