@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "@/components/SafeLink";
 import type { EventRecord } from "@/lib/content";
 import { gisFeatures, gisLayers, gisSources, gisTimeline, type Coordinate, type GisFeature, type GisGeometry, type GisLayerId } from "@/lib/historical-gis";
@@ -80,16 +80,13 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
     setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const event = events.find((item) => item.id === selectedEventId);
     if (!event || isInBounds(event)) return;
     const node = selectedRecordRef.current;
     if (!node) return;
-    const frame = window.requestAnimationFrame(() => {
-      node.scrollIntoView({ behavior:"auto", block:"start" });
-      node.focus({ preventScroll:true });
-    });
-    return () => window.cancelAnimationFrame(frame);
+    node.scrollIntoView({ behavior:"auto", block:"start" });
+    node.focus({ preventScroll:true });
   }, [events, selectedEventId]);
   const selectKeyboardRecord = (value: string) => {
     if (value.startsWith("feature:")) {
