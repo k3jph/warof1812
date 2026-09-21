@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { BaltimoreExhibition } from "@/components/BaltimoreExhibition";
 import { SourceList } from "@/components/SourceList";
 
-export const metadata: Metadata = { title: "Baltimore, 1812–1814", description: "How one city murdered a Revolutionary general, built a fortress, stopped an empire, and remembered only part of the story." };
+export const metadata: Metadata = pageMetadata("/baltimore", "Baltimore, 1812–1814", "How one city murdered a Revolutionary general, built a fortress, stopped an empire, and remembered only part of the story.");
 
 const people = [
   ["Alexander Contee Hanson", "The antiwar editor refused to let destruction of his press settle whether dissent could be printed.", "/people/alexander-contee-hanson"],

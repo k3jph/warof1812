@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 
-export const metadata: Metadata = { title: "About This Project", description: "Why James P. Howard II built 1812: The Whole Story and how the project handles evidence, uncertainty, and institutional independence." };
+export const metadata: Metadata = pageMetadata("/about", "About This Project", "Why James P. Howard II built 1812: The Whole Story and how the project handles evidence, uncertainty, and institutional independence.");
 
 export default function AboutPage() {
   return (

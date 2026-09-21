@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 
-export const metadata: Metadata = { title: "Maryland, 1812–1814", description: "The Chesapeake raids, Washington campaign, North Point, Fort McHenry, privateering, civilian experience, and Black Marylanders." };
+export const metadata: Metadata = pageMetadata("/maryland", "Maryland, 1812–1814", "The Chesapeake raids, Washington campaign, North Point, Fort McHenry, privateering, civilian experience, and Black Marylanders.");
 
 const places = [
   ["Havre de Grace", "British raiders burned much of the town in May 1813, making the upper bay part of the war's civilian front.", "/story/war-reaches-homes"],

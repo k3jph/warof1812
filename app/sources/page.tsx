@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { sources } from "@/lib/content";
 import { sourceGroups } from "@/lib/source-guide";
 import { SourceGuide } from "@/components/SourceGuide";
 
-export const metadata: Metadata = { title: "Sources & Research Guide", description: "Primary documents, archives, museums, maps, and public-history resources for the War of 1812." };
+export const metadata: Metadata = pageMetadata("/sources", "Sources & Research Guide", "Primary documents, archives, museums, maps, and public-history resources for the War of 1812.");
 
 export default function SourcesPage() {
   return (

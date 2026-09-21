@@ -8,6 +8,7 @@ import { gisFeatures, gisLayers, gisSources, gisTimeline, type Coordinate, type 
 const W = 1200;
 const H = 850;
 const bounds = { minLon: -100, maxLon: -60, minLat: 9, maxLat: 51 };
+const isInBounds = (event: EventRecord) => event.longitude >= bounds.minLon && event.longitude <= bounds.maxLon && event.latitude >= bounds.minLat && event.latitude <= bounds.maxLat;
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const defaultLayers: GisLayerId[] = ["campaigns","blockade","privateering","freedom","logistics","boundaries","territory","survivals"];
 const project = ([lon, lat]: Coordinate) => ({ x: ((lon - bounds.minLon) / (bounds.maxLon - bounds.minLon)) * W, y: ((bounds.maxLat - lat) / (bounds.maxLat - bounds.minLat)) * H });
@@ -45,11 +46,14 @@ const presets: { label: string; description: string; layers: GisLayerId[] }[] = 
   { label: "Water and supply", description: "Shipyards, lake corridors, blockade, and privateering", layers: ["logistics","blockade","privateering","shorelines"] },
 ];
 
-export function MapExplorer({ events }: { events: EventRecord[] }) {
-  const [timeIndex, setTimeIndex] = useState(7);
+export function MapExplorer({ events, initialEventId = "" }: { events: EventRecord[]; initialEventId?: string }) {
+  const initialEvent = events.find((event) => event.id === initialEventId);
+  const initialDate = initialEvent ? eventDate(initialEvent) : "";
+  const initialTimeIndex = initialEvent ? Math.max(0, gisTimeline.findIndex((item) => item.date >= initialDate)) : 7;
+  const [timeIndex, setTimeIndex] = useState(initialTimeIndex);
   const [visibleLayers, setVisibleLayers] = useState<Set<GisLayerId>>(new Set(defaultLayers));
-  const [selectedFeatureId, setSelectedFeatureId] = useState("baltimore-campaign");
-  const [selectedEventId, setSelectedEventId] = useState("");
+  const [selectedFeatureId, setSelectedFeatureId] = useState(initialEvent ? "" : "baltimore-campaign");
+  const [selectedEventId, setSelectedEventId] = useState(initialEvent?.id ?? "");
   const [showEvents, setShowEvents] = useState(true);
   const [inspectMode, setInspectMode] = useState(false);
   const [inspection, setInspection] = useState<{ coordinate: Coordinate; nearby: GisFeature[] } | null>(null);
@@ -57,11 +61,35 @@ export function MapExplorer({ events }: { events: EventRecord[] }) {
   const selectedFeature = gisFeatures.find((item) => item.id === selectedFeatureId);
   const selectedEvent = events.find((item) => item.id === selectedEventId);
   const layerMap = useMemo(() => new Map(gisLayers.map((item) => [item.id, item])), []);
+  const offFrameEvents = useMemo(() => events.filter((event) => !isInBounds(event)), [events]);
   const drawable = gisFeatures.filter((item) => visibleLayers.has(item.properties.layer) && statusAt(item, currentDate) !== "future");
-  const visibleEvents = events.filter((event) => eventDate(event) <= currentDate && event.longitude >= bounds.minLon && event.longitude <= bounds.maxLon && event.latitude >= bounds.minLat && event.latitude <= bounds.maxLat);
+  const visibleEvents = events.filter((event) => isInBounds(event) && (eventDate(event) <= currentDate || event.id === selectedEventId));
 
   const toggleLayer = (id: GisLayerId) => setVisibleLayers((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
   const selectFeature = (id: string) => { setSelectedFeatureId(id); setSelectedEventId(""); };
+  const selectEvent = (id: string) => {
+    const event = events.find((item) => item.id === id);
+    if (!event) return;
+    setSelectedEventId(id);
+    setSelectedFeatureId("");
+    setShowEvents(true);
+    const targetDate = eventDate(event);
+    const targetIndex = gisTimeline.findIndex((item) => item.date >= targetDate);
+    setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
+  };
+  const selectKeyboardRecord = (value: string) => {
+    if (value.startsWith("feature:")) {
+      const id = value.slice("feature:".length);
+      const feature = gisFeatures.find((item) => item.id === id);
+      if (!feature) return;
+      setVisibleLayers((current) => new Set([...current, feature.properties.layer]));
+      const targetIndex = gisTimeline.findIndex((item) => item.date >= feature.properties.start);
+      if (targetIndex >= 0) setTimeIndex(targetIndex);
+      selectFeature(id);
+      return;
+    }
+    if (value.startsWith("event:")) selectEvent(value.slice("event:".length));
+  };
   const applyPreset = (layers: GisLayerId[]) => { setVisibleLayers(new Set(layers)); setInspection(null); };
   const inspect = (event: React.MouseEvent<SVGSVGElement>) => {
     if (!inspectMode) return;
@@ -73,7 +101,10 @@ export function MapExplorer({ events }: { events: EventRecord[] }) {
 
   return <div className="gis-explorer">
     <section className="gis-presets" aria-label="Curated map views">
-      {presets.map((preset) => <button key={preset.label} onClick={() => applyPreset(preset.layers)}><strong>{preset.label}</strong><span>{preset.description}</span></button>)}
+      {presets.map((preset) => {
+        const pressed = preset.layers.length === visibleLayers.size && preset.layers.every((layer) => visibleLayers.has(layer));
+        return <button key={preset.label} aria-pressed={pressed} onClick={() => applyPreset(preset.layers)}><strong>{preset.label}</strong><span>{preset.description}</span></button>;
+      })}
     </section>
 
     <div className="gis-workbench">
@@ -95,30 +126,43 @@ export function MapExplorer({ events }: { events: EventRecord[] }) {
         <div className="gis-timebar">
           <div><span>{dateLabel(currentDate)}</span><strong>{gisTimeline[timeIndex].label}</strong></div>
           <label><span>Move through the war and settlement</span><input aria-label="Historical date" type="range" min="0" max={gisTimeline.length - 1} value={timeIndex} onChange={(event) => setTimeIndex(Number(event.target.value))} /></label>
-          <button className={inspectMode ? "active" : ""} onClick={() => { setInspectMode((value) => !value); setInspection(null); }}>{inspectMode ? "Exit inspection" : "What was here then?"}</button>
+          <button className={inspectMode ? "active" : ""} aria-pressed={inspectMode} onClick={() => { setInspectMode((value) => !value); setInspection(null); }}>{inspectMode ? "Exit inspection" : "What was here then?"}</button>
         </div>
 
         <div className={`gis-map ${inspectMode ? "inspecting" : ""}`}>
-          <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby="gis-title gis-desc" onClick={inspect}>
-            <title id="gis-title">{`Historical GIS of the War of 1812 at ${dateLabel(currentDate)}`}</title>
-            <desc id="gis-desc">An editorial map of dated campaign routes, naval zones, Indigenous homelands, freedom-seeking routes, logistics, political geography, and surviving sites.</desc>
+          <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-labelledby="gis-title gis-desc" onClick={inspect}>
+            <title id="gis-title">{`Campaign map of the War of 1812 at ${dateLabel(currentDate)}`}</title>
+            <desc id="gis-desc">An interpretive map of dated campaign routes, naval zones, Indigenous homelands, freedom-seeking routes, logistics, political geography, surviving sites, and coordinate-backed events. Named records are keyboard selectable.</desc>
             <rect width={W} height={H} className="gis-water" />
             <g className="gis-graticule">{[-95,-90,-85,-80,-75,-70,-65].map((lon) => { const p=project([lon,30]); return <line key={lon} x1={p.x} x2={p.x} y1="0" y2={H} />; })}{[10,20,30,40,50].map((lat) => { const p=project([-80,lat]); return <line key={lat} x1="0" x2={W} y1={p.y} y2={p.y} />; })}</g>
             <g className="gis-land">{land.map((shape,index) => <path key={index} d={`${linePath(shape)} Z`} />)}</g>
             <g className="gis-lakes">{lakes.map((shape,index) => <path key={index} d={`${linePath(shape)} Z`} />)}</g>
             <g className="gis-basemap-labels"><text x="260" y="150">BRITISH NORTH AMERICA</text><text x="340" y="420">UNITED STATES</text><text x="780" y="570">ATLANTIC OCEAN</text><text x="315" y="765">GULF OF MEXICO</text><text x="945" y="720">CARIBBEAN</text></g>
-            <g className="gis-polygons">{drawable.filter((item) => item.geometry.type === "Polygon").map((item) => <path key={item.id} tabIndex={0} role="button" aria-label={item.properties.title} d={geometryPath(item.geometry)} className={`gis-feature gis-${item.properties.layer} confidence-${item.properties.confidence} status-${statusAt(item,currentDate)} ${selectedFeatureId === item.id ? "selected" : ""}`} style={{ "--feature-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") selectFeature(item.id); }}><title>{item.properties.title}</title></path>)}</g>
-            <g className="gis-lines">{drawable.filter((item) => item.geometry.type === "LineString").map((item) => <g key={item.id} className={`status-${statusAt(item,currentDate)}`}><path d={geometryPath(item.geometry)} className="gis-line-hit" onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} /><path tabIndex={0} role="button" aria-label={item.properties.title} d={geometryPath(item.geometry)} className={`gis-feature gis-${item.properties.layer} confidence-${item.properties.confidence} ${selectedFeatureId === item.id ? "selected" : ""}`} style={{ "--feature-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") selectFeature(item.id); }}><title>{item.properties.title}</title></path></g>)}</g>
-            <g className="gis-points">{drawable.filter((item) => item.geometry.type === "Point").map((item) => { const point=project(item.geometry.coordinates as Coordinate); return <circle key={item.id} cx={point.x} cy={point.y} r={selectedFeatureId === item.id ? 10 : 6} tabIndex={0} role="button" aria-label={item.properties.title} className={`gis-feature gis-${item.properties.layer} status-${statusAt(item,currentDate)} ${selectedFeatureId === item.id ? "selected" : ""}`} style={{ "--feature-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") selectFeature(item.id); }}><title>{item.properties.title}</title></circle>; })}</g>
-            {showEvents && <g className="gis-events">{visibleEvents.map((event) => { const point=project([event.longitude,event.latitude]); return <circle key={event.id} cx={point.x} cy={point.y} r={selectedEventId === event.id ? 7 : 3.5} className={selectedEventId === event.id ? "selected" : ""} tabIndex={0} role="button" aria-label={`${event.date}: ${event.title}`} onClick={(click) => { click.stopPropagation(); setSelectedEventId(event.id); setSelectedFeatureId(""); }} onKeyDown={(key) => { if (key.key === "Enter" || key.key === " ") { setSelectedEventId(event.id); setSelectedFeatureId(""); } }}><title>{`${event.date}: ${event.title}`}</title></circle>; })}</g>}
+            <g className="gis-polygons">{drawable.filter((item) => item.geometry.type === "Polygon").map((item) => <path key={item.id} tabIndex={0} role="button" aria-label={item.properties.title} aria-pressed={selectedFeatureId === item.id} d={geometryPath(item.geometry)} className={`gis-feature gis-${item.properties.layer} confidence-${item.properties.confidence} status-${statusAt(item,currentDate)} ${selectedFeatureId === item.id ? "selected" : ""}`} style={{ "--feature-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectFeature(item.id); } }}><title>{item.properties.title}</title></path>)}</g>
+            <g className="gis-lines">{drawable.filter((item) => item.geometry.type === "LineString").map((item) => <g key={item.id} className={`status-${statusAt(item,currentDate)}`}><path d={geometryPath(item.geometry)} className="gis-line-hit" onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} /><path tabIndex={0} role="button" aria-label={item.properties.title} aria-pressed={selectedFeatureId === item.id} d={geometryPath(item.geometry)} className={`gis-feature gis-${item.properties.layer} confidence-${item.properties.confidence} ${selectedFeatureId === item.id ? "selected" : ""}`} style={{ "--feature-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectFeature(item.id); } }}><title>{item.properties.title}</title></path></g>)}</g>
+            <g className="gis-points">{drawable.filter((item) => item.geometry.type === "Point").map((item) => { const point=project(item.geometry.coordinates as Coordinate); return <circle key={item.id} cx={point.x} cy={point.y} r={selectedFeatureId === item.id ? 10 : 6} tabIndex={0} role="button" aria-label={item.properties.title} aria-pressed={selectedFeatureId === item.id} className={`gis-feature gis-${item.properties.layer} status-${statusAt(item,currentDate)} ${selectedFeatureId === item.id ? "selected" : ""}`} style={{ "--feature-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} onClick={(event) => { event.stopPropagation(); selectFeature(item.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectFeature(item.id); } }}><title>{item.properties.title}</title></circle>; })}</g>
+            {showEvents && <g className="gis-events">{visibleEvents.map((event) => { const point=project([event.longitude,event.latitude]); return <circle key={event.id} cx={point.x} cy={point.y} r={selectedEventId === event.id ? 7 : 3.5} className={selectedEventId === event.id ? "selected" : ""} tabIndex={0} role="button" aria-label={`${event.date}: ${event.title}`} aria-pressed={selectedEventId === event.id} onClick={(click) => { click.stopPropagation(); selectEvent(event.id); }} onKeyDown={(key) => { if (key.key === "Enter" || key.key === " ") { key.preventDefault(); selectEvent(event.id); } }}><title>{`${event.date}: ${event.title}`}</title></circle>; })}</g>}
             {inspection && (() => { const point=project(inspection.coordinate); return <g className="gis-inspection-mark"><circle cx={point.x} cy={point.y} r="17" /><path d={`M${point.x-24},${point.y}H${point.x+24} M${point.x},${point.y-24}V${point.y+24}`} /></g>; })()}
           </svg>
           <div className="gis-scale"><span /><b>approximately 500 km</b></div>
           {inspectMode && !inspection && <p className="gis-click-prompt">Select a location to retrieve its nearest historical layers.</p>}
         </div>
-        <p className="gis-map-caution"><strong>Editorial GIS, not a legal or navigational map.</strong> Dashed geometry carries lower confidence; faded geometry represents activity completed by the selected date. Select any feature for its method and sources.</p>
+        <p className="gis-map-caution"><strong>Campaign map, not a legal, navigational, or survey map.</strong> Dashed geometry carries lower confidence; faded geometry represents activity completed by the selected date. Select any feature for its method and sources.</p>
+        <div className="gis-keyboard-browser">
+          <label htmlFor="gis-keyboard-record"><span>Keyboard navigator</span><select id="gis-keyboard-record" value={selectedFeatureId ? `feature:${selectedFeatureId}` : selectedEventId ? `event:${selectedEventId}` : ""} onChange={(event) => selectKeyboardRecord(event.target.value)}>
+            <option value="">Choose a named map record</option>
+            <optgroup label="Spatial records">{gisFeatures.map((feature) => <option key={feature.id} value={`feature:${feature.id}`}>{feature.properties.title}</option>)}</optgroup>
+            <optgroup label="Event records">{events.map((event) => <option key={event.id} value={`event:${event.id}`}>{event.date}: {event.title}</option>)}</optgroup>
+          </select></label>
+          <p>Every named spatial feature and event is available here without point selection. Free-coordinate inspection is an optional pointer enhancement and does not expose unique historical records.</p>
+        </div>
       </div>
     </div>
+
+    <section className="gis-off-frame" aria-labelledby="off-frame-title">
+      <header><p className="section-kicker">Beyond the primary frame</p><h2 id="off-frame-title">Atlantic, Pacific, and European events remain in the record.</h2><p>The main map preserves a useful North American and Caribbean scale. Events whose coordinates fall beyond that frame are listed explicitly rather than compressed into a distorted world projection.</p></header>
+      <div>{offFrameEvents.map((event) => <button key={event.id} aria-pressed={selectedEventId === event.id} onClick={() => selectEvent(event.id)}><span>{event.date}</span><strong>{event.title}</strong><small>{event.place} · {event.theater}</small></button>)}</div>
+    </section>
 
     {inspection ? <section className="gis-inspection">
       <header><p className="section-kicker">What was here then?</p><h2>{Math.abs(inspection.coordinate[1]).toFixed(2)}°{inspection.coordinate[1] >= 0 ? "N" : "S"}, {Math.abs(inspection.coordinate[0]).toFixed(2)}°W</h2><p>This is the nearest mapped evidence, not a claim that every polygon occupied this exact point.</p></header>
@@ -127,7 +171,7 @@ export function MapExplorer({ events }: { events: EventRecord[] }) {
 
     <section className="gis-method">
       <div><p className="section-kicker">How to read this map</p><h2>Uncertainty is part of the record.</h2></div>
-      <div><p>Military routes are corridors, not GPS tracks. Blockade polygons describe changing operational pressure, not walls at sea. Homeland regions overlap because lived Indigenous geographies were not nineteenth-century state polygons. Freedom-seeking lines join documented origins and destinations while refusing to invent an unknowable footstep-by-footstep path.</p><p>Every feature therefore carries a date range, precision class, confidence judgment, construction note, and source trail. That apparatus is available here and in the downloadable GeoJSON.</p><a className="primary-action" href="/data/historical-gis.geojson" download>Download the historical GIS <span>↓</span></a></div>
+      <div><p>Military routes are corridors, not GPS tracks. Blockade polygons describe changing operational pressure, not walls at sea. Homeland regions overlap because lived Indigenous geographies were not nineteenth-century state polygons. Freedom-seeking lines join documented origins and destinations without inventing an unknowable footstep-by-footstep path.</p><p><strong>Confidence</strong> describes how tightly the cited record fixes the represented location: high for strongly located sites or sequences, medium where the route or area is documented but generalized, and low for broad interpretive envelopes. <strong>Precision</strong> describes the kind of geometry shown, not survey accuracy. Every feature also carries a date range, construction note, and source trail.</p><a className="primary-action" href="/data/historical-gis.geojson" download>Download the campaign-map GIS data <span>↓</span></a></div>
     </section>
 
     <section className="gis-source-register">

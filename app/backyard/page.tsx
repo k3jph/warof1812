@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { SourceList } from "@/components/SourceList";
 
-export const metadata: Metadata = { title: "History in Your Own Backyard", description: "A mobile field guide to the War of 1812 in Maryland, from Chesapeake raids and Bladensburg to North Point and Fort McHenry." };
+export const metadata: Metadata = pageMetadata("/backyard", "History in Your Own Backyard", "A mobile field guide to the War of 1812 in Maryland, from Chesapeake raids and Bladensburg to North Point and Fort McHenry.");
 
 const stops = [
   ["Havre de Grace", "3 May 1813", "A British raid burned much of the town and showed how quickly naval power could reach civilian streets.", "/places/havre-de-grace"],

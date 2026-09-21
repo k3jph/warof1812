@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { perspectives } from "@/lib/perspectives";
 
-export const metadata: Metadata = { title: "Perspective Pathways", description: "Ten complete alternate readings of the War of 1812 through sovereignty, freedom seeking, labor, citizenship, occupation, captivity, place, objects, and memory." };
+export const metadata: Metadata = pageMetadata("/perspectives", "Perspective Pathways", "Ten complete alternate readings of the War of 1812 through sovereignty, freedom seeking, labor, citizenship, occupation, captivity, place, objects, and memory.");
 
 const crossings = [
   { name: "Tecumseh and the Thames", paths: ["Sovereignty", "British North America", "Memory & myth"], note: "The same death can mark coalition collapse, colonial survival, or the making of a transnational hero." },

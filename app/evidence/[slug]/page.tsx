@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 import Link from "@/components/SafeLink";
 import { sourceById } from "@/lib/content";
@@ -11,7 +12,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const claim = evidenceClaimBySlug[slug];
-  return claim ? { title: `${claim.title} · Evidence Laboratory`, description: claim.verdict } : {};
+  return claim ? pageMetadata(`/evidence/${claim.slug}`, `${claim.title} · Evidence Laboratory`, claim.verdict) : {};
 }
 
 export default async function EvidenceCasePage({ params }: { params: Promise<{ slug: string }> }) {

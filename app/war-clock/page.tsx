@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { WarClock } from "@/components/WarClock";
 import { SourceList } from "@/components/SourceList";
-export const metadata: Metadata = { title:"Day-by-day War Clock", description:"Select any date from 1807 through 1818 and compare events with the information that could plausibly have reached another location." };
+export const metadata: Metadata = pageMetadata("/war-clock", "Day-by-day War Clock", "Select any date from 1807 through 1818 and compare events with the information that could plausibly have reached another location.");
 export default function WarClockPage(){ return <main id="main" className="interactive-page war-clock-page"><header className="interactive-intro"><div><p className="section-kicker">Historical systems · time and knowledge</p><h1>A day-by-day<br />war clock</h1></div><p>Choose a day. See the project’s exact-date records, nearby developments, and an estimated communication window between two places. The absence of an entry marks the limits of this corpus, not an empty day in the past.</p></header><WarClock/><div className="interactive-sources"><SourceList ids={["loc-guide","loc-newspapers","house-declaration","loc-ghent","nps-war"]} heading="Evidence and dating routes" /></div></main>; }

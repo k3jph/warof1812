@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { claimStateLabel, evidenceClaims } from "@/lib/evidence-lab";
 
-export const metadata: Metadata = {
-  title: "Evidence Laboratory",
-  description: "Test five familiar War of 1812 claims against primary evidence, contradictions, uncertainty, and the history of popular memory.",
-};
+export const metadata: Metadata = pageMetadata("/evidence", "Evidence Laboratory", "Test five familiar War of 1812 claims against primary evidence, contradictions, uncertainty, and the history of popular memory.");
 
 export default function EvidenceLabPage() {
   return (

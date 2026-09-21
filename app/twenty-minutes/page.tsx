@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { SourceList } from "@/components/SourceList";
 
-export const metadata: Metadata = {
-  title: "The War in Twenty Minutes",
-  description: "A deliberate, connected account of the War of 1812 from the Atlantic crisis through its unequal aftermath.",
-};
+export const metadata: Metadata = pageMetadata("/twenty-minutes", "The War in Twenty Minutes", "A deliberate, connected account of the War of 1812 from the Atlantic crisis through its unequal aftermath.");
 
 type Movement = {
   title: string;

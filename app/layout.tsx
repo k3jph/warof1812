@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
+import { SITE_ORIGIN } from "@/lib/metadata";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://war1812.jameshoward.us"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: { default: "1812: The Whole Story", template: "%s · 1812: The Whole Story" },
   description: "A narrative-first, citation-rich public history of the War of 1812, from the Atlantic crisis to Ghent, New Orleans, and the unequal peace.",
   applicationName: "1812: The Whole Story",
@@ -21,21 +22,6 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" }],
     apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
   },
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: "/",
-    siteName: "1812: The Whole Story",
-    title: "1812: The Whole Story",
-    description: "A narrative-first, citation-rich public history of the War of 1812.",
-    images: [{ url: "/og-icon.png", width: 1200, height: 630, alt: "Fort McHenry 15-star canton, the icon of 1812: The Whole Story" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "1812: The Whole Story",
-    description: "A narrative-first, citation-rich public history of the War of 1812.",
-    images: ["/og-icon.png"],
-  },
   robots: { index: true, follow: true },
 };
 
@@ -44,9 +30,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "1812: The Whole Story",
-    url: "https://war1812.jameshoward.us",
+    url: SITE_ORIGIN,
     description: "A narrative-first, citation-rich public history of the War of 1812.",
-    image: "https://war1812.jameshoward.us/icon-512.png",
+    image: `${SITE_ORIGIN}/icon-512.png`,
     publisher: {
       "@type": "Person",
       name: "James P. Howard, II",

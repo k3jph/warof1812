@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { documentaryPackets } from "@/lib/documentary";
 
-export const metadata: Metadata = { title: "Documentary Edition", description: "Nineteen primary-source packets with transcriptions, annotations, provenance, counter-records, and exportable citations." };
+export const metadata: Metadata = pageMetadata("/edition", "Documentary Edition", "Nineteen primary-source packets with transcriptions, annotations, provenance, counter-records, and exportable citations.");
 
 export default function DocumentaryEditionPage() {
   return <main id="main" className="edition-index">
