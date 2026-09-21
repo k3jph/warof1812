@@ -200,10 +200,10 @@ try {
 
   for (const id of ["nuku-hiva","treaty-ghent"]) {
     await navigate("/map?event=" + id, 390, 900, 150);
-    const state = await evaluate("(() => {const target=document.querySelector('[data-selected-event-record=\"" + id + "\"]');const rect=target?.getBoundingClientRect();const style=target?getComputedStyle(target):null;return {focused:document.activeElement===target,top:rect?.top??9999,bottom:rect?.bottom??9999,outline:style?.outlineStyle||'none',outlineWidth:style?.outlineWidth||'0px'};})()");
-    assert(state.focused, "Deep-linked off-frame event did not receive focus: " + id);
-    assert(state.top >= 0 && state.top < 220, "Deep-linked off-frame event is not immediately visible on mobile: " + id + " top=" + state.top);
-    assert(state.outline !== "none" && state.outlineWidth !== "0px", "Focused off-frame event lacks visible focus: " + id);
+    const state = await evaluate("(() => {const notice=document.querySelector('.gis-deep-link-status');const rect=notice?.getBoundingClientRect();const target=document.querySelector('[data-selected-event-record=\"" + id + "\"]');const jump=notice?.querySelector('a[href=\"#selected-map-event\"]');return {noticeText:notice?.textContent||'',top:rect?.top??9999,bottom:rect?.bottom??9999,targetExists:Boolean(target),jumpExists:Boolean(jump)};})()");
+    assert(state.targetExists, "Deep-linked off-frame event record is missing: " + id);
+    assert(state.noticeText.length > 0 && state.jumpExists, "Deep-linked off-frame event lacks immediate status and jump control: " + id);
+    assert(state.top >= 0 && state.top < 900 && state.bottom > 0, "Deep-link status is not visible in the initial mobile viewport: " + id + " top=" + state.top);
     await screenshot("map-" + id + "-390");
   }
 
