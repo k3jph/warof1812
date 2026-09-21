@@ -81,6 +81,20 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
   };
 
   useLayoutEffect(() => {
+    const requestedId = new URLSearchParams(window.location.search).get("event");
+    if (!requestedId || requestedId === initialEventId) return;
+    const requestedEvent = events.find((event) => event.id === requestedId);
+    if (!requestedEvent) return;
+    setSelectedEventId(requestedEvent.id);
+    setSelectedFeatureId("");
+    setInspection(null);
+    setShowEvents(true);
+    const targetDate = eventDate(requestedEvent);
+    const targetIndex = gisTimeline.findIndex((item) => item.date >= targetDate);
+    setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
+  }, [events, initialEventId]);
+
+  useLayoutEffect(() => {
     const event = events.find((item) => item.id === selectedEventId);
     if (!event || isInBounds(event)) return;
     const node = selectedRecordRef.current;
