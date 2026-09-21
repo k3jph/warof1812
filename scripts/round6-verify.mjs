@@ -31,7 +31,7 @@ const addedLines = execFileSync("git", ["diff", "--unified=0", BASE, "HEAD", "--
 assert(!addedLines.some((line) => line.includes("\u2014")), "An em dash was introduced in changed prose");
 
 const css = await readFile("app/globals.css", "utf8");
-assert(css.includes("color-mix(in srgb, currentColor 85%, var(--red) 15%) !important"), "Surface-aware kicker rule missing");
+assert(css.includes("color-mix(in srgb, currentColor 90%, var(--red) 10%) !important"), "Surface-aware kicker rule missing");
 assert(css.includes(".transcription-pair.excerpt-long blockquote"), "Long-excerpt typography missing");
 assert(css.includes(".transcription-pair.excerpt-medium blockquote"), "Medium-excerpt typography missing");
 
