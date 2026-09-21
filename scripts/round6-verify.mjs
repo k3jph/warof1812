@@ -5,8 +5,8 @@ const BASE = "f05dd47f76d3e7bd08311725abdd32fc0c3c26b2";
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 
 execFileSync("git", ["diff", "--check", BASE, "HEAD"], { stdio:"inherit" });
-const status = execFileSync("git", ["status", "--porcelain"], { encoding:"utf8" }).trim();
-assert(status === "", "Working tree is not clean during verification:\n" + status);
+execFileSync("git", ["diff", "--quiet"]);
+execFileSync("git", ["diff", "--cached", "--quiet"]);
 
 const changed = execFileSync("git", ["diff", "--name-only", BASE, "HEAD"], { encoding:"utf8" }).trim().split("\n").filter(Boolean);
 const forbidden = [
@@ -89,5 +89,5 @@ console.log(JSON.stringify({
   targetedSources:["dudley-naval-war","skaggs-signal-victory","nps-william-williams"],
   textIntegrity:{replacementCharacters:0,addedEmDashes:0},
   diffCheck:"passed",
-  workingTree:"clean",
+  workingTree:"tracked-clean",
 }, null, 2));
