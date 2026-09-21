@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { notFound } from "next/navigation";
 import { DocumentaryReader } from "@/components/DocumentaryReader";
 import { documentaryBySlug, documentaryPackets } from "@/lib/documentary";
 
 export function generateStaticParams() { return documentaryPackets.map((packet) => ({ slug: packet.slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const packet = documentaryBySlug[slug]; return packet ? { title: `${packet.title} · Documentary Edition`, description: packet.editorialIntroduction } : {}; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const packet = documentaryBySlug[slug]; return packet ? pageMetadata(`/edition/${packet.slug}`, `${packet.title} · Documentary Edition`, packet.editorialIntroduction) : {}; }
 
 export default async function EditionPacketPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

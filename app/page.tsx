@@ -1,5 +1,8 @@
 import Link from "@/components/SafeLink";
 import { chapters } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
+export const metadata = pageMetadata("/", "1812: The Whole Story", "A narrative-first, citation-rich public history of the War of 1812, from the Atlantic crisis to Ghent, New Orleans, and the unequal peace.", true);
+
 
 const doors = [
   ["01", "Why War?", "A divided republic chooses war against the greatest naval power on Earth.", "/story/why-war"],

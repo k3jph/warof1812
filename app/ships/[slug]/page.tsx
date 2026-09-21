@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 import { CatalogDetail } from "@/components/CatalogDetail";
 import { catalogRecord, ships } from "@/lib/catalog";
 export function generateStaticParams() { return ships.map((record) => ({ slug: record.slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const record = catalogRecord("ships", slug); return record ? { title: record.name, description: record.summary } : {}; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const record = catalogRecord("ships", slug); return record ? pageMetadata(`/ships/${record.slug}`, record.name, record.summary) : {}; }
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const record = catalogRecord("ships", slug); if (!record) notFound(); return <CatalogDetail record={record} />; }
 

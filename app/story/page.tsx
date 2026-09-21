@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 import { chapters } from "@/lib/content";
 
-export const metadata: Metadata = { title: "The Whole Story", description: "Follow the complete War of 1812 from its Atlantic and continental origins through Ghent, New Orleans, and the unequal peace." };
+export const metadata: Metadata = pageMetadata("/story", "The Whole Story", "Follow the complete War of 1812 from its Atlantic and continental origins through Ghent, New Orleans, and the unequal peace.");
 
 export default function StoryIndex() {
   return (

@@ -26,10 +26,14 @@ export function WarClock() {
   const [conditions, setConditions] = useState<"best" | "typical" | "severe">("typical");
   const route = communicationRoutes.find((item) => item.id === routeId)!;
   const delay = route[conditions];
-  const arrival = iso(new Date(new Date(`${date}T12:00:00Z`).getTime() + delay * DAY));
+  const horizonStart = iso(new Date(new Date(`${date}T12:00:00Z`).getTime() - delay * DAY));
   const selected = useMemo(() => warClockEntries.filter((entry) => entry.date === date && active.includes(entry.layer)), [date, active]);
   const nearby = useMemo(() => warClockEntries.filter((entry) => active.includes(entry.layer)).map((entry) => ({ ...entry, distance: dayDistance(entry.date, date) })).filter((entry) => Math.abs(entry.distance) <= 30 && entry.distance !== 0).sort((a,b) => Math.abs(a.distance) - Math.abs(b.distance)).slice(0, 8), [date, active]);
-  const unknownAtDestination = useMemo(() => warClockEntries.filter((entry) => entry.date <= date && entry.date > iso(new Date(new Date(`${date}T12:00:00Z`).getTime() - delay * DAY))).filter((entry) => active.includes(entry.layer)).slice(-6), [date, delay, active]);
+  const unknownAtDestination = useMemo(() => warClockEntries
+    .filter((entry) => entry.date <= date && entry.date > horizonStart)
+    .filter((entry) => entry.place.toLowerCase().includes(route.from.toLowerCase()))
+    .filter((entry) => active.includes(entry.layer))
+    .slice(-6), [date, horizonStart, route.from, active]);
 
   function toggle(layer: ClockLayer) {
     setActive((current) => current.includes(layer) ? current.filter((item) => item !== layer) : [...current, layer]);
@@ -43,7 +47,7 @@ export function WarClock() {
           <input id="clock-date" type="date" min="1807-01-01" max="1818-12-31" value={date} onChange={(event) => setDate(event.target.value)} />
           <strong>{pretty(date)}</strong>
         </div>
-        <div className="clock-presets" aria-label="Significant date presets">{presets.map(([label, value]) => <button className={date === value ? "active" : ""} key={value} onClick={() => setDate(value)}>{label}<span>{value}</span></button>)}</div>
+        <div className="clock-presets" aria-label="Significant date presets">{presets.map(([label, value]) => <button className={date === value ? "active" : ""} aria-pressed={date === value} key={value} onClick={() => setDate(value)}>{label}<span>{value}</span></button>)}</div>
         <fieldset className="clock-layer-control"><legend>Visible records</legend>{clockLayers.map((layer) => <label key={layer.id} style={{ "--layer": layer.color } as React.CSSProperties}><input type="checkbox" checked={active.includes(layer.id)} onChange={() => toggle(layer.id)} /><i />{layer.label}</label>)}</fieldset>
       </section>
 
@@ -54,14 +58,14 @@ export function WarClock() {
       </section>
 
       <section className="knowledge-lag">
-        <header><p className="section-kicker">Knowledge horizon</p><h2>What has happened but may not be known?</h2><p>Choose a route and conditions. The shaded window is not a precise delivery prediction; it makes information latency visible.</p></header>
+        <header><p className="section-kicker">Knowledge horizon</p><h2>What may still be in transit?</h2><p>Choose a route and conditions. The model checks only events recorded at that route’s origin against the selected destination date. It does not apply one route’s delay to unrelated places, and it does not claim that every message followed the same path.</p></header>
         <div className="lag-controls">
           <label>Route<select value={routeId} onChange={(event) => setRouteId(event.target.value)}>{communicationRoutes.map((item) => <option value={item.id} key={item.id}>{item.from} → {item.to}</option>)}</select></label>
           <label>Conditions<select value={conditions} onChange={(event) => setConditions(event.target.value as typeof conditions)}><option value="best">Fast favorable passage</option><option value="typical">Typical estimate</option><option value="severe">Severe delay</option></select></label>
         </div>
-        <div className="lag-readout"><div><span>Depart</span><b>{pretty(date)}</b><small>{route.from}</small></div><i><span style={{ width: `${Math.min(100, delay / 70 * 100)}%` }} /></i><div><span>Estimated arrival</span><b>{pretty(arrival)}</b><small>{route.to} · about {delay} days</small></div></div>
+        <div className="lag-readout"><div><span>Possible origin window begins</span><b>{pretty(horizonStart)}</b><small>{route.from}</small></div><i><span style={{ width: `${Math.min(100, delay / 70 * 100)}%` }} /></i><div><span>Selected destination date</span><b>{pretty(date)}</b><small>{route.to} · about {delay} days</small></div></div>
         <p className="lag-method"><strong>{route.method}.</strong> Main constraints: {route.constraint}.</p>
-        <div className="unknown-list"><h3>Events inside the possible knowledge gap</h3>{unknownAtDestination.length ? unknownAtDestination.map((entry) => <article key={entry.id}><time>{pretty(entry.date)}</time><div><strong>{entry.title}</strong><p>Already true at {entry.place}; not necessarily known at {route.to}.</p></div></article>) : <p>No corpus events fall inside this particular window.</p>}</div>
+        <div className="unknown-list"><h3>Origin events that may still be in transit</h3>{unknownAtDestination.length ? unknownAtDestination.map((entry) => <article key={entry.id}><time>{pretty(entry.date)}</time><div><strong>{entry.title}</strong><p>Recorded at {entry.place} inside the route window; it may not yet be known at {route.to}.</p></div></article>) : <p>No active corpus events recorded at {route.from} fall inside this route window. That is a limit of the corpus, not evidence that no news was moving.</p>}</div>
       </section>
     </div>
   );

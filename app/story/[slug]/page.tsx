@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 import { ChapterNav } from "@/components/ChapterNav";
 import { ChapterVisualEvidence } from "@/components/ChapterVisualEvidence";
@@ -12,7 +13,7 @@ import { PerspectiveThreads } from "@/components/PerspectiveThreads";
 import { EvidenceCases } from "@/components/EvidenceCases";
 
 export function generateStaticParams() { return chapters.map((chapter) => ({ slug: chapter.slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const chapter = chapterBySlug[slug]; return chapter ? { title: chapter.title, description: chapter.lede } : {}; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const chapter = chapterBySlug[slug]; return chapter ? pageMetadata(`/story/${chapter.slug}`, chapter.title, chapter.lede) : {}; }
 
 export default async function ChapterPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

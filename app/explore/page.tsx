@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { ExploreIndex } from "@/components/ExploreIndex";
 import { allCatalogRecords, catalogByKind } from "@/lib/catalog";
 import { events } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Explore", description: "Search the events, people, places, ships, documents, and objects of the War of 1812." };
+export const metadata: Metadata = pageMetadata("/explore", "Explore", "Search the events, people, places, ships, documents, and objects of the War of 1812.");
 export default function ExplorePage() {
   const collections = [
     ["events", "Events", events.length, "Battles, raids, occupations, politics, and peace."],

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { TimelineExplorer } from "@/components/TimelineExplorer";
 import { events } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Timeline", description: "A chronological War of 1812 timeline generated from the shared event corpus." };
+export const metadata: Metadata = pageMetadata("/timeline", "Timeline", "A chronological War of 1812 timeline generated from the shared event corpus.");
 
 export default function TimelinePage() {
   return (

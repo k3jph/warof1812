@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "@/components/SafeLink";
 
-export const metadata: Metadata = { title:"Historical Systems", description:"Interactive models of information latency, blockade, inland naval logistics, and the human archive of the War of 1812." };
+export const metadata: Metadata = pageMetadata("/interactives", "Historical Systems", "Interactive models of information latency, blockade, inland naval logistics, and the human archive of the War of 1812.");
 const systems = [
   ["01","War clock","Choose any date from 1807 through 1818. Compare simultaneous events with what people in another place could plausibly know.","Time · news · knowledge","/war-clock"],
   ["02","You are the courier","Carry a treaty, policy decision, military warning, or campaign order through weather, schedules, interception, and imperfect roads.","Information latency","/courier"],

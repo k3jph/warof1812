@@ -1,0 +1,75 @@
+name: Verify site integrity
+
+on:
+  push:
+    branches:
+      - main
+      - round5-validation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install pnpm
+        run: npm install --global pnpm@11.25.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: TypeScript
+        run: pnpm exec tsc --noEmit
+
+      - name: Production build
+        run: pnpm build
+
+      - name: Crawl and browser verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm start > /tmp/war1812-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:8787/sitemap.xml > /dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:8787/sitemap.xml > /dev/null
+
+          browser="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [[ -z "$browser" ]]; then
+            echo "No headless Chromium-compatible browser is available on the runner." >&2
+            exit 1
+          fi
+
+          BASE_URL=http://127.0.0.1:8787 node scripts/round5-verify.mjs
+          BASE_URL=http://127.0.0.1:8787 CHROME_BIN="$browser" node scripts/round5-browser-verify.mjs
+          cp /tmp/war1812-server.log round5-screenshots/server.log
+
+      - name: Upload responsive verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: round5-responsive-verification
+          path: round5-screenshots/
+          if-no-files-found: warn

@@ -13,7 +13,7 @@ export function DocumentaryReader({ packet, standalone = false }: { packet: Docu
   return (
     <section className={`documentary-reader ${standalone ? "standalone" : "embedded"}`} id="documentary-edition" aria-labelledby={`documentary-title-${packet.slug}`}>
       <header className="documentary-heading">
-        <div><p className="section-kicker">Documentary edition · packet {String(packet.chapterOrder + 1).padStart(2, "0")}</p><h2 id={`documentary-title-${packet.slug}`}>{packet.title}</h2><p>{packet.editorialIntroduction}</p></div>
+        <div><p className="section-kicker">Documentary edition · packet {String(packet.chapterOrder + 1).padStart(2, "0")}</p>{standalone ? <h1 id={`documentary-title-${packet.slug}`}>{packet.title}</h1> : <h2 id={`documentary-title-${packet.slug}`}>{packet.title}</h2>}<p>{packet.editorialIntroduction}</p></div>
         <div className="documentary-stamp"><span>{packet.date}</span><strong>{packet.documentType}</strong>{standalone ? <Link href={`/story/${packet.chapterSlug}`}>Read the chapter →</Link> : <Link href={`/edition/${packet.slug}`}>Open this source alone →</Link>}</div>
       </header>
 
