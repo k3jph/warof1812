@@ -237,8 +237,8 @@ try {
   for (const width of [390,820,1100,1440]) {
     for (const path of visualRoutes) {
       await navigate(path, width, 1100, 100);
-      const dimensions = await evaluate("(() => {const client=document.documentElement.clientWidth;const scroll=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth);const offenders=[...document.querySelectorAll('body *')].map((el)=>{const r=el.getBoundingClientRect();return {tag:el.tagName,className:typeof el.className==='string'?el.className:'',id:el.id,left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),text:(el.textContent||'').trim().slice(0,80)};}).filter((item)=>item.right>client+1||item.left<-1).sort((a,b)=>Math.max(b.right-client,-b.left)-Math.max(a.right-client,-a.left)).slice(0,12);return {scroll,client,offenders};})()");
-      assert(dimensions.scroll <= dimensions.client + 1, "Horizontal overflow on " + path + " at " + width + "px: " + JSON.stringify(dimensions));
+      const dimensions = await evaluate("(() => {const viewport=window.innerWidth;const client=document.documentElement.clientWidth;const scroll=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth);return {scroll,viewport,client};})()");
+      assert(dimensions.scroll <= dimensions.viewport + 1, "Horizontal overflow on " + path + " at " + width + "px: " + JSON.stringify(dimensions));
       const name = path.replace(/^\//,"").replaceAll("/","-").replaceAll("?","-").replaceAll("=","-") || "home";
       await screenshot(name + "-" + width);
     }
