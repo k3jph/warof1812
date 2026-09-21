@@ -1663,13 +1663,13 @@ img { max-width: 100%; }
 .gis-off-frame button[aria-pressed="true"] span, .gis-off-frame button:hover span, .gis-off-frame button:focus-visible span { color: #e58c80; }
 .gis-off-frame button strong { margin-top: auto; font: 700 1.18rem/1.08 var(--serif); overflow-wrap: anywhere; }
 .gis-off-frame button small { color: color-mix(in srgb,currentColor 68%,transparent); line-height: 1.35; }
-.gis-deep-link-status { max-width: 760px; display: grid; gap: .35rem; margin: 2rem 0 0; padding: 1rem 1.1rem; border-left: 5px solid var(--red); background: var(--blue); color: white; }
+.gis-deep-link-status { width: 100%; max-width: 760px; min-width: 0; display: grid; gap: .35rem; margin: 2rem 0 0; padding: 1rem 1.1rem; border-left: 5px solid var(--red); background: var(--blue); color: white; overflow-wrap: anywhere; }
 .gis-deep-link-status > span, .gis-off-frame-selection > span { color: #f3d8d4; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .gis-deep-link-status strong, .gis-off-frame-selection strong { font: 700 1.2rem/1.1 var(--serif); }
 .gis-deep-link-status small, .gis-off-frame-selection small { color: rgba(255,255,255,.72); }
 .gis-deep-link-status > div { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin-top: .35rem; }
-.gis-deep-link-status a, .gis-off-frame-selection a { color: white; font-size: .76rem; font-weight: 800; }
-.gis-off-frame-selection { display: grid; gap: .3rem; margin: 0 0 1rem; padding: 1rem; color: white; background: var(--blue); border-left: 5px solid var(--red); }
+.gis-deep-link-status a, .gis-off-frame-selection a { min-width: 0; color: white; font-size: .76rem; font-weight: 800; overflow-wrap: anywhere; }
+.gis-off-frame > .gis-off-frame-selection { min-width: 0; display: grid; grid-template-columns: 1fr; gap: .3rem; margin: 0 0 1rem; padding: 1rem; color: white; background: var(--blue); border: 0; border-left: 5px solid var(--red); overflow-wrap: anywhere; }
 
 .gis-selected-record-anchor { scroll-margin-top: 92px; }
 .gis-selected-record-anchor:focus { outline: 3px solid var(--red); outline-offset: 4px; }
