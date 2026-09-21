@@ -173,7 +173,7 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
     <section className="gis-off-frame" aria-labelledby="off-frame-title">
       <header><p className="section-kicker">Beyond the primary frame</p><h2 id="off-frame-title">Atlantic, Pacific, and European events remain in the record.</h2><p>The main map preserves a useful North American and Caribbean scale. Events whose coordinates fall beyond that frame are listed explicitly rather than compressed into a distorted world projection.</p></header>
       {selectedEvent && !isInBounds(selectedEvent) && <div className="gis-off-frame-selection" role="status" aria-live="polite"><span>Selected event</span><strong>{selectedEvent.title}</strong><small>{selectedEvent.date} · {selectedEvent.place}</small><a href="#selected-map-event">Jump to full record ↓</a></div>}
-      <div>{offFrameEvents.map((event) => <button key={event.id} aria-pressed={selectedEventId === event.id} onClick={() => selectEvent(event.id)}><span>{event.date}</span><strong>{event.title}</strong><small>{event.place} · {event.theater}</small></button>)}</div>
+      <div>{offFrameEvents.map((event) => <button key={event.id} aria-pressed={selectedEventId === event.id} onClick={() => selectEvent(event.id)} onKeyDown={(key) => { if (key.key === "Enter" || key.key === " ") { key.preventDefault(); selectEvent(event.id); } }}><span>{event.date}</span><strong>{event.title}</strong><small>{event.place} · {event.theater}</small></button>)}</div>
     </section>
 
     {inspection ? <section className="gis-inspection">
