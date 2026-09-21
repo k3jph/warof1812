@@ -61,7 +61,7 @@ for (const [path, titleHint] of representative) {
   const ogDescription = attr(text, /<meta[^>]+property="og:description"[^>]+content="([^"]+)"/i, `og:description on ${path}`);
   const twitterTitle = attr(text, /<meta[^>]+name="twitter:title"[^>]+content="([^"]+)"/i, `twitter:title on ${path}`);
   const twitterDescription = attr(text, /<meta[^>]+name="twitter:description"[^>]+content="([^"]+)"/i, `twitter:description on ${path}`);
-  const expectedCanonical = new URL(path, canonicalOrigin).toString();
+  const expectedCanonical = path === "/" ? canonicalOrigin : new URL(path, canonicalOrigin).toString();
   assert(canonical === expectedCanonical, `Canonical mismatch on ${path}: ${canonical}`);
   assert(ogUrl === expectedCanonical, `Open Graph URL mismatch on ${path}: ${ogUrl}`);
   assert(ogTitle.toLowerCase().includes(titleHint.toLowerCase()), `Open Graph title is not route-specific on ${path}: ${ogTitle}`);
@@ -87,7 +87,7 @@ for (const href of ["/", "/story", "/explore", "/map"]) assert(missing.text.incl
 const explore = await readFile("components/ExploreIndex.tsx", "utf8");
 const people = await readFile("components/HumanRecordIndex.tsx", "utf8");
 assert(explore.includes("const pageSize = 48"), "Explore pagination page size regressed");
-assert(explore.includes("shouldShowResults"), "Explore search gating regressed");
+assert(explore.includes("const hasSelection = Boolean(query.trim()) || category !== \"All\";"), "Explore search gating regressed");
 assert(people.includes("const pageSize = 48"), "People pagination page size regressed");
 
 const map = await readFile("components/MapExplorer.tsx", "utf8");
