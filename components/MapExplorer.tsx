@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "@/components/SafeLink";
 import type { EventRecord } from "@/lib/content";
 import { gisFeatures, gisLayers, gisSources, gisTimeline, type Coordinate, type GisFeature, type GisGeometry, type GisLayerId } from "@/lib/historical-gis";
@@ -57,6 +57,7 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
   const [showEvents, setShowEvents] = useState(true);
   const [inspectMode, setInspectMode] = useState(false);
   const [inspection, setInspection] = useState<{ coordinate: Coordinate; nearby: GisFeature[] } | null>(null);
+  const selectedRecordRef = useRef<HTMLDivElement>(null);
   const currentDate = gisTimeline[timeIndex].date;
   const selectedFeature = gisFeatures.find((item) => item.id === selectedFeatureId);
   const selectedEvent = events.find((item) => item.id === selectedEventId);
@@ -72,11 +73,24 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
     if (!event) return;
     setSelectedEventId(id);
     setSelectedFeatureId("");
+    setInspection(null);
     setShowEvents(true);
     const targetDate = eventDate(event);
     const targetIndex = gisTimeline.findIndex((item) => item.date >= targetDate);
     setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
   };
+
+  useEffect(() => {
+    const event = events.find((item) => item.id === selectedEventId);
+    if (!event || isInBounds(event)) return;
+    const node = selectedRecordRef.current;
+    if (!node) return;
+    const frame = window.requestAnimationFrame(() => {
+      node.scrollIntoView({ behavior:"auto", block:"start" });
+      node.focus({ preventScroll:true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [events, selectedEventId]);
   const selectKeyboardRecord = (value: string) => {
     if (value.startsWith("feature:")) {
       const id = value.slice("feature:".length);
@@ -167,7 +181,7 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
     {inspection ? <section className="gis-inspection">
       <header><p className="section-kicker">What was here then?</p><h2>{Math.abs(inspection.coordinate[1]).toFixed(2)}°{inspection.coordinate[1] >= 0 ? "N" : "S"}, {Math.abs(inspection.coordinate[0]).toFixed(2)}°W</h2><p>This is the nearest mapped evidence, not a claim that every polygon occupied this exact point.</p></header>
       <div>{inspection.nearby.map((item) => <button key={item.id} onClick={() => { selectFeature(item.id); setInspection(null); }}><span style={{ "--layer-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} /><small>{layerMap.get(item.properties.layer)?.label}</small><strong>{item.properties.title}</strong><p>{item.properties.then ?? item.properties.summary}</p></button>)}</div>
-    </section> : selectedFeature ? <FeatureRecord feature={selectedFeature} /> : selectedEvent ? <EventRecordCard event={selectedEvent} /> : null}
+    </section> : selectedFeature ? <FeatureRecord feature={selectedFeature} /> : selectedEvent ? <div ref={selectedRecordRef} className="gis-selected-record-anchor" tabIndex={-1} data-selected-event-record={selectedEvent.id} aria-live="polite"><EventRecordCard event={selectedEvent} /></div> : null}
 
     <section className="gis-method">
       <div><p className="section-kicker">How to read this map</p><h2>Uncertainty is part of the record.</h2></div>
