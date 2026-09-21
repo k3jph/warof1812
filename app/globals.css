@@ -441,7 +441,7 @@ img { max-width: 100%; }
 .backyard-callout > div { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
 
 .backyard-page { background: var(--cream); }
-.backyard-hero, .baltimore-exhibition-hero { background-color: var(--blue); }
+.backyard-hero, .baltimore-exhibition-hero { background-color: var(--blue) !important; }
 .backyard-hero { min-height: 76vh; display: flex; align-items: end; padding: clamp(7rem, 15vw, 13rem) clamp(1.2rem, 8vw, 8rem) 5rem; color: white; background: linear-gradient(135deg, rgba(12,45,71,.96), rgba(12,45,71,.82)), url('/images/fort-mchenry-bombardment.jpg') center 58% / cover; }
 .backyard-hero > div { max-width: 1050px; }
 .backyard-hero .section-kicker { color: #e58c80; }
