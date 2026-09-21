@@ -125,6 +125,13 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
   };
 
   return <div className="gis-explorer">
+    {selectedEvent && !isInBounds(selectedEvent) && !initialEventId && <aside className="gis-deep-link-status gis-client-deep-link-status" aria-live="polite">
+      <span>Selected beyond the primary frame</span>
+      <strong>{selectedEvent.title}</strong>
+      <small>{selectedEvent.date} · {selectedEvent.place}</small>
+      <div><a href="#selected-map-event">Jump to the selected event record ↓</a><Link href={`/events/${selectedEvent.id}`}>Open full event →</Link></div>
+    </aside>}
+
     <section className="gis-presets" aria-label="Curated map views">
       {presets.map((preset) => {
         const pressed = preset.layers.length === visibleLayers.size && preset.layers.every((layer) => visibleLayers.has(layer));
