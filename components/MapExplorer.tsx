@@ -81,6 +81,23 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
   };
 
   useLayoutEffect(() => {
+    const requestedId = new URLSearchParams(window.location.search).get("event");
+    if (!requestedId || requestedId === initialEventId) return;
+    const requestedEvent = events.find((event) => event.id === requestedId);
+    if (!requestedEvent) return;
+    const frame = window.requestAnimationFrame(() => {
+      setSelectedEventId(requestedEvent.id);
+      setSelectedFeatureId("");
+      setInspection(null);
+      setShowEvents(true);
+      const targetDate = eventDate(requestedEvent);
+      const targetIndex = gisTimeline.findIndex((item) => item.date >= targetDate);
+      setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [events, initialEventId]);
+
+  useLayoutEffect(() => {
     const event = events.find((item) => item.id === selectedEventId);
     if (!event || isInBounds(event)) return;
     const node = selectedRecordRef.current;
@@ -111,6 +128,13 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
   };
 
   return <div className="gis-explorer">
+    {selectedEvent && !isInBounds(selectedEvent) && !initialEventId && <aside className="gis-deep-link-status gis-client-deep-link-status" aria-live="polite">
+      <span>Selected beyond the primary frame</span>
+      <strong>{selectedEvent.title}</strong>
+      <small>{selectedEvent.date} · {selectedEvent.place}</small>
+      <div><a href="#selected-map-event">Jump to the selected event record ↓</a><Link href={`/events/${selectedEvent.id}`}>Open full event →</Link></div>
+    </aside>}
+
     <section className="gis-presets" aria-label="Curated map views">
       {presets.map((preset) => {
         const pressed = preset.layers.length === visibleLayers.size && preset.layers.every((layer) => visibleLayers.has(layer));
