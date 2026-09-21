@@ -25,14 +25,14 @@ img { max-width: 100%; }
 .skip-link:focus { transform: none; }
 
 .site-header { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--paper) 92%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
-.header-inner { min-height: 68px; max-width: 1480px; margin: auto; padding: 0 clamp(1rem, 4vw, 4rem); display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-.wordmark { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.header-inner { min-height: 68px; max-width: 1760px; margin: auto; padding: 0 clamp(1rem, 2.5vw, 3rem); display: flex; align-items: center; justify-content: space-between; gap: clamp(1.25rem, 2vw, 2.25rem); }
+.wordmark { flex: 0 0 auto; display: flex; align-items: center; gap: .75rem; text-decoration: none; }
 .site-icon { width: 36px; height: 36px; flex: 0 0 36px; }
-.wordmark-text { display: flex; align-items: baseline; gap: .8rem; }
+.wordmark-text { flex: 0 0 auto; display: flex; align-items: baseline; gap: .7rem; white-space: nowrap; }
 .wordmark-year { font: 800 1.7rem/1 var(--serif); letter-spacing: -.08em; }
-.wordmark-name { font-size: .69rem; text-transform: uppercase; letter-spacing: .19em; font-weight: 700; }
-.header-inner > nav { display: flex; align-items: center; gap: clamp(.8rem, 2vw, 2rem); }
-.site-header nav a { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; }
+.wordmark-name { white-space: nowrap; font-size: .69rem; text-transform: uppercase; letter-spacing: .19em; font-weight: 700; }
+.header-inner > nav { min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: clamp(.65rem, 1.15vw, 1.2rem); }
+.site-header nav a { white-space: nowrap; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; }
 .site-header nav a:hover, .site-header nav a:focus-visible { color: var(--red); }
 .mobile-nav { display: none; position: relative; }
 .mobile-nav summary { cursor: pointer; list-style: none; padding: .55rem .7rem; border: 1px solid var(--line); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
@@ -1289,6 +1289,11 @@ img { max-width: 100%; }
 .chapter-case-files a > span, .chapter-case-files a > b { color: var(--state-color); font: 700 1.3rem var(--serif); }
 .chapter-case-files a small { display: block; color: var(--state-color); font-size: .58rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
 .chapter-case-files a strong { display: block; margin-top: .3rem; font: 700 1.12rem var(--serif); }
+
+@media (max-width: 1420px) {
+  .header-inner > nav { display: none; }
+  .mobile-nav { display: block; }
+}
 
 @media (max-width: 1100px) {
   .header-inner > nav { display: none; }
