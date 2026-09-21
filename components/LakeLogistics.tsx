@@ -45,7 +45,7 @@ export function LakeLogistics() {
         <div><p className="section-kicker">Inland naval yard</p><h1>Build the fleet. Feed it. Move it.</h1></div>
         <div className="lake-readiness" aria-live="polite">
           <span>Readiness index</span>
-          <b>{evaluation.valid ? evaluation.readiness : "—"}</b>
+          <b>{evaluation.valid ? evaluation.readiness : "N/A"}</b>
           <i><span style={{width:`${evaluation.valid ? evaluation.readiness : 0}%`}} /></i>
         </div>
       </header>
@@ -55,10 +55,10 @@ export function LakeLogistics() {
       </div>
       <p className="lake-base-note">{base.note}</p>
       <div className="lake-output" aria-live="polite">
-        <div><b>{evaluation.valid ? evaluation.hulls : "—"}</b><span>hulls plausibly launched</span></div>
-        <div><b>{evaluation.valid ? evaluation.sustainedVessels : "—"}</b><span>vessels plausibly sustained</span></div>
-        <div><b>{evaluation.valid && bottleneck ? bottleneck.score : "—"}</b><span>weakest resource index</span></div>
-        <div><b>{evaluation.valid ? Math.round(evaluation.seasonFactor*100) : "—"}</b><span>seasonal work window</span></div>
+        <div><b>{evaluation.valid ? evaluation.hulls : "N/A"}</b><span>hulls plausibly launched</span></div>
+        <div><b>{evaluation.valid ? evaluation.sustainedVessels : "N/A"}</b><span>vessels plausibly sustained</span></div>
+        <div><b>{evaluation.valid && bottleneck ? bottleneck.score : "N/A"}</b><span>weakest resource index</span></div>
+        <div><b>{evaluation.valid ? Math.round(evaluation.seasonFactor*100) : "N/A"}</b><span>seasonal work window</span></div>
       </div>
       <p className="lake-model-note"><strong>How to read the scale.</strong> Readiness is a comparative 0–100 teaching index, not a measured historical statistic. It combines all eight resource indices with the selected yard and season. Launching requires enough overall readiness during a workable season. Sustaining a vessel also requires the weakest resource to clear an operational threshold, with local threat reducing rather than improving capacity.</p>
     </section>
