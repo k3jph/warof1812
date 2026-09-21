@@ -172,13 +172,14 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
 
     <section className="gis-off-frame" aria-labelledby="off-frame-title">
       <header><p className="section-kicker">Beyond the primary frame</p><h2 id="off-frame-title">Atlantic, Pacific, and European events remain in the record.</h2><p>The main map preserves a useful North American and Caribbean scale. Events whose coordinates fall beyond that frame are listed explicitly rather than compressed into a distorted world projection.</p></header>
+      {selectedEvent && !isInBounds(selectedEvent) && <div className="gis-off-frame-selection" role="status" aria-live="polite"><span>Selected event</span><strong>{selectedEvent.title}</strong><small>{selectedEvent.date} · {selectedEvent.place}</small><a href="#selected-map-event">Jump to full record ↓</a></div>}
       <div>{offFrameEvents.map((event) => <button key={event.id} aria-pressed={selectedEventId === event.id} onClick={() => selectEvent(event.id)}><span>{event.date}</span><strong>{event.title}</strong><small>{event.place} · {event.theater}</small></button>)}</div>
     </section>
 
     {inspection ? <section className="gis-inspection">
       <header><p className="section-kicker">What was here then?</p><h2>{Math.abs(inspection.coordinate[1]).toFixed(2)}°{inspection.coordinate[1] >= 0 ? "N" : "S"}, {Math.abs(inspection.coordinate[0]).toFixed(2)}°W</h2><p>This is the nearest mapped evidence, not a claim that every polygon occupied this exact point.</p></header>
       <div>{inspection.nearby.map((item) => <button key={item.id} onClick={() => { selectFeature(item.id); setInspection(null); }}><span style={{ "--layer-color": layerMap.get(item.properties.layer)?.color } as React.CSSProperties} /><small>{layerMap.get(item.properties.layer)?.label}</small><strong>{item.properties.title}</strong><p>{item.properties.then ?? item.properties.summary}</p></button>)}</div>
-    </section> : selectedFeature ? <FeatureRecord feature={selectedFeature} /> : selectedEvent ? <div ref={selectedRecordRef} className="gis-selected-record-anchor" tabIndex={-1} data-selected-event-record={selectedEvent.id} aria-live="polite"><EventRecordCard event={selectedEvent} /></div> : null}
+    </section> : selectedFeature ? <FeatureRecord feature={selectedFeature} /> : selectedEvent ? <div ref={selectedRecordRef} id="selected-map-event" className="gis-selected-record-anchor" tabIndex={-1} data-selected-event-record={selectedEvent.id} aria-live="polite"><EventRecordCard event={selectedEvent} /></div> : null}
 
     <section className="gis-method">
       <div><p className="section-kicker">How to read this map</p><h2>Uncertainty is part of the record.</h2></div>
