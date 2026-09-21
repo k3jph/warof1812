@@ -137,9 +137,9 @@ try {
   await screenshot("war-clock-1100");
 
   await navigate("/lake-logistics", 1100, 1200);
-  const lakeState = await evaluate("(() => ({ text: document.body.textContent ?? '', readiness: document.querySelector('.lake-readiness b')?.textContent?.trim() }))()");
+  const lakeState = await evaluate("(() => ({ text: document.body.textContent ?? '', readiness: document.querySelector('.lake-readiness b')?.textContent?.trim(), hulls: document.querySelector('.lake-output > div:first-child b')?.textContent?.trim() }))()");
   assert(lakeState.text.includes("480 / 480"), "Lake Logistics default leaves resources unallocated");
-  assert(lakeState.text.includes("1 hulls plausibly launched"), "Lake Logistics default does not demonstrate a plausible launch");
+  assert(lakeState.hulls === "1", "Lake Logistics default does not demonstrate a plausible launch: " + lakeState.hulls);
   assert(lakeState.readiness === "46", "Unexpected Lake Logistics default readiness: " + lakeState.readiness);
   await screenshot("lake-logistics-1100");
 
