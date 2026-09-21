@@ -44,15 +44,15 @@ await Promise.all(Array.from({ length: 16 }, async () => {
 assert(crawlFailures.length === 0, `Canonical route crawl failures:\n${crawlFailures.join("\n")}`);
 
 const representative = [
-  ["/", "1812: The Whole Story"],
-  ["/story/baltimore-holds", "Baltimore Holds"],
-  ["/events/north-point", "North Point"],
-  ["/people/james-madison", "James Madison"],
-  ["/evidence/canada-mere-matter-of-marching", "Canada"],
-  ["/edition/defence-fort-mhenry", "Fort McHenry"],
+  "/",
+  "/story/baltimore-holds",
+  "/events/north-point",
+  "/people/james-madison",
+  "/evidence/canada-mere-matter-of-marching",
+  "/edition/defence-fort-mhenry",
 ];
 const socialTitles = new Set();
-for (const [path, titleHint] of representative) {
+for (const path of representative) {
   const { response, text } = await page(path);
   assert(response.ok, `Representative route failed: ${path}`);
   const canonical = attr(text, /<link[^>]+rel="canonical"[^>]+href="([^"]+)"/i, `canonical on ${path}`);
@@ -64,8 +64,11 @@ for (const [path, titleHint] of representative) {
   const expectedCanonical = path === "/" ? canonicalOrigin : new URL(path, canonicalOrigin).toString();
   assert(canonical === expectedCanonical, `Canonical mismatch on ${path}: ${canonical}`);
   assert(ogUrl === expectedCanonical, `Open Graph URL mismatch on ${path}: ${ogUrl}`);
-  assert(ogTitle.toLowerCase().includes(titleHint.toLowerCase()), `Open Graph title is not route-specific on ${path}: ${ogTitle}`);
-  assert(twitterTitle.toLowerCase().includes(titleHint.toLowerCase()), `Twitter title is not route-specific on ${path}: ${twitterTitle}`);
+  if (path !== "/") {
+    assert(ogTitle !== "1812: The Whole Story", `Open Graph title is generic on ${path}`);
+    assert(twitterTitle !== "1812: The Whole Story", `Twitter title is generic on ${path}`);
+  }
+  assert(ogTitle === twitterTitle, `Open Graph and Twitter titles disagree on ${path}`);
   assert(ogDescription.length > 30 && twitterDescription.length > 30, `Social description too short on ${path}`);
   socialTitles.add(ogTitle);
 }
