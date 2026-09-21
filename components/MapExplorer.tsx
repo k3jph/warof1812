@@ -85,13 +85,16 @@ export function MapExplorer({ events, initialEventId = "" }: { events: EventReco
     if (!requestedId || requestedId === initialEventId) return;
     const requestedEvent = events.find((event) => event.id === requestedId);
     if (!requestedEvent) return;
-    setSelectedEventId(requestedEvent.id);
-    setSelectedFeatureId("");
-    setInspection(null);
-    setShowEvents(true);
-    const targetDate = eventDate(requestedEvent);
-    const targetIndex = gisTimeline.findIndex((item) => item.date >= targetDate);
-    setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
+    const frame = window.requestAnimationFrame(() => {
+      setSelectedEventId(requestedEvent.id);
+      setSelectedFeatureId("");
+      setInspection(null);
+      setShowEvents(true);
+      const targetDate = eventDate(requestedEvent);
+      const targetIndex = gisTimeline.findIndex((item) => item.date >= targetDate);
+      setTimeIndex(targetIndex >= 0 ? targetIndex : gisTimeline.length - 1);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [events, initialEventId]);
 
   useLayoutEffect(() => {
