@@ -11,7 +11,7 @@ const page = async (pathname) => {
 const sitemapResult = await page("/sitemap.xml");
 assert(sitemapResult.response.ok, "Static sitemap is unavailable");
 const routes = [...sitemapResult.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
-assert(routes.length === 707, `Expected 707 canonical routes, found ${routes.length}`);
+assert(routes.length === 708, `Expected 708 canonical routes, found ${routes.length}`);
 
 const failures = [];
 const queue = [...routes];

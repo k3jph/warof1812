@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CookieConsent } from "@/components/CookieConsent";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 import { SITE_ORIGIN } from "@/lib/metadata";
 import "./globals.css";
@@ -40,5 +41,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       image: "https://jameshoward.us/assets/img/identity/jh-badge-1x1.svg",
     },
   };
-  return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><SiteHeader />{children}<SiteFooter /></body></html>;
+  return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><SiteHeader />{children}<SiteFooter /><CookieConsent /></body></html>;
 }

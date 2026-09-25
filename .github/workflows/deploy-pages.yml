@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - pages-static-validation
+      - analytics-consent-validation
   workflow_dispatch:
 
 permissions:
@@ -82,6 +83,7 @@ jobs:
 
           BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/round5-browser-verify.mjs
           BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/round6-browser-verify.mjs
+          BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/verify-analytics-consent.mjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

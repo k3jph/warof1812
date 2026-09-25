@@ -28,6 +28,7 @@ const staticRoutes = [
   "/people",
   "/perspectives",
   "/places",
+  "/privacy",
   "/ships",
   "/sources",
   "/story",

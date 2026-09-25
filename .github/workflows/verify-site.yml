@@ -6,6 +6,7 @@ on:
       - main
       - round5-validation
       - round6-validation
+      - analytics-consent-validation
   workflow_dispatch:
 
 permissions:
@@ -73,6 +74,7 @@ jobs:
           BASE_URL=http://127.0.0.1:8787 CHROME_BIN="$browser" node scripts/round5-browser-verify.mjs
           BASE_URL=http://127.0.0.1:8787 node scripts/round6-verify.mjs
           BASE_URL=http://127.0.0.1:8787 CHROME_BIN="$browser" node scripts/round6-browser-verify.mjs
+          BASE_URL=http://127.0.0.1:8787 CHROME_BIN="$browser" node scripts/verify-analytics-consent.mjs
           cp /tmp/war1812-server.log round5-screenshots/server.log
           cp /tmp/war1812-server.log round6-screenshots/server.log
 
