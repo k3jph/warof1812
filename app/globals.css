@@ -1315,7 +1315,9 @@ img { max-width: 100%; }
 .publisher-mark span span { color: rgba(255,255,255,.58); font-size: .78rem; }
 .footer-copyright { margin: 0; color: rgba(255,255,255,.62); font-size: .82rem; text-align: right; }
 .footer-links { display: flex; justify-content: start; flex-wrap: wrap; gap: 1rem 1.5rem; padding-bottom: 2.5rem; }
-.footer-links a { color: rgba(255,255,255,.72); font-size: .78rem; }
+.footer-links a, .footer-cookie-settings { color: rgba(255,255,255,.72); font: inherit; font-size: .78rem; }
+.footer-cookie-settings { margin: 0; padding: 0; border: 0; background: transparent; text-decoration: underline; text-underline-offset: .18em; cursor: pointer; }
+.footer-links a:hover, .footer-links a:focus-visible, .footer-cookie-settings:hover, .footer-cookie-settings:focus-visible { color: white; }
 
 @media (max-width: 900px) {
   .header-inner > nav { display: none; }
@@ -1704,6 +1706,78 @@ img { max-width: 100%; }
   .gis-keyboard-browser { grid-template-columns: 1fr; margin-inline: -1.2rem; }
   .gis-off-frame { margin-inline: -1.2rem; padding: 2rem 1.2rem; }
   .gis-off-frame > div, .not-found-links { grid-template-columns: 1fr; }
+}
+
+
+/* Privacy-first analytics consent */
+.gdpr-cookie {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  box-sizing: border-box;
+  padding: 1.15rem clamp(1rem, 3vw, 2rem);
+  color: var(--cream);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(168,58,50,.20), transparent 28rem),
+    linear-gradient(115deg, #143f58, var(--blue) 58%, #071a28);
+  border-top: 5px solid var(--red);
+  box-shadow: 0 -14px 38px rgba(7,26,40,.32);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 180ms linear, transform 180ms linear;
+}
+.gdpr-cookie, .gdpr-cookie * { box-sizing: border-box; }
+.gdpr-cookie[hidden] { display: none; }
+.gdpr-cookie.is-visible { opacity: 1; transform: translateY(0); }
+.gdpr-cookie__panel { width: min(100%, 1380px); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.25rem 3rem; }
+.gdpr-cookie__copy { max-width: 850px; }
+.gdpr-cookie__eyebrow { margin: 0 0 .25rem; color: #e58c80; font-size: .65rem; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+.gdpr-cookie .gdpr-cookie__title { margin: 0 0 .3rem; color: var(--white); font: 700 1.4rem/1.15 var(--serif); }
+.gdpr-cookie .gdpr-cookie__description, .gdpr-cookie .gdpr-cookie__more { margin: 0; color: rgba(255,253,250,.88); font-size: .9rem; line-height: 1.5; }
+.gdpr-cookie .gdpr-cookie__more { margin-top: .35rem; color: rgba(255,253,250,.62); font-size: .78rem; }
+.gdpr-cookie a { color: white; font-weight: 800; text-decoration-color: rgba(229,140,128,.7); }
+.gdpr-cookie a:hover { text-decoration-color: white; }
+.gdpr-cookie__actions { flex: 0 0 auto; display: flex; gap: .65rem; }
+.gdpr-cookie .gdpr-cookie__button { min-width: 10.5rem; min-height: 2.9rem; margin: 0; padding: .7rem 1rem; border: 2px solid #e58c80; border-radius: 0; font-family: var(--sans); font-size: .68rem; font-weight: 900; line-height: 1.25; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: color 150ms linear, background-color 150ms linear, border-color 150ms linear; }
+.gdpr-cookie .gdpr-cookie__button--accept { color: white; background: var(--red); border-color: var(--red); }
+.gdpr-cookie .gdpr-cookie__button--reject { color: white; background: transparent; }
+.gdpr-cookie .gdpr-cookie__button:hover { color: var(--blue); background: var(--cream); border-color: var(--cream); }
+.gdpr-cookie .gdpr-cookie__button:focus-visible, .gdpr-cookie a:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; }
+
+.privacy-title { max-width: 1080px; }
+.privacy-title h1 { max-width: 950px; font-size: clamp(4rem, 9vw, 8rem); }
+.privacy-notice { max-width: 980px; margin: 0 auto 7rem; }
+.privacy-notice__lede { margin: 0 0 4rem; padding: 1.5rem 1.7rem; border-left: 6px solid var(--red); background: var(--cream); font: 700 1.15rem/1.55 var(--serif); }
+.privacy-notice > section { padding: 3rem 0; border-top: 1px solid var(--line); }
+.privacy-notice > section .section-kicker { margin-bottom: .65rem; }
+.privacy-notice h2 { max-width: 760px; margin: 0 0 1.2rem; font: 700 clamp(2.2rem, 4vw, 3.8rem)/1 var(--serif); letter-spacing: -.035em; }
+.privacy-notice h3 { margin: 2rem 0 .5rem; font: 700 1.35rem/1.15 var(--serif); }
+.privacy-notice p { max-width: 780px; font-size: 1rem; line-height: 1.72; }
+.privacy-notice code { padding: .08rem .3rem; background: var(--paper-deep); font-size: .9em; }
+.privacy-settings-link { margin: 0; padding: 0; border: 0; color: var(--red); background: transparent; font: inherit; font-weight: 800; text-decoration: underline; text-underline-offset: .18em; cursor: pointer; }
+.privacy-cookie-table { max-width: 860px; margin: 2rem 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.privacy-cookie-table > div { display: grid; grid-template-columns: minmax(90px,.55fr) 1.6fr minmax(130px,.65fr); }
+.privacy-cookie-table > div > * { min-width: 0; padding: .85rem 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.privacy-cookie-table > div:first-child { color: white; background: var(--blue); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
+.privacy-notice__updated { color: #625d55; font-size: .82rem !important; font-weight: 800; }
+
+@media (max-width: 760px) {
+  .gdpr-cookie { padding: 1rem; }
+  .gdpr-cookie__panel { display: block; }
+  .gdpr-cookie__actions { margin-top: 1rem; }
+  .gdpr-cookie .gdpr-cookie__button { flex: 1 1 50%; min-width: 0; }
+  .privacy-cookie-table { overflow-x: auto; }
+  .privacy-cookie-table > div { min-width: 620px; }
+}
+
+@media (max-width: 420px) {
+  .gdpr-cookie__actions { display: grid; grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gdpr-cookie, .gdpr-cookie .gdpr-cookie__button { transition: none; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
