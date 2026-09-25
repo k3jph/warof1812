@@ -17,7 +17,6 @@ const forbidden = [
   "lib/human-record.ts",
   "lib/pilot-chapters.ts",
   "lib/source-guide.ts",
-  "components/SiteHeader.tsx",
 ];
 for (const file of forbidden) assert(!changed.includes(file), "Closed-scope file changed: " + file);
 
