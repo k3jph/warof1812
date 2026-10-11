@@ -9,6 +9,7 @@ on:
       - analytics-consent-validation
       - news-validation
       - news-homepage-layout
+      - fix-mobile-shell-overflow
   workflow_dispatch:
 
 permissions:
