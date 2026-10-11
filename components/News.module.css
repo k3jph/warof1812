@@ -36,6 +36,17 @@
 .policy p { margin: 0 0 .75rem; }
 .count { margin-bottom: .9rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
 .home a:focus-visible, .archive a:focus-visible, .exploreDoor a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+/* Three editorial columns on the homepage; the archive keeps its full-width list. */
+@media (min-width: 1000px) {
+  .home .list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3vw, 3rem); }
+  .home .item { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+  .home .dateline { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .5rem; }
+  .home .dateLabel { margin: 0; }
+  .home .category { flex-basis: 100%; margin-top: .2rem; }
+  .home .copy { display: flex; flex: 1; flex-direction: column; }
+  .home .title { font-size: clamp(1.5rem, 2vw, 1.9rem); }
+  .home .readLinks { flex-direction: column; align-items: flex-start; gap: .45rem; margin-top: auto; padding-top: .25rem; }
+}
 @media (max-width: 700px) {
   .homeHeading, .exploreDoor { flex-direction: column; align-items: flex-start; }
   .item { grid-template-columns: minmax(0, 1fr); gap: .9rem; }

@@ -50,17 +50,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="story-doors">
-        <div className="section-heading"><p className="section-kicker">Doors into the story</p><h2>What happens next?</h2></div>
-        <div className="door-list">{doors.map(([number, title, copy, href]) => <Link href={href} key={href}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><b>→</b></Link>)}</div>
-      </section>
-
-      <RecentNews />
-
       <section className="home-lab-door">
         <div><p className="section-kicker">New · evidence laboratory</p><h2>Five famous claims.<br />No easy verdicts.</h2></div>
         <p>Follow each story back to its earliest identifiable trace. Separate documented elements from possible ones, see what contradicts the familiar version, and track how uncertainty hardened into memory.</p>
         <Link href="/evidence"><span>Open the case files</span><b>→</b></Link>
+      </section>
+
+      <section className="story-doors">
+        <div className="section-heading"><p className="section-kicker">Doors into the story</p><h2>What happens next?</h2></div>
+        <div className="door-list">{doors.map(([number, title, copy, href]) => <Link href={href} key={href}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><b>→</b></Link>)}</div>
       </section>
 
       <section className="home-systems-door">
@@ -68,6 +66,8 @@ export default function Home() {
         <div><p>Choose a day and ask what news had arrived. Carry a treaty across the Atlantic. Tighten the blockade. Build a lake fleet. Follow a person through the uneven archive.</p><p>Each system exposes its evidence and assumptions instead of hiding them behind a game score.</p></div>
         <Link href="/interactives">Open the five systems <span>→</span></Link>
       </section>
+
+      <RecentNews />
 
       <section className="perspective-band"><p>The war was never owned by one national memory.</p><div><span>Sovereignty</span><span>Freedom seeking</span><span>Household labor</span><span>Citizenship</span><span>Occupation</span><span>Memory</span></div><Link href="/perspectives">Choose a perspective pathway →</Link></section>
     </main>

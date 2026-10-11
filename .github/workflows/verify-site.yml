@@ -8,6 +8,7 @@ on:
       - round6-validation
       - analytics-consent-validation
       - news-validation
+      - news-homepage-layout
   workflow_dispatch:
 
 permissions:
