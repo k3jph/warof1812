@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import { verifyMobileShell } from "./verify-mobile-shell.mjs";
 
 const chromeBin = process.env.CHROME_BIN;
 const baseUrl = process.env.BASE_URL ?? "http://127.0.0.1:8787";
@@ -170,6 +171,8 @@ try {
   assert(withdrawn.gaDisabled === true, "Withdrawal did not disable GA");
   assert(withdrawn.analyticsCookies.length === 0, "Withdrawal left Analytics cookies behind");
 
+  const mobileLayouts = await verifyMobileShell({ cdp, evaluate, navigate, sleep, assert });
+
   console.log(JSON.stringify({
     measurementId:"G-FSDET4HG4L",
     beforeConsent:{analyticsLoaded:false,googleScriptRequests:0},
@@ -178,6 +181,7 @@ try {
     persistence:"passed",
     withdrawal:"passed",
     privacyRoute:"passed",
+    mobileLayouts,
   }, null, 2));
 
   cdp.close();
