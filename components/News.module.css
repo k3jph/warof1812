@@ -1,0 +1,48 @@
+.home { padding: clamp(3rem, 6vw, 5.5rem) clamp(1.2rem, 7vw, 7rem); background: var(--paper); border-block: 1px solid var(--line); }
+.inner { max-width: 1400px; margin-inline: auto; }
+.homeHeading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem 3rem; margin-bottom: 2rem; }
+.homeHeading h2 { margin: 0; font: 700 clamp(2.7rem, 5vw, 4.8rem)/1 var(--serif); letter-spacing: -.045em; }
+.homeHeading p:last-child { max-width: 42rem; margin: 1rem 0 0; }
+.archiveLink { flex-shrink: 0; padding-block: .6rem; font-size: .9rem; font-weight: 700; }
+.list { border-top: 2px solid var(--ink); }
+.item { display: grid; grid-template-columns: minmax(145px, .25fr) minmax(0, 1fr); gap: 1.5rem 2.5rem; padding-block: 2rem; border-bottom: 1px solid var(--line); scroll-margin-top: 100px; }
+.dateline { min-width: 0; font-size: .9rem; }
+.dateline > time { display: block; font-weight: 700; }
+.dateLabel { display: block; margin-bottom: .2rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; }
+.category { display: block; margin-top: .85rem; color: var(--blue); font-size: .8rem; font-weight: 700; }
+.added { display: block; margin-top: 1rem; font-size: .78rem; }
+.copy { min-width: 0; max-width: 56rem; }
+.title { margin: 0 0 .7rem; font: 700 clamp(1.5rem, 2.5vw, 2.15rem)/1.15 var(--serif); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.title a { text-decoration-thickness: 1px; text-decoration-color: var(--line); }
+.title a:hover { color: var(--blue); text-decoration-color: currentColor; }
+.externalArrow { font: 400 .75em var(--sans); }
+.source { margin: 0 0 1rem; font-size: .83rem; color: var(--blue); }
+.source > span { display: block; margin-top: .2rem; color: var(--ink); font-size: .76rem; }
+.summary, .context { margin: 0 0 1rem; font-size: 1rem; line-height: 1.65; }
+.dateNote { padding-left: 1rem; border-left: 2px solid var(--line); margin: 1.25rem 0; font-size: .85rem; }
+.readLinks, .furtherReading { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; font-size: .85rem; }
+.readLinks { margin-top: 1rem; font-weight: 700; }
+.furtherReading { margin-top: .75rem; }
+.related { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem 1.25rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .84rem; }
+.related > span { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+.exploreDoor { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem 3rem; margin-block: 2rem 3rem; padding: 1.5rem; border: 1px solid var(--line); background: var(--cream); }
+.exploreDoor h2 { margin: 0; font: 700 2rem/1.1 var(--serif); }
+.exploreDoor p:last-child { max-width: 48rem; margin-bottom: 0; }
+.exploreDoor > a { flex-shrink: 0; font-size: .85rem; font-weight: 700; }
+.archive { max-width: 1260px; margin-inline: auto; }
+.archiveTitle { max-width: 56rem; padding-bottom: 2rem; }
+.archiveTitle h1 { font-size: clamp(3rem, 7vw, 6rem); }
+.policy { max-width: 56rem; padding: 1.25rem 0 2rem; font-size: .9rem; }
+.policy p { margin: 0 0 .75rem; }
+.count { margin-bottom: .9rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+.home a:focus-visible, .archive a:focus-visible, .exploreDoor a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+@media (max-width: 700px) {
+  .homeHeading, .exploreDoor { flex-direction: column; align-items: flex-start; }
+  .item { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  .dateline { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .5rem; }
+  .category { flex-basis: 100%; margin-top: .2rem; }
+  .added { flex-basis: 100%; margin-top: 0; }
+  .dateLabel { margin: 0; }
+  .archiveLink { padding-top: 0; }
+  .related { align-items: flex-start; flex-direction: column; }
+}

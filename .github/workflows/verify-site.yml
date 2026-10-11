@@ -7,6 +7,7 @@ on:
       - round5-validation
       - round6-validation
       - analytics-consent-validation
+      - news-validation
   workflow_dispatch:
 
 permissions:
@@ -70,6 +71,7 @@ jobs:
             exit 1
           fi
 
+          BASE_URL=http://127.0.0.1:8787 CHROME_BIN="$browser" node scripts/verify-news.mjs
           BASE_URL=http://127.0.0.1:8787 node scripts/round5-verify.mjs
           BASE_URL=http://127.0.0.1:8787 CHROME_BIN="$browser" node scripts/round5-browser-verify.mjs
           BASE_URL=http://127.0.0.1:8787 node scripts/round6-verify.mjs
@@ -86,4 +88,5 @@ jobs:
           path: |
             round5-screenshots/
             round6-screenshots/
+            news-screenshots/
           if-no-files-found: warn

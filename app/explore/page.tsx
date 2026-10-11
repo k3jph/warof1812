@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import { ExploreIndex } from "@/components/ExploreIndex";
+import { NewsExploreLink } from "@/components/News";
 import { allCatalogRecords, catalogByKind } from "@/lib/catalog";
 import { events } from "@/lib/content";
 
@@ -14,5 +15,5 @@ export default function ExplorePage() {
     ["documents", "Documents", catalogByKind.documents.length, "Messages, treaties, newspapers, and lyrics."],
     ["objects", "Objects", catalogByKind.objects.length, "Flags, weapons, certificates, and prints."],
   ] as const;
-  return <main id="main" className="page-shell explore-page"><header className="page-title"><p className="section-kicker">Museum and reference mode</p><h1>Explore the whole record</h1><p>Move between narrative and evidence. Search across events, people, places, ships, documents, and objects, or open a collection and browse slowly.</p></header><nav className="collection-doors" aria-label="Explore collections">{collections.map(([href, label, count, copy]) => <a href={`/${href}`} key={href}><span>{count} records</span><h2>{label}</h2><p>{copy}</p><b>Enter collection →</b></a>)}</nav><ExploreIndex events={events} catalog={allCatalogRecords} /></main>;
+  return <main id="main" className="page-shell explore-page"><header className="page-title"><p className="section-kicker">Museum and reference mode</p><h1>Explore the whole record</h1><p>Move between narrative and evidence. Search across events, people, places, ships, documents, and objects, or open a collection and browse slowly.</p></header><nav className="collection-doors" aria-label="Explore collections">{collections.map(([href, label, count, copy]) => <a href={`/${href}`} key={href}><span>{count} records</span><h2>{label}</h2><p>{copy}</p><b>Enter collection →</b></a>)}</nav><NewsExploreLink /><ExploreIndex events={events} catalog={allCatalogRecords} /></main>;
 }

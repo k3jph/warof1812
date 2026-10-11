@@ -1,4 +1,5 @@
 import Link from "@/components/SafeLink";
+import { RecentNews } from "@/components/News";
 import { chapters } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata("/", "1812: The Whole Story", "A narrative-first, citation-rich public history of the War of 1812, from the Atlantic crisis to Ghent, New Orleans, and the unequal peace.", true);
@@ -53,6 +54,8 @@ export default function Home() {
         <div className="section-heading"><p className="section-kicker">Doors into the story</p><h2>What happens next?</h2></div>
         <div className="door-list">{doors.map(([number, title, copy, href]) => <Link href={href} key={href}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><b>→</b></Link>)}</div>
       </section>
+
+      <RecentNews />
 
       <section className="home-lab-door">
         <div><p className="section-kicker">New · evidence laboratory</p><h2>Five famous claims.<br />No easy verdicts.</h2></div>

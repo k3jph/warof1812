@@ -24,6 +24,7 @@ const staticRoutes = [
   "/lake-logistics",
   "/map",
   "/maryland",
+  "/news",
   "/objects",
   "/people",
   "/perspectives",
