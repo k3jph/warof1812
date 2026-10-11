@@ -136,7 +136,7 @@ try {
     await sleep(400);
   };
   const report = [];
-  for (const width of [390, 820, 1100, 1440]) {
+  for (const width of [390, 820, 999, 1000, 1100, 1440]) {
     for (const path of ["/news/", "/"]) {
       await navigate(path, width);
       const state = await evaluate(`(() => {
@@ -151,7 +151,15 @@ try {
           images: root.querySelectorAll('img').length,
           headings: articles.every((article) => Boolean(document.getElementById(article.getAttribute('aria-labelledby')))),
           focus: document.activeElement === first,
-          navCount: document.querySelectorAll('nav[aria-label="Primary navigation"] a').length
+          navCount: document.querySelectorAll('nav[aria-label="Primary navigation"] a').length,
+          articleBoxes: articles.map((article) => {
+            const box = article.getBoundingClientRect();
+            return { x: box.x, y: box.y, right: box.right, bottom: box.bottom, width: box.width };
+          }),
+          sections: [...document.querySelectorAll('#main > section')].map((section) => ({
+            name: section.hasAttribute('data-recent-news') ? 'news' : section.className,
+            background: getComputedStyle(section).backgroundColor
+          }))
         };
       })()`);
       assert(state.scroll <= state.width + 1, `Horizontal overflow on ${path} at ${width}px`);
@@ -159,6 +167,29 @@ try {
       assert.equal(state.images, 0, "News should not borrow publisher images");
       assert(state.headings && state.focus, "News heading or keyboard navigation regression");
       assert.equal(state.navCount, 11, "The primary navigation was crowded with another item");
+      const [firstBox, ...otherBoxes] = state.articleBoxes;
+      if (path === "/" && width >= 1000) {
+        assert(otherBoxes.every((box) => Math.abs(box.y - firstBox.y) < 1), "Desktop news must be three across");
+        assert(otherBoxes.every((box) => Math.abs(box.width - firstBox.width) < 1), "Desktop news columns must be equal width");
+        for (let index = 1; index < state.articleBoxes.length; index += 1) {
+          assert(state.articleBoxes[index].x >= state.articleBoxes[index - 1].right, "Desktop news columns overlap");
+        }
+      } else {
+        assert(otherBoxes.every((box) => Math.abs(box.x - firstBox.x) < 1), "Archive and narrow-screen news must stay stacked");
+        for (let index = 1; index < state.articleBoxes.length; index += 1) {
+          assert(state.articleBoxes[index].y >= state.articleBoxes[index - 1].bottom - 1, "Stacked news items overlap");
+        }
+      }
+      if (path === "/") {
+        assert.deepEqual(state.sections.map((section) => section.name), [
+          "hero", "bookend", "choose-depth", "home-lab-door", "story-doors", "home-systems-door", "news", "perspective-band"
+        ], "Homepage section order changed");
+        const tones = state.sections.slice(1).map((section) => {
+          const [red, green, blue] = section.background.match(/[\d.]+/g).map(Number);
+          return (red * .2126 + green * .7152 + blue * .0722) / 255 > .5 ? "light" : "dark";
+        });
+        assert.deepEqual(tones, ["dark", "light", "dark", "light", "dark", "light", "dark"], "Homepage surfaces must alternate after the hero");
+      }
       const clip = await evaluate(`(() => {
         const root = document.querySelector(${JSON.stringify(path === "/" ? "[data-recent-news]" : "main")});
         const rect = root.getBoundingClientRect();
@@ -166,12 +197,23 @@ try {
       })()`);
       const shot = await cdp.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip });
       await writeFile(`news-screenshots/${path === "/" ? "home" : "archive"}-${width}.png`, Buffer.from(shot.data, "base64"));
+      if (path === "/" && width === 1440) {
+        const rhythmClip = await evaluate(`(() => {
+          const first = document.querySelector('.choose-depth').getBoundingClientRect();
+          const last = document.querySelector('.perspective-band').getBoundingClientRect();
+          return { x: 0, y: first.top + window.scrollY, width: document.documentElement.clientWidth, height: last.bottom - first.top, scale: 1 };
+        })()`);
+        const rhythmShot = await cdp.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: rhythmClip });
+        await writeFile("news-screenshots/home-rhythm-1440.png", Buffer.from(rhythmShot.data, "base64"));
+      }
       report.push({ path, width, ...state });
     }
   }
   await cdp.send("Emulation.setScriptExecutionDisabled", { value: true });
   await navigate("/news/", 390);
   assert.equal(await evaluate("document.querySelectorAll('article[data-news-id]').length"), ids.length, "News requires JavaScript to render");
+  await navigate("/", 1440);
+  assert.equal(await evaluate("document.querySelectorAll('[data-recent-news] article[data-news-id]').length"), 3, "Homepage news requires JavaScript to render");
   const summary = { records: ids.length, homepageRecords: Math.min(ids.length, 3), checkedInternalRoutes: internalLinks.size, javascriptDisabled: true, layouts: report };
   await writeFile("news-screenshots/verification.json", JSON.stringify(summary, null, 2));
   console.log(JSON.stringify(summary, null, 2));
