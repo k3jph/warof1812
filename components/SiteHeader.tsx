@@ -44,6 +44,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-links">
         <Link href="/about">About</Link>
+        <Link href="/news">1812 Today</Link>
         <Link href="/privacy">Privacy &amp; cookies</Link>
         <button type="button" className="footer-cookie-settings" data-cookie-preferences>Cookie settings</button>
         <Link href="/sources">Sources &amp; research guide</Link>

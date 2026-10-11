@@ -6,6 +6,7 @@ on:
       - main
       - pages-static-validation
       - analytics-consent-validation
+      - news-validation
   workflow_dispatch:
 
 permissions:
@@ -81,9 +82,18 @@ jobs:
             exit 1
           fi
 
+          BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/verify-news.mjs
           BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/round5-browser-verify.mjs
           BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/round6-browser-verify.mjs
           BASE_URL=http://127.0.0.1:4173 CHROME_BIN="$browser" node scripts/verify-analytics-consent.mjs
+
+      - name: Upload news verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-pages-verification
+          path: news-screenshots/
+          if-no-files-found: warn
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
