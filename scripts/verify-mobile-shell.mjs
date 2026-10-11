@@ -74,13 +74,19 @@ export async function verifyMobileShell({ cdp, evaluate, navigate, sleep, assert
       };
     })()`);
     const label = `${test.name}: ${JSON.stringify(state)}`;
-    assert(state.width === test.width && Math.abs(state.visualWidth - test.width) < 1, `Unexpected mobile viewport: ${label}`);
-    assert(state.innerWidth <= test.width + 1 && state.scrollWidth <= test.width + 1, `Page overflows horizontally: ${label}`);
+    if (test.mobile !== false) {
+      assert(state.width === test.width && Math.abs(state.visualWidth - test.width) < 1, `Unexpected mobile viewport: ${label}`);
+    } else {
+      // Desktop scrollbars consume layout width; mobile uses overlay scrollbars.
+      assert(state.width > 0 && state.width <= test.width && state.innerWidth === test.width
+        && Math.abs(state.visualWidth - state.width) < 1, `Unexpected desktop viewport: ${label}`);
+    }
+    assert(state.innerWidth <= test.width + 1 && state.scrollWidth <= state.width + 1, `Page overflows horizontally: ${label}`);
     assert(!state.overflowMasked, "Do not hide page-wide overflow instead of fixing its source");
-    assert(state.footerRight <= test.width + 1, `Footer expands viewport: ${label}`);
+    assert(state.footerRight <= state.width + 1, `Footer expands viewport: ${label}`);
     if (test.width <= 620) assert(state.digitsFit, `Hero digits are clipped: ${label}`);
     assert(state.visible && !state.analyticsLoaded && state.googleScripts === 0, `Initial consent state changed: ${label}`);
-    assert(state.banner.left >= -1 && state.banner.right <= test.width + 1, `Consent is wider than screen: ${label}`);
+    assert(state.banner.left >= -1 && state.banner.right <= state.width + 1, `Consent is wider than screen: ${label}`);
     assert(state.banner.top >= 0 && state.banner.bottom <= state.visualHeight + 1, `Consent is outside visible screen: ${label}`);
     assert(state.banner.scrollWidth <= state.banner.clientWidth + 1, `Consent content overflows sideways: ${label}`);
     await screenshot(`${test.name}-notice`);
@@ -100,13 +106,13 @@ export async function verifyMobileShell({ cdp, evaluate, navigate, sleep, assert
           hit: document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2) === button };
       })()`);
       assert(button.focused && button.insidePanel && button.hit, `Unreachable ${choice} button on ${test.name}: ${JSON.stringify(button)}`);
-      assert(button.left >= 0 && button.right <= test.width && button.top >= 0 && button.bottom <= test.height, `Clipped ${choice} button on ${test.name}`);
+      assert(button.left >= 0 && button.right <= state.width && button.top >= 0 && button.bottom <= test.height, `Clipped ${choice} button on ${test.name}`);
     }
     await screenshot(`${test.name}-choices`);
     await evaluate("document.querySelector('[data-cookie-reject]').click()");
     await sleep(250);
     assert(await evaluate("document.querySelector('#gdpr-cookie').hidden && window.cookieStatus().decision === 'rejected' && !window.cookieStatus().analyticsLoaded"), `Rejection failed on ${test.name}`);
-    assert(await pageWidth() <= test.width + 1, `Overflow remains with consent dismissed on ${test.name}`);
+    assert(await pageWidth() <= state.width + 1, `Overflow remains with consent dismissed on ${test.name}`);
     await screenshot(`${test.name}-dismissed`);
     await evaluate("document.querySelector('[data-cookie-preferences]').focus(); document.querySelector('[data-cookie-preferences]').click()");
     await sleep(250);
