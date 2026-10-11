@@ -3,6 +3,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 import { SITE_ORIGIN } from "@/lib/metadata";
 import "./globals.css";
+import "./responsive-shell.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
