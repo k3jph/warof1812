@@ -1,0 +1,34 @@
+# 1812: The Whole Story
+
+> A citation-rich public-history site about the War of 1812, combining a nineteen-chapter narrative with maps, timelines, evidence panels, source packets, objects, people, places, ships, and interactive historical systems.
+
+Website: https://war1812.jameshoward.us/
+Creator: James P. Howard, II
+
+## Start here
+
+- [Story](https://war1812.jameshoward.us/story/): the full nineteen-chapter narrative.
+- [The war in five minutes](https://war1812.jameshoward.us/five-minutes/): very short orientation.
+- [The war in twenty minutes](https://war1812.jameshoward.us/twenty-minutes/): compact narrative overview.
+- [Explore](https://war1812.jameshoward.us/explore/): entry point to the site's reference and interpretive layers.
+
+## Evidence and reference
+
+- [Timeline](https://war1812.jameshoward.us/timeline/): chronological orientation.
+- [Map](https://war1812.jameshoward.us/map/): geographic exploration.
+- [Evidence](https://war1812.jameshoward.us/evidence/): claim-level evidence and uncertainty.
+- [Documents](https://war1812.jameshoward.us/documents/): documentary and primary-source material.
+- [Sources](https://war1812.jameshoward.us/sources/): source collections and citation paths.
+- [People](https://war1812.jameshoward.us/people/): people connected to the conflict.
+- [Places](https://war1812.jameshoward.us/places/): locations and geographic context.
+- [Ships](https://war1812.jameshoward.us/ships/): naval records and context.
+- [Objects](https://war1812.jameshoward.us/objects/): material-culture records.
+- [1812 Today](https://war1812.jameshoward.us/news/): current news, discoveries, and scholarship connected to the war.
+
+## Interpretation notes
+
+The project distinguishes documented fact from inference, later memory, oral or community tradition, dispute, and uncertainty. Prefer the evidence and source layers when evaluating a contested claim; do not flatten qualified statements into certainty.
+
+## Related
+
+- [James Howard](https://jameshoward.us/): creator profile and related scholarship.
